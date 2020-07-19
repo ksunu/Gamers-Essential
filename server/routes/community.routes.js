@@ -29,19 +29,32 @@ router.post('/newCommunity', (req, res, next) => {
 })
 
 // EDIT COMMUNITY
-router.get('/editCommunity/:community_id', (req, res, next) => {
+router.post('/editCommunity/:community_id', (req, res, next) => {
 
-   Community.findById(req.params.community_id)
-         .then(response => res.json(response))
-         .catch(err => next(err))
+    const { title, description, genre, imageProd, releaseDate, comments } = req.body
+
+    Community.findByIdAndUpdate(req.params.community_id, { title, description, genre, imageProd, releaseDate, comments }, { new: true })
+        .then(response => res.json(response))
+        .catch(err => next(err))
 })
 
-router.post('/getOneCommunity/:community_id/editCommunity',  (req.res, next) => {
+// INSERT COMMUNITY COMMENTS
 
-    Community.findByIdAndUpdate()
+router.post('/newComment', (req, res, next) => {
 
-}
+    Community.create(req.body)
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
+router.post('/editComment/:community_id', (req, res, next) => {
+
+    const { title, description, genre, imageProd, releaseDate, comments } = req.body
+
+    Community.findByIdAndUpdate(req.params.community_id, { title, description, genre, imageProd, releaseDate, comments }, { new: true })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
 // **EXPORT**
 module.exports = router

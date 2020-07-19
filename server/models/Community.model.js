@@ -6,6 +6,8 @@ const communitySchema = new Schema({
 
     title: { type: String },
 
+    brief: {type: String},
+
     description: { type: String },
 
     genre: {
@@ -13,19 +15,13 @@ const communitySchema = new Schema({
         enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR']
     },
 
-    owner: [{
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }],
+    owner: [{ type: Schema.Types.ObjectId, ref: "User" }],
 
     imageProd: { type: String },
 
     releaseDate: { type: Date, default: Date.now },
 
-    comments: { type: String }
-
-}, {
-    timestamps: true
+    comments: { title: { type: String }, description: { type: String }, rating: { type: Number } }
 })
 
 const Community = mongoose.model("Community", communitySchema)
