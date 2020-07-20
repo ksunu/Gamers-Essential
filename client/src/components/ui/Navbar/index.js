@@ -24,6 +24,9 @@ class Navigation extends Component {
                             <NavLink to="/" exact activeStyle={{ color: 'white' }}>Main</NavLink>
                         </Nav.Link>
                         <Nav.Link as="span">
+                            <NavLink to="/games" activeStyle={{ color: 'white' }}>Games</NavLink>
+                        </Nav.Link>
+                        <Nav.Link as="span">
                             <NavLink to="/community" activeStyle={{ color: 'white' }}>Community</NavLink>
                         </Nav.Link>
 
