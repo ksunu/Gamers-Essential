@@ -46,7 +46,7 @@ class CommunityList extends Component {
                 <Container as="main" className="community-page">
                     <h1>Gamers Community</h1>
                     {
-                        <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new game</Button>
+                        this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new game</Button>
                     }
                     <Row>
                         {this.state.community.map(elm => <CommunityCard {...elm} key={elm._id} handleModal={this.handleModal} />)}

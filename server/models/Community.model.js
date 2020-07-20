@@ -21,7 +21,10 @@ const communitySchema = new Schema({
 
     releaseDate: { type: Date, default: Date.now },
 
-    comments: { title: { type: String }, description: { type: String }, rating: { type: Number } }
+    comments: { title: { type: String }, description: { type: String }, rating: { type: Number }, user: {type:Number} }
+
+}, {
+    timestamps: true
 })
 
 const Community = mongoose.model("Community", communitySchema)

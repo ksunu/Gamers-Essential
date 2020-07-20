@@ -11,19 +11,23 @@ const communitySchema = new Schema({
         enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR']
     },
 
+    brief: { type: String },
+
     description: { type: String },
 
     owner: { type: Schema.Types.ObjectId, ref: "User" },
 
     imageEvent: { type: String },
 
-    eventDate: { type: Date, default: Date.now },
+    eventDate: { type: Date},
+
+    creationDate: { type: Date, default: Date.now },
 
     locationName: { type: String },
 
     coordinates: { type: [Number], required: true },
 
-    comments: { type: String }
+    comments: { title: { type: String }, description: { type: String }, rating: { type: Number }, user: { type: Number } }
 
 }, {
     timestamps: true
