@@ -11,7 +11,7 @@ const GameCard = ({ id, name, background_image, rating }) => {
     return (
         <>
 
-            <Col md={4}>
+            <Col md={3}>
                 <Card className="game-card">
                     <Card.Img variant="top" src={background_image} />
                     <Card.Body>

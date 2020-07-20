@@ -42,7 +42,7 @@ class GameDetails extends Component {
                     <Row>
                         <Col md={{ span: 5, offset: 1 }}>
 
-                            <p><b>Name:</b> {this.state.gameDetails.name}</p>
+                            <p><b>Name:</b> {this.state.gameDetails.name_original}</p>
                             <hr></hr>
                             <p><b>Description:</b> {this.state.gameDetails.description_raw}</p>
                             <hr></hr>

@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import GameService from '../../../service/GameService'
 import GameCard from './Game-card'
+import './Game-list.css'
+
+// BOOTSTRAP COMPONENTS
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
 
 class GameList extends Component {
     constructor() {
@@ -24,7 +30,12 @@ class GameList extends Component {
     render() {
         return (
             <>
-                {this.state.games.map(elm => <GameCard key={elm.id} {...elm}/>)}
+                <Container>
+                    <h1>Game List</h1>
+                    <Row>
+                        {this.state.games.map(elm => <GameCard key={elm.id} {...elm} />)}
+                    </Row>
+                </Container>
             </>
         )
     }

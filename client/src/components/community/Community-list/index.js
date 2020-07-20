@@ -6,7 +6,7 @@ import CommunityForm from '../Community-form'
 
 // BOOTSTRAP COMPONENTS
 import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
+import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
@@ -48,8 +48,9 @@ class CommunityList extends Component {
                     {
                         <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new game</Button>
                     }
-
-                    {this.state.community.map(elm => <CommunityCard {...elm} key={elm._id} />)}
+                    <Row>
+                        {this.state.community.map(elm => <CommunityCard {...elm} key={elm._id} handleModal={this.handleModal} />)}
+                    </Row>
 
                 </Container>
 
