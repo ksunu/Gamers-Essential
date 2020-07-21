@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const communitySchema = new Schema({
+const eventSchema = new Schema({
 
     title: { type: String },
 
@@ -19,19 +19,17 @@ const communitySchema = new Schema({
 
     imageEvent: { type: String },
 
-    eventDate: { type: Date},
-
-    creationDate: { type: Date, default: Date.now },
+    eventDate: { type: Date },
 
     locationName: { type: String },
 
     coordinates: { type: [Number], required: true },
 
-    comments: { title: { type: String }, description: { type: String }, rating: { type: Number }, user: { type: Number } }
+    comments: { type: [String] } 
 
 }, {
     timestamps: true
 })
 
-const Tournament = mongoose.model("Tournament", communitySchema)
-module.exports = Tournament
+const Event = mongoose.model("Event", eventSchema)
+module.exports = Event

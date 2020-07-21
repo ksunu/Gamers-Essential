@@ -16,6 +16,7 @@ import LoginForm from './auth/Login-form'
 import ProfilePage from './pages/profile'
 
 
+
 // BOOTSTRAP Component
 import Navigation from './ui/Navbar'
 import Message from './ui/CustomToast'
@@ -41,7 +42,7 @@ class App extends Component {
     this.AuthService
       .isLoggedIn()
       .then(response => this.state.loggedInUser === null && this.setState({ loggedInUser: response.data }))
-      // .catch(err => console.log({ err }))
+    // .catch(err => console.log({ err }))
   }
 
   handleToast = (visible, text = '') => {
@@ -69,6 +70,8 @@ class App extends Component {
 
           <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} />} />
           <Route path="/community/:id" render={props => <CommunityDetail {...props} />} />
+          {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
+          
 
           <Route exact path="/games" render={() => <GameList />} />
           <Route path="/games/:id" render={props => <GameDetail {...props} />} />

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import './Game-list.css'
+
 // BOOTSTRAP COMPONENTS
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
@@ -11,16 +13,14 @@ const GameCard = ({ id, name, background_image, rating }) => {
     return (
         <>
 
-            <Col md={3}>
+            <Col md={2}>
                 <Card className="game-card">
-                    <Card.Img variant="top" src={background_image} />
-                    <Card.Body>
-                        <Card.Title>{name}</Card.Title>
-                        <Card.Text> Rating: {rating} </Card.Text>
-                        <Link to={`/games/${id}`} className="btn btn-dark btn-block btn-sm">Details</Link>
-                    </Card.Body>
+                    <Link to={`/games/${id}`}>
+                        <Card.Img src={background_image} />
+                            <Card.Title><h5>{name}</h5></Card.Title>
+                            <Card.Text> Rating: {rating} </Card.Text>
+                    </Link>
                 </Card>
-
             </Col>
         </>
 

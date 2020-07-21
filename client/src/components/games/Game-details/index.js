@@ -22,7 +22,7 @@ class GameDetails extends Component {
         const id = this.props.match.params.id
         this.gameService
             .getOneGame(id)
-            .then(response => this.setState({gameDetails: response.data}))
+            .then(response => this.setState({ gameDetails: response.data }))
             .catch(err => console.log(err))
 
 
@@ -30,12 +30,12 @@ class GameDetails extends Component {
 
     render() {
 
-        
+
         return (
             <>
 
-            <h2>Game Details</h2>
                 <Container as="main">
+                    <h2>Game Details</h2>
 
                     <h1>{this.state.gameDetails.title}</h1>
 

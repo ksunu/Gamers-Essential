@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 
-const CommunityCard = ({ _id, title, imageProd, brief, handleModal }) => {
+const CommunityCard = ({ _id, title, imageProd, brief, handleModal}) => {
 
     return (
         <>
@@ -19,6 +19,7 @@ const CommunityCard = ({ _id, title, imageProd, brief, handleModal }) => {
                     <Card.Body>
                         <Card.Title>{title}</Card.Title>
                         <Card.Text> {brief} </Card.Text>
+
                         <Link to={`/community/${_id}`} className="btn btn-dark btn-block btn-sm">Details</Link><br></br>
                         <Button className="btn btn-dark btn-block btn-sm" onClick={() => handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Edit</Button>
                     </Card.Body>

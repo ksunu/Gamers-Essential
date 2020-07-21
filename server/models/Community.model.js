@@ -6,7 +6,7 @@ const communitySchema = new Schema({
 
     title: { type: String },
 
-    brief: {type: String},
+    brief: { type: String },
 
     description: { type: String },
 
@@ -15,14 +15,11 @@ const communitySchema = new Schema({
         enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR']
     },
 
-    owner: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
 
     imageProd: { type: String },
 
-    releaseDate: { type: Date, default: Date.now },
-
-    comments: { title: { type: String }, description: { type: String }, rating: { type: Number }, user: {type:Number} }
-
+    comments: { type: [String] }
 }, {
     timestamps: true
 })

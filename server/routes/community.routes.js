@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 
 const Community = require('./../models/Community.model')
+const User = require('./../models/User.model')
 
 // ***END POINTS***
+
 // COMMUNITY 
 router.get('/getAllCommunity', (req, res, next) => {
-
     Community.find()
+        aqui .populate('owner')
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -16,6 +18,7 @@ router.get('/getAllCommunity', (req, res, next) => {
 router.get('/getOneCommunity/:community_id', (req, res, next) => {
 
     Community.findById(req.params.community_id)
+        
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -23,7 +26,10 @@ router.get('/getOneCommunity/:community_id', (req, res, next) => {
 // NEW COMMUNITY
 router.post('/newCommunity', (req, res, next) => {
 
-    Community.create(req.body)
+    const { title, brief, description, genre, imageProd } = req.body
+
+
+    Community.create({ title, brief, description, genre, imageProd, owner: req.user })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -39,22 +45,20 @@ router.post('/editCommunity/:community_id', (req, res, next) => {
 })
 
 // INSERT COMMUNITY COMMENTS
+router.post('/newComment/:id', (req, res, next) => {
 
-router.post('/newComment', (req, res, next) => {
+    const { comments } = req.body
 
-    Community.create(req.body)
+    Community.findByIdAndUpdate(req.params.id, { $push: { comments: comments } }, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
+
 })
 
-router.post('/editComment/:community_id', (req, res, next) => {
 
-    const { title, description, genre, imageProd, releaseDate, comments } = req.body
 
-    Community.findByIdAndUpdate(req.params.community_id, { title, description, genre, imageProd, releaseDate, comments }, { new: true })
-        .then(response => res.json(response))
-        .catch(err => next(err))
-})
+
+
 
 // **EXPORT**
 module.exports = router

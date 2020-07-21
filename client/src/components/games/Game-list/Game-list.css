@@ -1,0 +1,21 @@
+
+/* GAME-CARD*/
+.game-card {
+    margin-bottom: 20px;
+    padding: 0;
+    font-size: 0.6em;
+    border:none;
+
+}
+img {
+    height: 80px;
+    object-fit: cover;
+}
+h5 {
+    font-size:0.8em;
+}
+
+/* GAME-LIST*/
+.game-card-inner {
+    padding: 10px;
+}

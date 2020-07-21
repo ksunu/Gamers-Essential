@@ -12,9 +12,9 @@ export default class CommunityService {
     }
 
     getAllCommunity = () => this.service.get('/getAllCommunity')
-    getOneCommunity = id => this.service.get(`getOneCommunity/${id}`)
+    getOneCommunity = id => this.service.get(`/getOneCommunity/${id}`)
     createCommunity = community => this.service.post(`/newCommunity`, community)
-
+    createComment = (id, comment) => this.service.post(`/newComment/${id}`, comment)
 
 }
 
