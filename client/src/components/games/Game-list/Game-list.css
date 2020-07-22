@@ -13,3 +13,11 @@ img {
     object-fit: cover;
 }
 
+/* GAME-LIST*/
+.left {
+    left: 0;
+}
+Button {
+margin: 10px;
+width: 100px;
+}

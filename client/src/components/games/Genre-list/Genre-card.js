@@ -19,7 +19,7 @@ const GameCard = ({ id, name, background_image, rating }) => {
                         <Card.ImgOverlay>
                             <Card.Title><h5>{name}</h5></Card.Title>
                             <Card.Text>
-                                Aqui va otro texto TO
+                               dsfdsfsfsf
                             </Card.Text>
                             <Card.Text>Rating: {rating}</Card.Text>
                         </Card.ImgOverlay>

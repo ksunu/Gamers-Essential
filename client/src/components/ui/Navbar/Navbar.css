@@ -9,10 +9,18 @@
 }
 
 .logout {
-color:rgb(117, 53, 53);
+color:rgb(255, 255, 255);
 }
 
 .link-profile {
     font-family: 'Share Tech Mono', sans-serif;
     color: green;
 }
+
+img {
+    width:20px;
+    height:100%;
+    object-fit: cover;
+    
+}
+

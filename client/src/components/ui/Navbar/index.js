@@ -9,8 +9,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
 
-
-
 class Navigation extends Component {
     constructor(props) {
         super(props)
@@ -61,7 +59,11 @@ class Navigation extends Component {
                             (
                                 <Nav.Link as="span">
                                     <div className="links">
-                                        <span onClick={this.logout} className="logout">Logout</span>
+                                        <span onClick={this.logout} className="logout">
+                                            <div>
+                                                <img src="../../../log.svg" alt="off" />
+                                            </div>
+                                        </span>
                                     </div>
                                 </Nav.Link>
                             ) : (
@@ -80,7 +82,7 @@ class Navigation extends Component {
                             )
                         }
                         <Nav.Link as="span">
-                                <NavLink to="/profile" activeStyle={{ color: 'white' }} className="link-profile">Hi, {this.props.loggedInUser ? this.props.loggedInUser.username : 'guest'}</NavLink>
+                            <NavLink to="/profile" activeStyle={{ color: 'white' }} className="link-profile">Hi, {this.props.loggedInUser ? this.props.loggedInUser.username : 'guest'}</NavLink>
                         </Nav.Link>
                     </Nav>
 

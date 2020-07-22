@@ -25,7 +25,7 @@ class GameList extends Component {
 
   updateGameList = () => {
     this.handleGameList()
-    
+
   }
 
   handleGameList = () => {
@@ -34,7 +34,7 @@ class GameList extends Component {
       .catch((err) => console.log(err))
   }
 
- 
+
   handleNextPage = () => {
     const copyState = [this.state.count];
     this.setState({ copyState: ++this.state.count })
@@ -60,14 +60,14 @@ class GameList extends Component {
       <>
         <Container>
           <h1>Games</h1>
+          <p>Page: {this.state.count}</p>
+          <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+          <Button onClick={this.handleNextPage} className="right">&#62;</Button>
           <Row>
             {this.state.games.map((elm) => (
               <GameCard key={elm.id} {...elm} />
             ))}
-            <Button onClick={this.handlePreviousPage}>Previous Page</Button>
-            <Button onClick={this.handleNextPage}>Next Page</Button>
           </Row>
-
         </Container>
       </>
     )
