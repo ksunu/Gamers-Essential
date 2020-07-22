@@ -22,6 +22,7 @@ const CommunityCard = props => {
 
                         <Link to={`/community/${props.elm_id}`} className="btn btn-dark btn-block btn-sm">Details</Link><br></br>
                         <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleModal(true, props.elm)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Edit</Button>
+                        <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>
                     </Card.Body>
                 </Card>
 

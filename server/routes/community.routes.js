@@ -18,7 +18,7 @@ router.get('/getAllCommunity', (req, res, next) => {
 router.get('/getOneCommunity/:community_id', (req, res, next) => {
 
     Community.findById(req.params.community_id)
-        
+
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -44,6 +44,15 @@ router.post('/editCommunity/:community_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
+// DELETE COMMUNITY
+router.get('/deleteCommunity/:community_id', (req, res, next) => {
+
+    Community.findByIdAndDelete(req.params.community_id)
+    .then(response => res.json(response))
+    .catch(err => next(err))
+
+})
+
 // INSERT COMMUNITY COMMENTS
 router.post('/newComment/:id', (req, res, next) => {
 
@@ -52,12 +61,7 @@ router.post('/newComment/:id', (req, res, next) => {
     Community.findByIdAndUpdate(req.params.id, { $push: { comments: comments } }, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
-
 })
-
-
-
-
 
 
 // **EXPORT**

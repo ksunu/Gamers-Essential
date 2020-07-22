@@ -33,6 +33,7 @@ class CommunityList extends Component {
             .catch(err => console.log(err))
     }
 
+    // EDIT/CREATE COMMUNITY
     handleModal = (status, id) => {
 
         this.setState({ showModal: status })
@@ -44,10 +45,16 @@ class CommunityList extends Component {
         this.updateCommunityList()
     }
 
-    handleUpdateSubmit = () => {
-
-
+    // DELETE COMMUNITY
+    handleDelete = id => {
+        const arr = [...this.state.community]
+        const arrFiltered = arr.filter(elm => elm._id !== id)
+        this.setState({ community: arrFiltered })
+        this.communityService
+            .deleteCommunity(id)
+            .then(response => console.log(response))
     }
+
 
     render() {
         console.log(this)
@@ -59,7 +66,7 @@ class CommunityList extends Component {
                         this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new</Button>
                     }
                     <Row>
-                        {this.state.community.map(elm => <CommunityCard elm={elm} key={elm._id} handleModal={this.handleModal} />)}
+                        {this.state.community.map(elm => <CommunityCard elm={elm} key={elm._id} handleModal={this.handleModal} handleDelete={this.handleDelete} />)}
                     </Row>
 
                 </Container>
