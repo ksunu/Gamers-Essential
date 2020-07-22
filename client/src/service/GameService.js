@@ -14,9 +14,7 @@ export default class GameService {
     getAllGames = page => this.service.get(`/games?page=${page}`)
     getOneGame = id => this.service.get(`/games/${id}`)
 
-    // https://api.rawg.io/api/games?page=7
-    // getOneCommunity = id => this.service.get(`getOneCommunity/${id}`)
-    // createCommunity = community => this.service.post(`/newCommunity`, community)
-
+    getAllGamesByGenres = (genre, page) => this.service.get(`/games?genres=${genre}&page=${page}`)
+   
 
 }
