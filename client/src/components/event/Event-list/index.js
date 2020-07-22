@@ -40,6 +40,17 @@ class EventList extends Component {
         this.updateEventList()
     }
 
+   handleDelete = id => {
+
+    const arr = [...this.state.events]
+    const arrFiltered = arr.filter(elm => elm._id !== id)
+    this.setState({ events: arrFiltered })
+    this.eventService
+        .deleteEvent(id)
+        .then(response => console.log(response))
+   }
+
+
     render() {
         return (
             <>
@@ -49,7 +60,7 @@ class EventList extends Component {
                         <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new event</Button>
                     }
                     <Row>
-                        {this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal}/>)}
+                        {this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal} handleDelete={this.handleDelete} />)}
                     </Row>
                 </Container>
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>

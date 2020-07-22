@@ -39,7 +39,6 @@ router.post('/editEvent/:event_id', (req, res, next) => {
 })
 
 // INSERT COMMUNITY COMMENTS
-
 router.post('/newComment', (req, res, next) => {
 
     Event.create(req.body)
