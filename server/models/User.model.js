@@ -12,13 +12,10 @@ const userSchema = new Schema({
         enum: ['ADMIN', 'MEMBER'],
         default: 'MEMBER'
     },
-    favCommunity: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: 'Community'
-     }],
+    favCommunity: [{ type: Schema.Types.ObjectId, ref: 'Community' }],
     favGame: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
     favEvent: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
-    myComments: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+    myComments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 }, {
     timestamps: true
 })

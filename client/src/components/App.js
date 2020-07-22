@@ -69,9 +69,9 @@ class App extends Component {
           />
 
           <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} />} />
-          <Route path="/community/:id" render={props => <CommunityDetail {...props} />} />
+          <Route path="/community/:id" render={props => <CommunityDetail loggedInUser={this.state.loggedInUser} {...props} />} />
           {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
-          
+
 
           <Route exact path="/games" render={() => <GameList />} />
           <Route path="/games/:id" render={props => <GameDetail {...props} />} />

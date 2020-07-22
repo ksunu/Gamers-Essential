@@ -6,13 +6,14 @@ import './Game-list.css'
 // BOOTSTRAP COMPONENTS
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-
+import Button from 'react-bootstrap/Button'
 
 class GameList extends Component {
     constructor() {
         super()
         this.state = {
-            games: []
+            games: [],
+            count: 1
         }
         this.GameService = new GameService()
     }
@@ -22,10 +23,29 @@ class GameList extends Component {
 
     updateGameList = () => {
         this.GameService
-            .getAllGames(1)
+            .getAllGames(this.state.count)
             .then(response => this.setState({ games: response.data.results }))
             .catch(err => console.log(err))
     }
+
+    handleNextPage = () => {
+
+    const copyState = [this.state.count]
+    this.setState({copyState: ++this.state.count})
+    this.updateGameList()
+
+    }
+
+    handlePreviousPage = () => {
+
+    const copyState = [this.state.count]      
+    this.setState({count: --this.state.count})
+    this.updateGameList()
+    
+     }
+
+
+
 
     render() {
         return (
@@ -34,6 +54,8 @@ class GameList extends Component {
                     <h1>Games</h1>
                     <Row>
                         {this.state.games.map(elm => <GameCard key={elm.id} {...elm} />)}
+                        <Button onClick={this.handlePreviousPage}>Previous Page</Button>
+                        <Button onClick={this.handleNextPage}>Next Page</Button>
                     </Row>
                 </Container>
             </>

@@ -10,7 +10,7 @@ export default class GameService {
         })
     }
 
-    addFavCommunity = id => this.service.get(`/addFavCommunity/${id}`)
-    
+    addFavCommunity = id => this.service.post(`/addFavCommunity/${id}`)
+
 
 }

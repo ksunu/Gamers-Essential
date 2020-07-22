@@ -12,11 +12,10 @@ import Button from 'react-bootstrap/Button'
 
 
 class CommunityDetails extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             communityDetails: "",
-            favourites: ""
         }
         this.communityService = new CommunityService()
         this.profileService = new ProfileService()
@@ -39,15 +38,17 @@ class CommunityDetails extends Component {
 
     handleFav = () => {
 
-        const id = this.props.match.params.id
-        this.setState({ favourites: id })
+        // const id = this.props.match.params.id
+        // this.setState({ favourites: id })
         this.profileService
-            .addFavCommunity(this.state.favourites)
-            .then(() => alert('Added to Favourites'))
+            .addFavCommunity(this.props.match.params.id)
+            .then(response => console.log(response))
             .catch(err => console.log(err))
     }
 
     render() {
+
+        
         return (
             <>
                 <Container as="main">
@@ -66,11 +67,6 @@ class CommunityDetails extends Component {
                             <p>Comments: {this.state.communityDetails.comments}</p>
 
                             <Button onClick={this.handleFav}>Add to Favourites</Button>
-
-
-
-
-
 
                             <hr></hr>
                             <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
