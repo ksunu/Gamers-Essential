@@ -8,7 +8,7 @@ const Index = () => {
         <>
             <Container>
                 <h1>We gamers, you feel?</h1>
-                <p>Cut the crap bitches</p>
+                <p>Cut the crap...</p>
             </Container>
         </>
     )

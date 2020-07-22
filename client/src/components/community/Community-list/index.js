@@ -16,7 +16,8 @@ class CommunityList extends Component {
         super()
         this.state = {
             community: [],
-            showModal: false
+            showModal: false,
+            id: ""
         }
 
         this.communityService = new CommunityService()
@@ -32,11 +33,20 @@ class CommunityList extends Component {
             .catch(err => console.log(err))
     }
 
-    handleModal = status => this.setState({ showModal: status })
+    handleModal = (status, id) => {
+
+        this.setState({ showModal: status })
+        this.setState({ id: id })
+    }
 
     handleCommunitySubmit = () => {
         this.handleModal(false)
         this.updateCommunityList()
+    }
+
+    handleUpdateSubmit = () => {
+
+
     }
 
     render() {
@@ -44,19 +54,20 @@ class CommunityList extends Component {
         return (
             <>
                 <Container as="main" className="community-page">
-                    <h1>Gamers Community</h1>
+                    <h1>Community</h1>
                     {
-                        this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new game</Button>
+                        this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new</Button>
                     }
                     <Row>
-                        {this.state.community.map(elm => <CommunityCard {...elm} key={elm._id} handleModal={this.handleModal} />)}
+                        {this.state.community.map(elm => <CommunityCard elm={elm} key={elm._id} handleModal={this.handleModal} />)}
                     </Row>
 
                 </Container>
 
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
-                        <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} />
+                        {!this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} /> : null}
+                        {this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} id={this.state.id} /> : null}
                     </Modal.Body>
                 </Modal>
             </>

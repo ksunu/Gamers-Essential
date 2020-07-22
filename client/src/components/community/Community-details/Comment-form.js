@@ -10,8 +10,6 @@ class CommentForm extends Component {
         super(props)
         this.state = {
             comments: "",
-            
-
         }
             this.communityService = new CommunityService()
     }
@@ -19,9 +17,7 @@ class CommentForm extends Component {
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
-
     }
-
 
     handleFormSubmit = e => {
         e.preventDefault()
@@ -32,11 +28,8 @@ class CommentForm extends Component {
     .catch(err => console.log(err))
     }
 
-
-
     render() {
         
-
         return (
             <>
                 

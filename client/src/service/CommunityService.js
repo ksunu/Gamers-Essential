@@ -14,6 +14,7 @@ export default class CommunityService {
     getAllCommunity = () => this.service.get('/getAllCommunity')
     getOneCommunity = id => this.service.get(`/getOneCommunity/${id}`)
     createCommunity = community => this.service.post(`/newCommunity`, community)
+    editCommunity = (id, updatedCommunity) => this.service.post(`/editCommunity/${id}`, updatedCommunity)
     createComment = (id, comment) => this.service.post(`/newComment/${id}`, comment)
 
 }

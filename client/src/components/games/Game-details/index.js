@@ -35,9 +35,7 @@ class GameDetails extends Component {
             <>
 
                 <Container as="main">
-                    <h2>Game Details</h2>
-
-                    <h1>{this.state.gameDetails.title}</h1>
+                    <h1>{this.state.gameDetails.name}</h1>
 
                     <Row>
                         <Col md={{ span: 5, offset: 1 }}>

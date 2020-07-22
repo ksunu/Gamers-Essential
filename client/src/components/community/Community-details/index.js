@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import CommunityService from '../../../service/CommunityService'
+import ProfileService from '../../../service/ProfileService'
 import CommentForm from './Comment-form'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 
 class CommunityDetails extends Component {
     constructor() {
         super()
         this.state = {
-            communityDetails: ""
+            communityDetails: "",
+            favourites: ""
         }
         this.communityService = new CommunityService()
+        this.profileService = new ProfileService()
     }
 
     componentDidMount = () => this.updateCommunityList()
@@ -29,14 +33,21 @@ class CommunityDetails extends Component {
     }
 
     handleCommunitySubmit = () => {
-        // this.handleModal(false)
         this.updateCommunityList()
     }
 
+
+    handleFav = () => {
+
+        const id = this.props.match.params.id
+        this.setState({ favourites: id })
+        this.profileService
+            .addFavCommunity(this.state.favourites)
+            .then(() => alert('Added to Favourites'))
+            .catch(err => console.log(err))
+    }
+
     render() {
-
-        
-
         return (
             <>
                 <Container as="main">
@@ -53,6 +64,8 @@ class CommunityDetails extends Component {
                             <p><b>Usuario:</b> {this.state.communityDetails.owner}</p>
                             <hr></hr>
                             <p>Comments: {this.state.communityDetails.comments}</p>
+
+                            <Button onClick={this.handleFav}>Add to Favourites</Button>
 
 
 

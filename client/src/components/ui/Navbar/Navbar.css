@@ -1,7 +1,18 @@
-.navbar-main {
-    background-color: #000;
-}
-
 .navbar-toggle {
     background-color: #fff;
+}
+
+.links {
+    padding: 0 5px;
+    border-top: 2px solid rgb(124, 36, 36);
+    text-decoration: none;
+}
+
+.logout {
+color:rgb(117, 53, 53);
+}
+
+.link-profile {
+    font-family: 'Share Tech Mono', sans-serif;
+    color: green;
 }

@@ -31,9 +31,9 @@ class GameList extends Component {
         return (
             <>
                 <Container>
-                    <h1>Games list</h1>
+                    <h1>Games</h1>
                     <Row>
-                        {this.state.games.map(elm => <GameCard className="game-card-inner" key={elm.id} {...elm} />)}
+                        {this.state.games.map(elm => <GameCard key={elm.id} {...elm} />)}
                     </Row>
                 </Container>
             </>
