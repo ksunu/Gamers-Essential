@@ -57,7 +57,6 @@ class CommunityList extends Component {
 
 
     render() {
-        console.log(this)
         return (
             <>
                 <Container as="main" className="community-page">

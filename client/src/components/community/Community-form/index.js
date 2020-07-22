@@ -41,10 +41,10 @@ class CommunityForm extends Component {
     }
 
     render() {
-        console.log(this.props.id)
+       
         return (
             <>
-                <h3>New game</h3>
+                <h3>{this.props.id ? 'Modify game' : 'Create new game'}</h3>
                 <Form onSubmit={this.props.id ? this.handleUpdateSubmit : this.handleFormSubmit }>
                     <Form.Group>
                         <Form.Label>Title</Form.Label>

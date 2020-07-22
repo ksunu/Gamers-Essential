@@ -31,9 +31,9 @@ router.post('/newEvent', (req, res, next) => {
 // EDIT EVENT
 router.post('/editEvent/:event_id', (req, res, next) => {
 
-    const { title, description, genre, imageEvent, eventDate, comments, locationName } = req.body
+    const { title, description, brief, genre, imageEvent, eventDate, comments, locationName } = req.body
 
-    Event.findByIdAndUpdate(req.params.community_id, { title, description, genre, imageEvent, eventDate, comments, locationName }, { new: true })
+    Event.findByIdAndUpdate(req.params.event_id, { title, description, genre, imageEvent, eventDate, comments, locationName }, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -43,6 +43,14 @@ router.post('/editEvent/:event_id', (req, res, next) => {
 router.post('/newComment', (req, res, next) => {
 
     Event.create(req.body)
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+// DELETE EVENT
+router.get('/deleteEvent/:event_id', (req, res, next) => {
+
+    Event.findByIdAndDelete(req.params.event_id)
         .then(response => res.json(response))
         .catch(err => next(err))
 })

@@ -14,7 +14,8 @@ class EventList extends Component {
     constructor() {
         super()
         this.state = {
-            events: []
+            events: [],
+            id: ""
         }
         this.eventService = new EventService()
     }
@@ -28,7 +29,11 @@ class EventList extends Component {
             .catch(err => console.log(err))
     }
 
-    handleModal = status => this.setState({ showModal: status })
+    handleModal = (status, id) => {
+
+        this.setState({ showModal: status })
+        this.setState({ id: id })
+    }
 
     handleEventSubmit = () => {
         this.handleModal(false)
@@ -44,12 +49,13 @@ class EventList extends Component {
                         <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new event</Button>
                     }
                     <Row>
-                        {this.state.events.map(elm => <EventCard key={elm._id} {...elm} />)}
+                        {this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal}/>)}
                     </Row>
                 </Container>
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
-                        <EventForm handleEventSubmit={this.handleEventSubmit} />
+                        {!this.state.id ? <EventForm handleEventSubmit={this.handleEventSubmit} /> : null}
+                        {this.state.id ? <EventForm handleEventSubmit={this.handleEventSubmit} id={this.state.id} /> : null}
                     </Modal.Body>
                 </Modal>
             </>
