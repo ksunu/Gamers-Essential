@@ -12,7 +12,6 @@ const CommunityCard = props => {
 
     return (
         <>
-
             <Col md={4}>
                 <Card className="community-card">
                     <Card.Img variant="top" src={props.elm.imageProd} />
@@ -25,12 +24,8 @@ const CommunityCard = props => {
                         <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>
                     </Card.Body>
                 </Card>
-
             </Col>
         </>
-
-
-
     )
 
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import CommunityService from '../../../service/CommunityService'
 import ProfileService from '../../../service/ProfileService'
 import CommentForm from './Comment-form'
+import './Community-details.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -38,19 +39,19 @@ class CommunityDetails extends Component {
 
     handleFav = () => {
 
-    
+
 
         this.profileService
             .addFavCommunity(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
             .catch(err => console.log(err))
-           
+
     }
 
     render() {
 
-console.log(this.state.communityDetails)
-        
+        console.log(this.state.communityDetails)
+
         return (
             <>
                 <Container as="main">

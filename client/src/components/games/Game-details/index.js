@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import GameService from '../../../service/GameService'
 import ProfileService from '../../../service/ProfileService'
+import './Game-details.css'
 
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -19,7 +20,7 @@ class GameDetails extends Component {
         }
         this.gameService = new GameService()
         this.profileService = new ProfileService()
-        
+
     }
 
     componentDidMount = () => {
@@ -33,14 +34,14 @@ class GameDetails extends Component {
     }
 
     handleFav = () => {
-       
+
         this.profileService
             .addFavGame(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
-   }
+    }
 
 
-    
+
 
     render() {
 
@@ -52,7 +53,8 @@ class GameDetails extends Component {
                 <Container as="main">
                     <h1>{this.state.gameDetails.name}</h1>
 
-                    <Row>
+                    <Button onClick={this.handleFav}>Add to favourites</Button>
+                    <Row className="game-detail">
                         <Col md={{ span: 5, offset: 1 }}>
 
                             <p><b>Name:</b> {this.state.gameDetails.name_original}</p>
@@ -68,7 +70,6 @@ class GameDetails extends Component {
                         <Col md={{ span: 4, offset: 1 }}>
                             <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
                             <img src={this.state.gameDetails.background_image_additional} alt={this.state.gameDetails.name} />
-                            <Button onClick={this.handleFav}>Add to favourites</Button>
                         </Col>
                     </Row>
 

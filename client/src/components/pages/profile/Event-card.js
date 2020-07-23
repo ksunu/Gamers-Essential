@@ -6,7 +6,7 @@ const EventCard = ({ title, genre, description, brief, imageEvent, comments, own
         return (
             <>
                 
-                <Col>        
+                <Col md={4}>        
                 <p>{brief}</p>
                 <p>{title}</p>
                 <p>{description}</p>

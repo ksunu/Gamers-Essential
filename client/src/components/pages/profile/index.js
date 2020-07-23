@@ -57,16 +57,16 @@ class Profile extends Component {
                 
                
 
+                <Container>
                 <h1>Your profile</h1>
             
                  {/* {const Profile = props => props.loggedInUser && <h1>¡Hi, {props.loggedInUser.username}!</h1>} */}
 
-                <Container>
                     <h2>Favourite Community</h2>
                     <Row>
                     {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard {...elm} />)}
                     </Row>
-                
+                <hr></hr>
                     <h2>Favourite Events</h2>
                     <Row>
                     {this.state.allProfile && this.state.allProfile.favEvent.map(elm => <EventCard {...elm} />)}

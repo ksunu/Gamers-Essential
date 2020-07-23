@@ -1,12 +1,11 @@
 .community-card {
     margin-bottom: 40px;
+    width: 200px;
+    display: inline;
 }
 
 .community-card img {
-    height: 180px;
-    object-fit: cover;
+width:100%;
 }
 
-.community-page {
-    color: #000;
-}
+
