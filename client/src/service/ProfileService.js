@@ -11,6 +11,8 @@ export default class GameService {
     }
 
     addFavCommunity = id => this.service.post(`/addFavCommunity/${id}`)
+    addFavEvent = id => this.service.post(`/addFavEvent/${id}`)
+    getAllProfile = () => this.service.get('/getAllProfile')
 
 
 }

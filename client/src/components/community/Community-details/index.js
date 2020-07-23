@@ -38,12 +38,12 @@ class CommunityDetails extends Component {
 
     handleFav = () => {
 
-        // const id = this.props.match.params.id
-        // this.setState({ favourites: id })
+    
         this.profileService
             .addFavCommunity(this.props.match.params.id)
             .then(response => console.log(response))
             .catch(err => console.log(err))
+           
     }
 
     render() {

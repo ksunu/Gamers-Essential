@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import EventService from '../../../service/EventService'
+import ProfileService from '../../../service/ProfileService'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom'
-
+import Button from 'react-bootstrap/Button'
 
 class EventDetails extends Component {
     constructor() {
@@ -15,6 +16,7 @@ class EventDetails extends Component {
             eventDetails: ""
         }
         this.eventService = new EventService()
+        this.profileService = new ProfileService()
     }
 
     componentDidMount = () => {
@@ -24,11 +26,22 @@ class EventDetails extends Component {
             .getOneEvent(id)
             .then(response => this.setState({ eventDetails: response.data }))
             .catch(err => console.log(err))
+    }
 
+
+    handleFav = () => {
+
+        this.profileService
+            .addFavEvent(this.props.match.params.id)
+            .then(response => console.log(response))
+        
 
     }
 
+
     render() {
+
+        
 
         return (
             <>
@@ -36,6 +49,8 @@ class EventDetails extends Component {
 
                     <h1>{this.state.eventDetails.title}</h1>
                     <h5>Created: {this.state.eventDetails.creationDate}</h5>
+
+                    <Button onClick={this.handleFav}>Add to Favourites</Button>
 
                     <Row>
                         <Col md={{ span: 5, offset: 1 }}>

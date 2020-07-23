@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
 
 
+
 class GameDetails extends Component {
     constructor(props) {
         super(props)
@@ -15,6 +16,7 @@ class GameDetails extends Component {
             gameDetails: ""
         }
         this.gameService = new GameService()
+        
     }
 
     componentDidMount = () => {
