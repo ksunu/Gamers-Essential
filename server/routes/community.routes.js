@@ -18,7 +18,7 @@ router.get('/getAllCommunity', (req, res, next) => {
 router.get('/getOneCommunity/:community_id', (req, res, next) => {
 
     Community.findById(req.params.community_id)
-
+        
         .then(response => res.json(response))
         .catch(err => next(err))
 })

@@ -31,26 +31,15 @@ router.post('/addFavEvent/:id', (req, res, next) => {
 // GAME FAV
 router.post('/addFavGame/:id', (req, res, next) => {
 
-//     User.findOne(req.user)
-//         .then(user => User.findByIdAndUpdate(user._id, { $push: { favGame: req.params.id } }))
-//         .then(response => res.json(response))
-//         .catch(err => next(err))
-// })
+
  User.findByIdAndUpdate(req.body, { $push: { favGame: req.params.id } })
     .then(response => res.json(response))
         .catch(err => next(err))
 })
-    
+
+
+  
 router.get('/getAllProfile/:id', (req, res, next) => {
-
-//     User.findOne(req.user)
-//         .then(user => User.findById(user._id)
-//             .populate('favCommunity')
-//             .populate('favEvent')
-//             .then(response => res.json(response)))
-//         .catch(err => next(err))
-
-// })
 
     
     User.findById(req.params.id) 
@@ -60,7 +49,6 @@ router.get('/getAllProfile/:id', (req, res, next) => {
     .catch(err => next(err))
 
 })
-
 
 
 module.exports = router

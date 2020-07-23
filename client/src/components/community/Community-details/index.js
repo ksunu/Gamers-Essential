@@ -49,7 +49,7 @@ class CommunityDetails extends Component {
 
     render() {
 
-console.log(this.props.loggedInUser)
+console.log(this.state.communityDetails)
         
         return (
             <>
@@ -66,7 +66,7 @@ console.log(this.props.loggedInUser)
                             <hr></hr>
                             <p><b>Usuario:</b> {this.state.communityDetails.owner}</p>
                             <hr></hr>
-                            <p>Comments: {this.state.communityDetails.comments}</p>
+                            <p>Comments: {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}</p>
 
                             <Button onClick={this.handleFav}>Add to Favourites</Button>
 

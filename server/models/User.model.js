@@ -13,9 +13,9 @@ const userSchema = new Schema({
         default: 'MEMBER'
     },
     favCommunity: [{ type: Schema.Types.ObjectId, ref: 'Community' }],
-    favGame: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
+    favGame: { type: [Number] },
     favEvent: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
-    myComments: {type: [Number]}
+    // myComments: {type: [Number]}
 }, {
     timestamps: true
 })

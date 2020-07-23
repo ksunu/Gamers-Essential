@@ -19,7 +19,7 @@ const communitySchema = new Schema({
 
     imageProd: { type: String },
 
-    comments: { type: [String] }
+    comments: {type: [String] }
 }, {
     timestamps: true
 })

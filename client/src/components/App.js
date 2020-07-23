@@ -71,8 +71,8 @@ class App extends Component {
           {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
 
 
-          <Route exact path="/games" render={() => <Games />} />
-          <Route path="/games/:id" render={props => <GameDetail {...props} />} />
+          <Route exact path="/games" render={() => <Games loggedInUser={this.state.loggedInUser} />} />
+          <Route path="/games/:id" render={props => <GameDetail loggedInUser={this.state.loggedInUser} {...props} />} />
 
           <Route exact path="/events" render={() => <EventList />} />
           <Route path="/events/:id" render={props => <EventDetail loggedInUser={this.state.loggedInUser} {...props} />} />
