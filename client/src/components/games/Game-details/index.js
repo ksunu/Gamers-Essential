@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
 import GameService from '../../../service/GameService'
+import ProfileService from '../../../service/ProfileService'
 
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
@@ -16,6 +18,7 @@ class GameDetails extends Component {
             gameDetails: ""
         }
         this.gameService = new GameService()
+        this.profileService = new ProfileService()
         
     }
 
@@ -27,8 +30,17 @@ class GameDetails extends Component {
             .then(response => this.setState({ gameDetails: response.data }))
             .catch(err => console.log(err))
 
-
     }
+
+    handleFav = () => {
+       
+        this.profileService
+            .addFavGame(this.props.match.params.id, this.props.loggedInUser)
+            .then(response => console.log(response))
+   }
+
+
+    
 
     render() {
 
@@ -55,6 +67,7 @@ class GameDetails extends Component {
                         <Col md={{ span: 4, offset: 1 }}>
                             <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
                             <img src={this.state.gameDetails.background_image_additional} alt={this.state.gameDetails.name} />
+                            <Button onClick={this.handleFav}>Add to favourites</Button>
                         </Col>
                     </Row>
 

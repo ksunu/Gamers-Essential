@@ -7,7 +7,7 @@ import Games from './games'
 import GameDetail from './games/Game-details'
 import CommunityList from './community/Community-list'
 import CommunityDetail from './community/Community-details'
-import Events from './event'
+import EventList from './event/Event-list'
 import EventDetail from './event/Event-details'
 import IndexPage from './pages/index'
 import AuthService from './../service/AuthService'
@@ -74,8 +74,8 @@ class App extends Component {
           <Route exact path="/games" render={() => <Games />} />
           <Route path="/games/:id" render={props => <GameDetail {...props} />} />
 
-          <Route exact path="/events" render={() => <Events />} />
-          <Route path="/events/:id" render={props => <EventDetail {...props} />} />
+          <Route exact path="/events" render={() => <EventList />} />
+          <Route path="/events/:id" render={props => <EventDetail loggedInUser={this.state.loggedInUser} {...props} />} />
 
           <Route path="/signup" render={props => <SignupForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />
           <Route path="/login" render={props => <LoginForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />

@@ -39,8 +39,9 @@ class CommunityDetails extends Component {
     handleFav = () => {
 
     
+
         this.profileService
-            .addFavCommunity(this.props.match.params.id)
+            .addFavCommunity(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
             .catch(err => console.log(err))
            
@@ -48,6 +49,7 @@ class CommunityDetails extends Component {
 
     render() {
 
+console.log(this.props.loggedInUser)
         
         return (
             <>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import ProfileService from '../../../service/ProfileService'
+
+// BOOTSTRAP COMPONENTS
 import CommunityCard from './Community-card'
 import EventCard from './Event-card'
 import Container from 'react-bootstrap/Container'
@@ -13,7 +15,7 @@ class Profile extends Component {
             allProfile: undefined
         }
 
-        this.ProfileService = new ProfileService
+        this.ProfileService = new ProfileService()
 
     }
 
@@ -21,7 +23,7 @@ class Profile extends Component {
 
     updateCommunityList = () => {
         this.ProfileService
-            .getAllProfile()
+            .getAllProfile(this.props.loggedInUser._id)
             .then(response => this.setState({ allProfile: response.data }))
             .catch(err => console.log(err))
     }
@@ -31,8 +33,7 @@ class Profile extends Component {
 
     render() {
         
-
-        console.log(this.state.allProfile)
+       
 
         return (
             <>

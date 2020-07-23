@@ -32,7 +32,7 @@ class EventDetails extends Component {
     handleFav = () => {
 
         this.profileService
-            .addFavEvent(this.props.match.params.id)
+            .addFavEvent(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
         
 
