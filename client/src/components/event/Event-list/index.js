@@ -15,6 +15,7 @@ class EventList extends Component {
         super()
         this.state = {
             events: [],
+            showModal: false,
             id: ""
         }
         this.eventService = new EventService()
@@ -65,8 +66,7 @@ class EventList extends Component {
                 </Container>
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
-                        {!this.state.id ? <EventForm handleEventSubmit={this.handleEventSubmit} /> : null}
-                        {this.state.id ? <EventForm handleEventSubmit={this.handleEventSubmit} id={this.state.id} /> : null}
+                        {!this.state.id ? <EventForm handleEventSubmit={this.handleEventSubmit} /> : <EventForm handleEventSubmit={this.handleEventSubmit} id={this.state.id} />}
                     </Modal.Body>
                 </Modal>
             </>

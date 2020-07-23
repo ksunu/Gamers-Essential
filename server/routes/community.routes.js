@@ -35,7 +35,7 @@ router.post('/newCommunity', (req, res, next) => {
 })
 
 // EDIT COMMUNITY
-router.post('/editCommunity/:community_id', (req, res, next) => {
+router.put('/editCommunity/:community_id', (req, res, next) => {
 
     const { title, description, genre, imageProd, comments } = req.body
 
@@ -45,7 +45,7 @@ router.post('/editCommunity/:community_id', (req, res, next) => {
 })
 
 // DELETE COMMUNITY
-router.get('/deleteCommunity/:community_id', (req, res, next) => {
+router.delete('/deleteCommunity/:community_id', (req, res, next) => {
 
     Community.findByIdAndDelete(req.params.community_id)
     .then(response => res.json(response))

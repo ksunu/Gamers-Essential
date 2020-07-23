@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Games from './games'
 import GameDetail from './games/Game-details'
-import Community from './community'
+import CommunityList from './community/Community-list'
 import CommunityDetail from './community/Community-details'
 import Events from './event'
 import EventDetail from './event/Event-details'
@@ -14,8 +14,6 @@ import AuthService from './../service/AuthService'
 import SignupForm from './auth/Signup-form'
 import LoginForm from './auth/Login-form'
 import ProfilePage from './pages/profile'
-
-
 
 // BOOTSTRAP Component
 import Navigation from './ui/Navbar'
@@ -68,7 +66,7 @@ class App extends Component {
             this.state.loggedInUser ? <ProfilePage loggedInUser={this.state.loggedInUser} /> : <Redirect to='/signup' />}
           />
 
-          <Route exact path="/community" render={() => <Community loggedInUser={this.state.loggedInUser} />} />
+          <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} />} />
           <Route path="/community/:id" render={props => <CommunityDetail loggedInUser={this.state.loggedInUser} {...props} />} />
           {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
 

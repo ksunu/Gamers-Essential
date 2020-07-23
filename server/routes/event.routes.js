@@ -29,7 +29,7 @@ router.post('/newEvent', (req, res, next) => {
 })
 
 // EDIT EVENT
-router.post('/editEvent/:event_id', (req, res, next) => {
+router.put('/editEvent/:event_id', (req, res, next) => {
 
     const { title, description, brief, genre, imageEvent, eventDate, comments, locationName } = req.body
 
@@ -47,7 +47,7 @@ router.post('/newComment', (req, res, next) => {
 })
 
 // DELETE EVENT
-router.get('/deleteEvent/:event_id', (req, res, next) => {
+router.delete('/deleteEvent/:event_id', (req, res, next) => {
 
     Event.findByIdAndDelete(req.params.event_id)
         .then(response => res.json(response))

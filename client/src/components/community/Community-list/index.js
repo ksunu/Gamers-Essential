@@ -16,7 +16,6 @@ class CommunityList extends Component {
         super()
         this.state = {
             community: [],
-            showModal: false,
             id: ""
         }
 

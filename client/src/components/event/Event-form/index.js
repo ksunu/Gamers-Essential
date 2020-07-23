@@ -16,7 +16,7 @@ class EventForm extends Component {
             genre: this.props.id ? this.props.id.genre : "",
             imageEvent: this.props.id ? this.props.id.imageEvent : "",
             locationName: this.props.id ? this.props.id.locationName : "",
-            eventDate: this.props.id ? this.props.id.eventDate : "",
+            eventDate: this.props.id ? this.props.id.eventDate : ""
         }
         this.eventService = new EventService()
     }
@@ -34,7 +34,6 @@ class EventForm extends Component {
             .catch(err => console.log(err))
     }
 
-
     handleUpdateSubmit = e => {
         e.preventDefault()
         this.eventService
@@ -43,9 +42,7 @@ class EventForm extends Component {
             .catch(err => console.log(err))
     }
 
-
     render() {
-
 
         return (
             <>

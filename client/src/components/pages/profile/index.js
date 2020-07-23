@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import ProfileService from '../../../service/ProfileService'
-
+import CommunityCard from './Community-card'
+import EventCard from './Event-card'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+    
+    
 class Profile extends Component {
     constructor (){
         super ()
         this.state = {
-            allProfile: ""
+            allProfile: undefined
         }
 
         this.ProfileService = new ProfileService
@@ -31,41 +36,24 @@ class Profile extends Component {
 
         return (
             <>
+                <h1>Your profile</h1>
             
-             <div>
-                <h3>Community Favourites</h3>
 
+                <Container>
+                    <h2>Favourite Community</h2>
+                    <Row>
+                    {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard {...elm} />)}
+                    </Row>
+                
+                    <h2>Favourite Events</h2>
+                    <Row>
+                    {this.state.allProfile && this.state.allProfile.favEvent.map(elm => <EventCard {...elm} />)}
+                    </Row>
+                </Container>
                     
-                    {/* {this.state.allProfile.favCommunity.map(elm => <p>{elm.brief}</p>)} */}
-                    {/* {this.state.allProfile.favCommunity.map(elm => {
-                   
-                        return <p>{elm.brief}</p>
-
-                    })} */}
-             </div>
-
-
             </>
         )
     }
 }
 
 export default Profile
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

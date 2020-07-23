@@ -16,18 +16,18 @@ const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && r
 router.post('/addFavCommunity/:id', (req, res, next) => {
 
     User.findOne(req.user)
-        .then(user => User.findByIdAndUpdate(user._id, { $push: { favCommunity: req.params.id } })
+        .then(user => User.findByIdAndUpdate(user._id, { $push: { favCommunity: req.params.id } }))
             .then(response => res.json(response))
-            .catch(err => next(err)))
+            .catch(err => next(err))
 })
 
 // EVENT FAV
 router.post('/addFavEvent/:id', (req, res, next) => {
 
     User.findOne(req.user)
-        .then(user => User.findByIdAndUpdate(user._id, { $push: { favEvent: req.params.id } })
+        .then(user => User.findByIdAndUpdate(user._id, { $push: { favEvent: req.params.id } }))
             .then(response => res.json(response))
-            .catch(err => next(err)))
+            .catch(err => next(err))
 })
 
 router.get('/getAllProfile', (req, res, next) => {
@@ -35,7 +35,7 @@ router.get('/getAllProfile', (req, res, next) => {
     User.findOne(req.user)
         .then(user => User.findById(user._id)
             .populate('favCommunity')
-            .populate('favEvents')
+            .populate('favEvent')
             .then(response => res.json(response)))
         .catch(err => next(err))
 

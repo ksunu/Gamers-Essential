@@ -1,20 +1,20 @@
-import React, {Component} from 'react'
+// import React, {Component} from 'react'
 
-import CommunityList from './Community-list'
+// import CommunityList from './Community-list'
 
-class Community extends Component {
-    constructor (){
-        super ()
-        this.state = {}
-    }
+// class Community extends Component {
+//     constructor (){
+//         super ()
+//         this.state = {}
+//     }
 
-    render () {
-        return (
-            <>
-            <CommunityList />
-            </>
-        )
-    }
-}
+//     render () {
+//         return (
+//             <>
+//             <CommunityList />
+//             </>
+//         )
+//     }
+// }
 
-export default Community
+// export default Community
