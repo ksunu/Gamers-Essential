@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import GameList from './games/Game-list'
+import Games from './games'
 import GameDetail from './games/Game-details'
-import CommunityList from './community/Community-list'
+import Community from './community'
 import CommunityDetail from './community/Community-details'
-import EventList from './event/Event-list'
+import Events from './event'
 import EventDetail from './event/Event-details'
 import IndexPage from './pages/index'
 import AuthService from './../service/AuthService'
@@ -68,15 +68,15 @@ class App extends Component {
             this.state.loggedInUser ? <ProfilePage loggedInUser={this.state.loggedInUser} /> : <Redirect to='/signup' />}
           />
 
-          <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} />} />
+          <Route exact path="/community" render={() => <Community loggedInUser={this.state.loggedInUser} />} />
           <Route path="/community/:id" render={props => <CommunityDetail loggedInUser={this.state.loggedInUser} {...props} />} />
           {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
 
 
-          <Route exact path="/games" render={() => <GameList />} />
+          <Route exact path="/games" render={() => <Games />} />
           <Route path="/games/:id" render={props => <GameDetail {...props} />} />
 
-          <Route exact path="/events" render={() => <EventList />} />
+          <Route exact path="/events" render={() => <Events />} />
           <Route path="/events/:id" render={props => <EventDetail {...props} />} />
 
           <Route path="/signup" render={props => <SignupForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />

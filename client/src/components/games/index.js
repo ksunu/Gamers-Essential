@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
+import GameList from './Game-list'
 
-import EventList from './Event-list'
-
-class Events extends Component {
+class Games extends Component {
     constructor() {
         super()
         this.state = {}
@@ -11,10 +10,10 @@ class Events extends Component {
     render() {
         return (
             <>
-                <EventList />
+                <GameList />
             </>
         )
     }
 }
 
-export default Events
+export default Games

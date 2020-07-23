@@ -21,6 +21,7 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
+    // {/* {const Profile = props => props.loggedInUser && <h1>¡Hi, {props.loggedInUser.username}!</h1>} */}
 
 
     render() {
@@ -30,19 +31,18 @@ class Profile extends Component {
 
         return (
             <>
-                {/* {const Profile = props => props.loggedInUser && <h1>¡Hi, {props.loggedInUser.username}!</h1>} */}
-
-                <h1>Buenas tardes</h1>
-                
+            
+             <div>
                 <h3>Community Favourites</h3>
-                            
-                {/* {this.state.allProfile.favCommunity.map(elm => {
+
                     
-                    <p></p>elm.title
-                })
+                    {/* {this.state.allProfile.favCommunity.map(elm => <p>{elm.brief}</p>)} */}
+                    {/* {this.state.allProfile.favCommunity.map(elm => {
+                   
+                        return <p>{elm.brief}</p>
 
-                <h3>Event Favourite</h3> */}
-
+                    })} */}
+             </div>
 
 
             </>
