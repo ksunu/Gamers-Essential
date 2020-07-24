@@ -38,14 +38,6 @@ router.put('/editEvent/:event_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
-// INSERT COMMUNITY COMMENTS
-router.post('/newComment', (req, res, next) => {
-
-    Event.create(req.body)
-        .then(response => res.json(response))
-        .catch(err => next(err))
-})
-
 // DELETE EVENT
 router.delete('/deleteEvent/:event_id', (req, res, next) => {
 
@@ -54,14 +46,22 @@ router.delete('/deleteEvent/:event_id', (req, res, next) => {
         .catch(err => next(err))
 })
 
-// router.post('/editComment/:event_id', (req, res, next) => {
 
-//     const { title, description, rating, user } = req.body
+// INSERT COMMUNITY COMMENTS
+router.post('/newComment/:id', (req, res, next) => {
 
-//     Event.findByIdAndUpdate(req.params.community_id, { comment: { title: title },  { description: description }, { rating: rating }, { user: user } }, { new: true })
-//     .then(response => res.json(response))
-//     .catch(err => next(err))
-// })
+    Event.findByIdAndUpdate(req.params.id, { $push: { comments: req.body.comments, commentsUser: req.body.commentsUser } }, { new: true })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+// DELETE COMMUNITY COMMENTS
+router.post('/deleteComment/:id', (req, res, next) => {
+
+    Event.findByIdAndUpdate(req.params.id, { $pop: { comments: 1, commentsUser: 1 } })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
 
 // **EXPORT**

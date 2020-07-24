@@ -53,6 +53,15 @@ class CommunityDetails extends Component {
             .catch(err => console.log(err))
     }
 
+    handleDeleteComment = () => {
+
+        this.communityService
+            .deleteComment(this.props.match.params.id)
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
+        this.updateCommunityList()
+    }
+
 
 
     render() {
@@ -74,13 +83,36 @@ class CommunityDetails extends Component {
                             <hr></hr>
                             <p><b>Usuario:</b> {this.state.communityDetails.owner}</p>
                             <hr></hr>
-                            <p>Comments: {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>"{elm}"</p>)}</p>
+                            <table>
+                                <thead>
+                                    <th>
+                                        User
+                                    </th>
+                                    <th>
+                                        Comments
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {this.state.communityDetails && this.state.communityDetails.commentsUser.map(elm => <p>{elm}:</p>)}
+                                        </td>
+                                        <td>
+                                            {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+                            {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
 
                             {this.props.loggedInUser && <Button onClick={this.handleFav}>Add to Favourites</Button>}
                             {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
 
-                                <hr></hr>
-                                <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
+                            <hr></hr>
+                            <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
                         </Col>
                         <Col md={{ span: 4, offset: 1 }}>
                             <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} />

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 import EventService from '../../../service/EventService'
 import ProfileService from '../../../service/ProfileService'
+import CommentForm from './Comment-form'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -19,8 +20,9 @@ class EventDetails extends Component {
         this.profileService = new ProfileService()
     }
 
-    componentDidMount = () => {
+    componentDidMount = () => this.updateEventList()
 
+    updateEventList = () => {
         const id = this.props.match.params.id
         this.eventService
             .getOneEvent(id)
@@ -28,28 +30,34 @@ class EventDetails extends Component {
             .catch(err => console.log(err))
     }
 
-    handleFav = () => {
+    handleEventSubmit = () => {
+        this.updateEventList()
+    }
 
+    handleFav = () => {
         this.profileService
             .addFavEvent(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
 
-
     }
 
     handleDeleteFav = () => {
-
         this.profileService
             .deleteFavEvent(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
     }
 
+    handleDeleteComment = () => {
+        this.eventService
+            .deleteComment(this.props.match.params.id)
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
+        this.updateEventList()
+    }
 
 
 
     render() {
-
-
 
         return (
             <>
@@ -68,21 +76,35 @@ class EventDetails extends Component {
                             <hr></hr>
                             <p><b>Genre:</b> {this.state.eventDetails.genre}</p>
                             <hr></hr>
-                            {/* TO-DO <p><b>Usuario:</b> {this.state.communityDetails.owner.username}</p> */}
-                            <hr></hr>
-                            {/* <p><b>Comments:</b> {this.state.communityDetails.comments.map(elm => {
-                             <>
-                               <p>{elm.title}</p>
-                               <p>{elm.description}</p>
-                               <p>{elm.rating}</p>
-                            </>
-                            })}</p> */}
-                            <hr></hr>
+                            <table>
+                                <thead>
+                                    <th>
+                                        User
+                                    </th>
+                                    <th>
+                                        Comments
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {this.state.eventDetails && this.state.eventDetails.commentsUser.map(elm => <p>{elm}:</p>)}
+                                        </td>
+                                        <td>
+                                            {this.state.eventDetails && this.state.eventDetails.comments.map(elm => <p>{elm}</p>)}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
                             <Link className="btn btn-dark btn-md" to='/events'>Back</Link>
                         </Col>
                         <Col md={{ span: 4, offset: 1 }}>
                             <img src={this.state.eventDetails.imageEvent} alt={this.state.eventDetails.title} />
                         </Col>
+                    </Row>
+                    <Row>
+                        <CommentForm id={this.props.match.params.id} handleEventSubmit={this.handleEventSubmit} />
                     </Row>
 
                 </Container>

@@ -25,7 +25,9 @@ const eventSchema = new Schema({
 
     coordinates: { type: [Number], required: true },
 
-    comments: { type: [String] } 
+    comments: { type: [String] },
+
+    commentsUser: { type: [String] }
 
 }, {
     timestamps: true

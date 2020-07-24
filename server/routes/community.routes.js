@@ -56,14 +56,18 @@ router.delete('/deleteCommunity/:community_id', (req, res, next) => {
 // INSERT COMMUNITY COMMENTS
 router.post('/newComment/:id', (req, res, next) => {
 
-    const { comments, commentsUser } = req.body
-
-    Community.findByIdAndUpdate(req.params.id, { $push: { comments: comments, commentsUser: commentsUser} }, { new: true })
+    Community.findByIdAndUpdate(req.params.id, { $push: { comments: req.body.comments, commentsUser: req.body.commentsUser } }, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
+// DELETE COMMUNITY COMMENTS
+router.post('/deleteComment/:id', (req, res, next) => {
 
+    Community.findByIdAndUpdate(req.params.id, { $pop: { comments: 1, commentsUser: 1 } })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
 
 // **EXPORT**
 module.exports = router

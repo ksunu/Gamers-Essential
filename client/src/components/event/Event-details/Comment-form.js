@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CommunityService from '../../../service/CommunityService'
+import EventService from '../../../service/EventService'
 
 // BOOTSTRAP COMPONENTS
 import Form from 'react-bootstrap/Form'
@@ -12,7 +12,7 @@ class CommentForm extends Component {
             comments: "",
             commentsUser: ""
         }
-        this.communityService = new CommunityService()
+        this.eventService = new EventService()
     }
 
     handleInputChange = e => {
@@ -22,10 +22,10 @@ class CommentForm extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-        this.communityService
+        this.eventService
             .createComment(this.props.id, this.state)
             .then(response => console.log(response))
-            .then(() => this.props.handleCommunitySubmit())
+            .then(() => this.props.handleEventSubmit())
             .catch(err => console.log(err))
     }
 
