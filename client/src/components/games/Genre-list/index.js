@@ -25,6 +25,7 @@ class GenreList extends Component {
 
     updateGameList = () => {
 
+        
         this.GameService.getAllGamesByGenres(this.state.genreCategory, this.state.count)
             .then((response) => this.setState({ genreGames: response.data }))
             .catch((err) => console.log(err))
