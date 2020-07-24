@@ -16,37 +16,53 @@ const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && r
 router.post('/addFavCommunity/:id', (req, res, next) => {
 
     User.findByIdAndUpdate(req.body, { $push: { favCommunity: req.params.id } })
-    .then(response => res.json(response))
-    .catch(err => next(err))
+        .then(response => res.json(response))
+        .catch(err => next(err))
 })
+
+router.post('/deleteFavCommunity/:id', (req, res, next) => {
+
+    User.findByIdAndUpdate(req.body, { $pull: { favCommunity: req.params.id } })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
 
 // EVENT FAV
 router.post('/addFavEvent/:id', (req, res, next) => {
-    
+
     User.findByIdAndUpdate(req.body, { $push: { favEvent: req.params.id } })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
-// GAME FAV
-router.post('/addFavGame/:id', (req, res, next) => {
+router.post('/deleteFavEvent/:id', (req, res, next) => {
 
-
- User.findByIdAndUpdate(req.body, { $push: { favGame: req.params.id } })
-    .then(response => res.json(response))
+    User.findByIdAndUpdate(req.body, { $pull: { favEvent: req.params.id } })
+        .then(response => res.json(response))
         .catch(err => next(err))
 })
 
 
-  
+// GAME FAV
+router.post('/addFavGame/:id', (req, res, next) => {
+
+
+    User.findByIdAndUpdate(req.body, { $push: { favGame: req.params.id } })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+
+
 router.get('/getAllProfile/:id', (req, res, next) => {
 
-    
-    User.findById(req.params.id) 
+
+    User.findById(req.params.id)
         .populate('favCommunity')
         .populate('favEvent')
         .then(response => res.json(response))
-    .catch(err => next(err))
+        .catch(err => next(err))
 
 })
 

@@ -18,7 +18,7 @@ router.get('/getAllCommunity', (req, res, next) => {
 router.get('/getOneCommunity/:community_id', (req, res, next) => {
 
     Community.findById(req.params.community_id)
-        
+
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -48,8 +48,8 @@ router.put('/editCommunity/:community_id', (req, res, next) => {
 router.delete('/deleteCommunity/:community_id', (req, res, next) => {
 
     Community.findByIdAndDelete(req.params.community_id)
-    .then(response => res.json(response))
-    .catch(err => next(err))
+        .then(response => res.json(response))
+        .catch(err => next(err))
 
 })
 

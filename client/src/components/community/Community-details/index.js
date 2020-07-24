@@ -39,14 +39,21 @@ class CommunityDetails extends Component {
 
     handleFav = () => {
 
-
-
         this.profileService
             .addFavCommunity(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
             .catch(err => console.log(err))
-
     }
+
+    handleDeleteFav = () => {
+
+        this.profileService
+            .deleteFavCommunity(this.props.match.params.id, this.props.loggedInUser)
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
+    }
+
+
 
     render() {
 
@@ -67,12 +74,13 @@ class CommunityDetails extends Component {
                             <hr></hr>
                             <p><b>Usuario:</b> {this.state.communityDetails.owner}</p>
                             <hr></hr>
-                            <p>Comments: {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}</p>
+                            <p>Comments: {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>"{elm}"</p>)}</p>
 
-                            <Button onClick={this.handleFav}>Add to Favourites</Button>
+                            {this.props.loggedInUser && <Button onClick={this.handleFav}>Add to Favourites</Button>}
+                            {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
 
-                            <hr></hr>
-                            <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
+                                <hr></hr>
+                                <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
                         </Col>
                         <Col md={{ span: 4, offset: 1 }}>
                             <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} />

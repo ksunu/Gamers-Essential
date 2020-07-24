@@ -2,6 +2,7 @@
 1. FAV GAMES
 En profile
 
+
 2. OWNER ID
 No conseguimos popular el el campo USER que está en el modelo USER, no nos deja acceder dentro del componente de 
 community

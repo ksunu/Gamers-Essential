@@ -28,20 +28,28 @@ class EventDetails extends Component {
             .catch(err => console.log(err))
     }
 
-
     handleFav = () => {
 
         this.profileService
             .addFavEvent(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
-        
+
 
     }
+
+    handleDeleteFav = () => {
+
+        this.profileService
+            .deleteFavEvent(this.props.match.params.id, this.props.loggedInUser)
+            .then(response => console.log(response))
+    }
+
+
 
 
     render() {
 
-        
+
 
         return (
             <>
@@ -50,8 +58,8 @@ class EventDetails extends Component {
                     <h1>{this.state.eventDetails.title}</h1>
                     <h5>Created: {this.state.eventDetails.creationDate}</h5>
 
-                    <Button onClick={this.handleFav}>Add to Favourites</Button>
-
+                    {this.props.loggedInUser && <Button onClick={this.handleFav}>Join Event</Button>}
+                    {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Unjoin Event</Button>}
                     <Row>
                         <Col md={{ span: 5, offset: 1 }}>
 
