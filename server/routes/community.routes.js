@@ -56,9 +56,9 @@ router.delete('/deleteCommunity/:community_id', (req, res, next) => {
 // INSERT COMMUNITY COMMENTS
 router.post('/newComment/:id', (req, res, next) => {
 
-    const { comments } = req.body
+    const { comments, commentsUser } = req.body
 
-    Community.findByIdAndUpdate(req.params.id, { $push: { comments: comments } }, { new: true })
+    Community.findByIdAndUpdate(req.params.id, { $push: { comments: comments, commentsUser: commentsUser} }, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
