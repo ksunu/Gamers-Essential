@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GameList from './Game-list'
+import GenreList from './Genre-list'
 
 class Games extends Component {
     constructor() {
@@ -11,6 +12,8 @@ class Games extends Component {
         return (
             <>
                 <GameList />
+                <GenreList />
+
             </>
         )
     }

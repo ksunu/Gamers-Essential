@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 
 
-const GameCard = ({ id, name, background_image, rating }) => {
+const GenreCard = ({ id, name, background_image, rating }) => {
 
     return (
         <>
@@ -34,4 +34,4 @@ const GameCard = ({ id, name, background_image, rating }) => {
 
 }
 
-export default GameCard
+export default GenreCard

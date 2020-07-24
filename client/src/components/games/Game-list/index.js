@@ -15,8 +15,6 @@ class GameList extends Component {
     this.state = {
       games: [],
       count: 1,
-      genreGames: [],
-      genreCategory: "action"
     }
     this.GameService = new GameService()
   }

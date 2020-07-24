@@ -1,21 +1,22 @@
 import React, { Component } from "react"
 import GameService from "../../../service/GameService"
-import GameCard from "./Game-card"
 import GenreCard from "./Genre-card"
-import "./Game-list.css"
+import GenreForm from "./Genre-form"
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
+// import Button from "react-bootstrap/Button"
 
-class GameList extends Component {
+class GenreList extends Component {
     constructor() {
         super()
         this.state = {
-            games: [],
-            count: 1,
-            genreCategory: "action"
+
+            genreCategory: "indie",
+            genreGames: undefined,
+            count: 1
         }
         this.GameService = new GameService()
     }
@@ -23,60 +24,59 @@ class GameList extends Component {
     componentDidMount = () => this.updateGameList()
 
     updateGameList = () => {
-        this.handleGameList()
-        this.handleGenreList()
+
+        this.GameService.getAllGamesByGenres(this.state.genreCategory, this.state.count)
+            .then((response) => this.setState({ genreGames: response.data }))
+            .catch((err) => console.log(err))
+
     }
 
-  
-    handleGenreList = () => {
-        this.GameService.getAllGamesByGenres(this.state.genreCategory)
-            .then((response) => this.setState({ genreGames: response.data.results }))
-            .catch((err) => console.log(err))
+    handleForm = input => {
+        this.setState({ genreCategory: input })
+        this.updateGameList()
+        console.log(this.state)
+
     }
 
     handleNextPage = () => {
-        const copyState = [this.state.count];
-        this.setState({ copyState: ++this.state.count })
+
+        this.setState({ count: ++this.state.count })
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
-        const copyState = [this.state.count]
-        this.setState({ copyState: --this.state.count })
+        // TO-DO count <= 0 and page.length
+        this.setState({ count: --this.state.count })
         this.updateGameList()
     }
 
-    handleCategory = category => {
-
-
-        this.setState({ genreCategory: category })
-        this.updateGameList()
-    }
 
 
     render() {
         return (
             <>
                 <Container>
-                    <h1>Games</h1>
+                
+                    <GenreForm handleForm={input => this.handleForm(input)} />
+                    <h1>Genres</h1>
+                    <p>Page: {this.state.count} </p>
+                    <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+                    <Button onClick={this.handleNextPage} className="right">&#62;</Button>
+
                     <Row>
-                        {this.state.games.map((elm) => (
-                            <GameCard key={elm.id} {...elm} />
-                        ))}
-                        <Button onClick={this.handlePreviousPage}>Previous Page</Button>
-                        <Button onClick={this.handleNextPage}>Next Page</Button>
+                        {this.state.genreGames && this.state.genreGames.results.map((elm) =>
+                            <GenreCard key={elm.id} {...elm} />
+                        )}
+
                     </Row>
 
                 </Container>
 
-                {this.state.genreGames.map((elm) => (
-                    <GenreCard key={elm.id} {...elm} />
 
-                ))}
 
             </>
         )
     }
 }
 
-export default GameList
+export default GenreList
