@@ -40,21 +40,26 @@ class GameDetails extends Component {
             .then(response => console.log(response))
     }
 
+    handleDeleteFav = () => {
 
+        this.profileService
+            .deleteFavGame(this.props.match.params.id, this.props.loggedInUser)
+            .then(response => console.log(response))
+
+    }
 
 
     render() {
 
-        console.log(this.props.match.params.id)
-        console.log(this.props.loggedInUser)
         return (
             <>
 
                 <Container as="main">
                     <h1>{this.state.gameDetails.name}</h1>
-                            <Link className="btn btn-dark btn-md" to='/games'>Back</Link>
+                    <Link className="btn btn-dark btn-md" to='/games'>Back</Link>
 
                     <Button onClick={this.handleFav}>Add to favourites</Button>
+                    <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
                     <Row className="game-detail">
                         <Col md={{ span: 5, offset: 1 }}>
 

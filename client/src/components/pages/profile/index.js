@@ -42,10 +42,8 @@ class Profile extends Component {
         let promise1 = this.gameService
             .getOneGame(this.props.loggedInUser.favGame[0])
 
-
         let promise2 = this.gameService
             .getOneGame(this.props.loggedInUser.favGame[1])
-
 
         let promise3 = this.gameService
             .getOneGame(this.props.loggedInUser.favGame[2])
@@ -67,18 +65,15 @@ class Profile extends Component {
 
         return (
             <>
-
-
-
                 <Container>
                     <section>
-                        <h1>Your profile</h1>
-                        {/* {const Profile = props => props.loggedInUser && <h1>¡Hi, {props.loggedInUser.username}!</h1>} */}
+                      
+                        <h1>¡Hi, {this.props.loggedInUser.username}!</h1>
                         <article>
 
                             <h2>Favourite Community</h2>
                             <Row>
-                                {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard key={elm._id} {...elm} />)}
+                                {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard key={elm._id} elm={elm} loggedInUser={this.props.loggedInUser} updateCommunityList={() => this.updateCommunityList} />)}
                             </Row>
 
                         </article>
@@ -88,13 +83,16 @@ class Profile extends Component {
                         <article>
                             <h2> Favourite Events</h2>
                             <Row>
-                                {this.state.allProfile && this.state.allProfile.favEvent.map(elm => <EventCard key={elm._id} {...elm} />)}
+                                {this.state.allProfile && this.state.allProfile.favEvent.map(elm => <EventCard key={elm._id} elm={elm} loggedInUser={this.props.loggedInUser} updateCommunityList={() => this.updateCommunityList} />)}
                             </Row>
 
                         </article>
+                        <hr></hr>
                         <article>
                             <h2>Favourite Games</h2>
-                            {this.state.gameDetails && this.state.gameDetails.map(elm => <GameCard key={elm.data.id} elm={elm} />)}
+                            <Row>
+                                {this.state.gameDetails && this.state.gameDetails.map(elm => <GameCard key={elm.data.id} elm={elm} loggedInUser={this.props.loggedInUser} />)}
+                            </Row>
                         </article>
 
                     </section>

@@ -1,32 +1,48 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import '../../games/Game-list/Game-list.css'
+import ProfileService from '../../../service/ProfileService'
 
 // BOOTSTRAP COMPONENTS
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
-import '../../games/Game-list/Game-list.css'
+class GameCard extends Component {
+    constructor() {
+        super()
+        this.state = {
 
-const GameCard = props => {
+        }
+        this.profileService = new ProfileService()
+    }
 
-    return (
-        <>
+    handleDeleteFav = () => {
 
-            <Col md={2} sm={3} xs={4}>
-                <Card className="game-card">
-                    <Link to={`/games/${props.elm.data.id}`}>
-                        <img src={props.elm.data.background_image} alt={props.elm.data.name} />
+        this.profileService
+            .deleteFavGame(this.props.elm.data.id, this.props.loggedInUser)
+            .then(response => console.log(response))
 
-                        <p>{props.elm.data.name}</p>
-                    </Link>
-                </Card>
-            </Col>
-        </>
-
+    }
 
 
-    )
+    render() {
+        return (
+            <>
+                <Col md={2} sm={3} xs={4}>
+                    <Card className="game-card">
+                        <Link to={`/games/${this.props.elm.data.id}`}>
+                            <img src={this.props.elm.data.background_image} alt={this.props.elm.data.name} />
 
+                            <p>{this.props.elm.data.name}</p>
+                        </Link>
+                        <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
+                    </Card>
+                </Col>
+            </>
+        )
+    }
 }
 
 export default GameCard
+

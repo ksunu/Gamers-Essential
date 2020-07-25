@@ -47,13 +47,19 @@ router.post('/deleteFavEvent/:id', (req, res, next) => {
 // GAME FAV
 router.post('/addFavGame/:id', (req, res, next) => {
 
-
     User.findByIdAndUpdate(req.body, { $push: { favGame: req.params.id } })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
 
+router.post('/deleteFavGame/:id', (req, res, next) => {
 
+    User.findByIdAndUpdate(req.body, { $pull: { favGame: req.params.id } })
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+// DRAW PROFILE
 
 router.get('/getAllProfile/:id', (req, res, next) => {
 
