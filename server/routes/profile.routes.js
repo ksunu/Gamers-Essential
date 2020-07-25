@@ -5,12 +5,6 @@ const User = require('./../models/User.model')
 const Community = require('./../models/Community.model')
 const Event = require('./../models/Event.model')
 
-// Logged in checker middleware
-const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/login')
-
-// Role checker middleware
-const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect('/login')
-
 
 // COMMUNITY FAV
 router.post('/addFavCommunity/:id', (req, res, next) => {

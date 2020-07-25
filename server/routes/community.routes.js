@@ -6,6 +6,12 @@ const User = require('./../models/User.model')
 
 // ***END POINTS***
 
+// Logged in checker middleware
+const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/login')
+
+// Role checker middleware
+const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect('/login')
+
 // COMMUNITY 
 router.get('/getAllCommunity', (req, res, next) => {
     Community.find()
@@ -24,7 +30,7 @@ router.get('/getOneCommunity/:community_id', (req, res, next) => {
 })
 
 // NEW COMMUNITY
-router.post('/newCommunity', (req, res, next) => {
+router.post('/newCommunity', checkAuthenticated, (req, res, next) => {
 
     const { title, brief, description, genre, imageProd } = req.body
 
@@ -35,7 +41,7 @@ router.post('/newCommunity', (req, res, next) => {
 })
 
 // EDIT COMMUNITY
-router.put('/editCommunity/:community_id', (req, res, next) => {
+router.put('/editCommunity/:community_id', checkAuthenticated, (req, res, next) => {
 
     const { title, description, genre, imageProd, comments } = req.body
 
@@ -45,7 +51,7 @@ router.put('/editCommunity/:community_id', (req, res, next) => {
 })
 
 // DELETE COMMUNITY
-router.delete('/deleteCommunity/:community_id', (req, res, next) => {
+router.delete('/deleteCommunity/:community_id', checkAuthenticated, (req, res, next) => {
 
     Community.findByIdAndDelete(req.params.community_id)
         .then(response => res.json(response))

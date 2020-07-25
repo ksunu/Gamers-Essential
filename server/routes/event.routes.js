@@ -5,6 +5,12 @@ const Event = require('./../models/Event.model')
 const User = require('./../models/User.model')
 
 // ***END POINTS***
+// Logged in checker middleware
+const checkAuthenticated = (req, res, next) => req.isAuthenticated() ? next() : res.redirect('/login')
+
+// Role checker middleware
+const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && rolesToCheck.includes(req.user.role) ? next() : res.redirect('/login')
+
 // EVENTS 
 router.get('/getAllEvent', (req, res, next) => {
 
@@ -23,7 +29,7 @@ router.get('/getOneEvent/:event_id', (req, res, next) => {
 })
 
 // NEW EVENT
-router.post('/newEvent', (req, res, next) => {
+router.post('/newEvent', checkAuthenticated, (req, res, next) => {
 
 
     const { title, description, brief, genre, imageEvent, eventDate, locationName } = req.body
@@ -35,7 +41,7 @@ router.post('/newEvent', (req, res, next) => {
 })
 
 // EDIT EVENT
-router.put('/editEvent/:event_id', (req, res, next) => {
+router.put('/editEvent/:event_id', checkAuthenticated, (req, res, next) => {
 
     const { title, description, brief, genre, imageEvent, eventDate, comments, locationName } = req.body
 
@@ -45,7 +51,7 @@ router.put('/editEvent/:event_id', (req, res, next) => {
 })
 
 // DELETE EVENT
-router.delete('/deleteEvent/:event_id', (req, res, next) => {
+router.delete('/deleteEvent/:event_id', checkAuthenticated, (req, res, next) => {
 
     Event.findByIdAndDelete(req.params.event_id)
         .then(response => res.json(response))
