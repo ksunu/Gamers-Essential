@@ -1,28 +1,42 @@
-.community-page {
+.community-card-body {
+width:100px;
+height:200px;
+
 }
 
 .community-card {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 300px;
-    grid-template-rows: 210px 210px 50px;
-    grid-template-areas: "image" "text" "stats";
-    font-family: none;
-    border-radius: 18px;
-    background: rgb(168, 167, 167);
-    box-shadow: 5px 5px 15px rgb(168, 167, 167);
-    text-align: center;
+    color: #000;
+    border-radius: 15px;
+    height: 450px;
+    margin: 0 20px 20px 20px;
+    border: 1px solid #000;
 }
 
 .community-card img {
-    grid-area: image;
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+    height: 180px;
 }
 
-.community-card article {
+.community-card-btn {
+    margin: 20px 30px;
+    height: 40px;
+    align-items: center;
+}
+
+.community-edit img {
+      height:30px;
 
 }
+
+
+.community-delete img {
+    height:30px;
+  
+}
+
+
+
+
 
 
