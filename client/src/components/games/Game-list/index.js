@@ -56,11 +56,11 @@ class GameList extends Component {
   render() {
     return (
       <>
-        <Container>
-          <h1>Games</h1>
-          <p>Page: {this.state.count} </p>
           <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
           <Button onClick={this.handleNextPage} className="right">&#62;</Button>
+        <Container>
+          <h1>Games</h1>
+          <p className="page-count">Page: {this.state.count} </p>
           <Row>
             {this.state.games.map((elm) => (
               <GameCard key={elm.id} {...elm} />

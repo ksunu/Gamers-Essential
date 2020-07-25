@@ -1,11 +1,28 @@
+.community-page {
+}
+
 .community-card {
-    margin-bottom: 40px;
-    width: 200px;
-    display: inline;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 210px 210px 50px;
+    grid-template-areas: "image" "text" "stats";
+    font-family: none;
+    border-radius: 18px;
+    background: rgb(168, 167, 167);
+    box-shadow: 5px 5px 15px rgb(168, 167, 167);
+    text-align: center;
 }
 
 .community-card img {
-width:100%;
+    grid-area: image;
+}
+
+.community-card article {
+
 }
 
 
