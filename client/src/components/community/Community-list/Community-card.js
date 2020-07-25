@@ -9,12 +9,11 @@ import Button from 'react-bootstrap/Button'
 
 
 const CommunityCard = props => {
-
     return (
         <>
             <section>
-                    <div className="community-card">
-                <Col md={4}>
+                <div className="community-card">
+                    <Col md={4}>
                         <Link to={`/community/${props.elm._id}`}>
                             <img src={props.elm.imageProd} alt="{props.elm.title}" />
                             <article>
@@ -25,10 +24,10 @@ const CommunityCard = props => {
                                 <Card.Text> {props.elm.brief} </Card.Text>
                             </article>
                         </Link>
-                        <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleModal(true, props.elm)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Edit</Button>
-                        <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>
-                </Col>
-                    </div>
+                        {props.loggedInUser._id == props.elm.owner._id && <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleModal(true, props.elm)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Edit</Button>}
+                        {props.loggedInUser._id == props.elm.owner._id && <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>}
+                    </Col>
+                </div>
             </section>
         </>
     )

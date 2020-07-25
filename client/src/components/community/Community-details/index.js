@@ -66,8 +66,6 @@ class CommunityDetails extends Component {
 
     render() {
 
-        console.log(this.state.communityDetails)
-
         return (
             <>
                 <Container as="main">

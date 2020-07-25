@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 
 const Event = require('./../models/Event.model')
+const User = require('./../models/User.model')
 
 // ***END POINTS***
 // EVENTS 
 router.get('/getAllEvent', (req, res, next) => {
 
     Event.find()
+        // .populate('owner')
         .then(response => res.json(response))
         .catch(err => next(err))
 })
@@ -23,7 +25,11 @@ router.get('/getOneEvent/:event_id', (req, res, next) => {
 // NEW EVENT
 router.post('/newEvent', (req, res, next) => {
 
-    Event.create(req.body)
+
+    const { title, description, brief, genre, imageEvent, eventDate, locationName } = req.body
+
+
+    Event.create({ title, description, brief, genre, imageEvent, eventDate, locationName, owner: req.user })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
