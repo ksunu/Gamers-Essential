@@ -1,20 +1,20 @@
 import React, { Component } from "react"
 import GameService from "../../../service/GameService"
-import GenreCard from "./Genre-card"
-import GenreBar from "./Genre-bar"
+import PlatformCard from "./Platform-card"
+import PlatformBar from "./Platform-bar"
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 
-class GenreList extends Component {
+class PlatformList extends Component {
     constructor() {
         super()
         this.state = {
 
-            genreCategory: "indie",
-            genreGames: undefined,
+            platformCategory: 4,
+            gamesByPlatform: undefined,
             count: 1
         }
         this.GameService = new GameService()
@@ -24,16 +24,19 @@ class GenreList extends Component {
 
     updateGameList = () => {
 
-        this.GameService.getAllGamesByGenres(this.state.genreCategory, this.state.count)
-            .then((response) => this.setState({ genreGames: response.data }))
+        this.GameService.getAllGamesbyPlatform(this.state.platformCategory, this.state.count)
+            .then((response) => this.setState({ gamesByPlatform: response.data }))
             .catch((err) => console.log(err))
 
     }
 
-    handleButtonBar = genre => {
 
-        this.setState({ genreCategory: genre })
+
+    handleButtonBar = platform => {
+
+        this.setState({ platformCategory: platform })
         this.updateGameList()
+
 
     }
 
@@ -49,24 +52,26 @@ class GenreList extends Component {
         this.updateGameList()
     }
 
+
+
     render() {
         return (
             <>
-                <GenreBar handleButtonBar={genre => this.handleButtonBar(genre)} />
+                <PlatformBar handleButtonBar={platform => this.handleButtonBar(platform)} />
 
                 <hr></hr>
                 <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
                 <Button onClick={this.handleNextPage} className="right">&#62;</Button>
                 <Container>
 
-                   
-                    <h1>Genres-{this.state.genreCategory}</h1>
+
+                    <h1>Games by Platforms</h1>
 
                     <p>Page: {this.state.count} </p>
 
                     <Row>
-                        {this.state.genreGames && this.state.genreGames.results.map((elm) =>
-                            <GenreCard key={elm.id} {...elm} />
+                        {this.state.gamesByPlatform && this.state.gamesByPlatform.results.map((elm) =>
+                            <PlatformCard key={elm.id} {...elm} />
                         )}
 
                     </Row>
@@ -74,10 +79,9 @@ class GenreList extends Component {
                 </Container>
 
 
-
             </>
         )
     }
 }
 
-export default GenreList
+export default PlatformList

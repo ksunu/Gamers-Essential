@@ -7,6 +7,7 @@ import Games from './games'
 import GameList from './games/Game-list'
 import GameDetail from './games/Game-details'
 import GenreList from './games/Genre-list'
+import PlatformList from './games/Platform-list'
 import CommunityList from './community/Community-list'
 import CommunityDetail from './community/Community-details'
 import EventList from './event/Event-list'
@@ -76,6 +77,7 @@ class App extends Component {
           <Route exact path="/games" render={() => <Games loggedInUser={this.state.loggedInUser} />} />
           <Route exact path="/games/allGames" render={() => <GameList />} />
           <Route exact path="/games/genres" render={() => <GenreList />} />
+          <Route exact path="/games/platforms" render={() => <PlatformList />} />
           <Route exact path="/games/:id" render={props => <GameDetail loggedInUser={this.state.loggedInUser} {...props} />} />
 
           <Route exact path="/events" render={() => <EventList loggedInUser={this.state.loggedInUser} />} />
