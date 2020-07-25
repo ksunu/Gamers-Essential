@@ -45,7 +45,6 @@ class GenreForm extends Component {
     handleFormSubmit = e => {
         e.preventDefault()
 
-        // console.log(this.state.genre)
         this.props.handleForm(this.state.genre)
         // .then(() => this.props.handleCommunitySubmit())
         // .catch(err => console.log(err))

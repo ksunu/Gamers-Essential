@@ -25,7 +25,7 @@ class GenreList extends Component {
 
     updateGameList = () => {
 
-        
+
         this.GameService.getAllGamesByGenres(this.state.genreCategory, this.state.count)
             .then((response) => this.setState({ genreGames: response.data }))
             .catch((err) => console.log(err))
@@ -57,7 +57,7 @@ class GenreList extends Component {
         return (
             <>
                 <Container>
-                
+
                     <GenreForm handleForm={input => this.handleForm(input)} />
                     <h1>Genres</h1>
                     <p>Page: {this.state.count} </p>

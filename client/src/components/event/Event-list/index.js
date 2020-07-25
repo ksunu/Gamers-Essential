@@ -41,15 +41,15 @@ class EventList extends Component {
         this.updateEventList()
     }
 
-   handleDelete = id => {
+    handleDelete = id => {
 
-    const arr = [...this.state.events]
-    const arrFiltered = arr.filter(elm => elm._id !== id)
-    this.setState({ events: arrFiltered })
-    this.eventService
-        .deleteEvent(id)
-        .then(response => console.log(response))
-   }
+        const arr = [...this.state.events]
+        const arrFiltered = arr.filter(elm => elm._id !== id)
+        this.setState({ events: arrFiltered })
+        this.eventService
+            .deleteEvent(id)
+            .then(response => console.log(response))
+    }
 
 
     render() {
