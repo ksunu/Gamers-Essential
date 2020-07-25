@@ -10,12 +10,10 @@ export default class GameService {
         })
     }
 
-    getAllGames = () => this.service.get('/games')
-    getAllGames = page => this.service.get(`/games?page=${page}`)
-    getOneGame = id => this.service.get(`/games/${id}`)
-
     
-    // getAllGamesByGenres = genre => this.service.get(`/games?genres=${genre}`)
+    getAllGames = page => this.service.get(`/games?page=${page}`)
+    searchGames = name => this.service.get(`/games?search=${name}&page_size=1`)
+    getOneGame = id => this.service.get(`/games/${id}`)
     getAllGamesByGenres = (genre, page) => this.service.get(`/games?genres=${genre}&page=${page}`)
 
 

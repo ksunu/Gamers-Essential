@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import GameService from "../../../service/GameService"
 import GenreCard from "./Genre-card"
 import GenreForm from "./Genre-form"
+import GenreBar from "./Genre-bar"
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
@@ -31,10 +32,18 @@ class GenreList extends Component {
 
     }
 
-    handleForm = input => {
-        this.setState({ genreCategory: input })
+    // handleForm = input => {
+    //     this.setState({ genreCategory: input })
+    //     this.updateGameList()
+    //     console.log(this.state)
+
+    // }
+
+    handleButtonBar = genre => {
+
+        this.setState({ genreCategory: genre })
         this.updateGameList()
-        console.log(this.state)
+
 
     }
 
@@ -55,12 +64,16 @@ class GenreList extends Component {
     render() {
         return (
             <>
-                    <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
-                    <Button onClick={this.handleNextPage} className="right">&#62;</Button>
+                <GenreBar handleButtonBar={genre => this.handleButtonBar(genre)} />
+
+                <hr></hr>
+                <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+                <Button onClick={this.handleNextPage} className="right">&#62;</Button>
                 <Container>
 
-                    <GenreForm handleForm={input => this.handleForm(input)} />
-                    <h1>Genres</h1>
+                    {/* <GenreForm handleForm={input => this.handleForm(input)} /> */}
+                    <h1>Genres-{this.state.genreCategory}</h1>
+
                     <p>Page: {this.state.count} </p>
 
                     <Row>

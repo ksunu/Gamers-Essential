@@ -15,14 +15,8 @@ const GameCard = ({ id, name, background_image, rating }) => {
             <Col md={2} sm={3} xs={4}>
                 <Card className="game-card">
                     <Link to={`/games/${id}`}>
-                        <Card.Img src={background_image} alt={name} />
-                        <Card.ImgOverlay>
-                            <Card.Title></Card.Title>
-                            <Card.Text>
+                        <img src={background_image} alt={name} />
 
-                            </Card.Text>
-                            <Card.Text></Card.Text>
-                        </Card.ImgOverlay>
                         <p>{name}</p>
                     </Link>
                 </Card>

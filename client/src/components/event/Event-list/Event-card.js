@@ -9,9 +9,6 @@ import Button from 'react-bootstrap/Button'
 
 const EventCard = props => {
 
-    console.log(props.loggedInUser._id)
-    console.log(props.elm.owner)
-
     return (
         <>
 

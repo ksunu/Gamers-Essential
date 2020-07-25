@@ -16,9 +16,7 @@ class GenreForm extends Component {
             // indie: "",
             // shooter: "",
             // arcade: "",
-            // platform: "",
             // adventure: "",
-            // rpg: "",
             // strategy: "",
             // casual: "",
             // simulation: "",
@@ -32,6 +30,7 @@ class GenreForm extends Component {
             // board-games: "",
             // educational: "",
             // card: "",
+           //"role-playing-games-rpg",
 
         }
         this.gameService = new GameService()

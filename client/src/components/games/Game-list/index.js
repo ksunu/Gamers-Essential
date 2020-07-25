@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import GameService from "../../../service/GameService"
 import GameCard from "./Game-card"
-// import GenreList from "./Genre-list"
+import SearchForm from "./Search-form"
 import "./Game-list.css"
 
 // BOOTSTRAP COMPONENTS
@@ -13,8 +13,10 @@ class GameList extends Component {
   constructor() {
     super()
     this.state = {
-      games: [],
+      games: undefined,
       count: 1,
+      searchInput: "",
+      searchResults: ""
     }
     this.GameService = new GameService()
   }
@@ -45,24 +47,31 @@ class GameList extends Component {
     this.updateGameList()
   }
 
-  handleCategory = category => {
 
+  handleForm = input => {
 
-    this.setState({ genreCategory: category })
-    this.updateGameList()
+    this.setState({ searchInput: input })
+    this.state.searchInput && this.GameService.searchGames(this.state.searchInput)
+      .then(response => this.setState({ searchResults: response.data.results }))
+    
   }
-
 
   render() {
     return (
       <>
-          <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
-          <Button onClick={this.handleNextPage} className="right">&#62;</Button>
+        <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+        <Button onClick={this.handleNextPage} className="right">&#62;</Button>
         <Container>
           <h1>Games</h1>
+
+          {this.state.searchResults && this.state.searchResults.map((elm) => (
+            <GameCard key={elm.id} {...elm} />))}
+
+
+          <SearchForm handleForm={input => this.handleForm(input)} />
           <p className="page-count">Page: {this.state.count} </p>
           <Row>
-            {this.state.games.map((elm) => (
+            {this.state.games && this.state.games.map((elm) => (
               <GameCard key={elm.id} {...elm} />
             ))}
           </Row>
