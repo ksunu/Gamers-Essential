@@ -12,19 +12,24 @@ const CommunityCard = props => {
 
     return (
         <>
-            <Col md={4}>
-                <Card className="community-card">
-                    <Card.Img variant="top" src={props.elm.imageProd} />
-                    <Card.Body>
-                        <Card.Title>{props.elm.title}</Card.Title>
-                        <Card.Text> {props.elm.brief} </Card.Text>
+            <section>
+                    <div className="community-card">
+                <Col md={4}>
+                        <Link to={`/community/${props.elm._id}`}>
+                            <img src={props.elm.imageProd} alt="{props.elm.title}" />
+                            <article>
+                                <Card.Title>{props.elm.title}</Card.Title>
+                            </article>
+                            <article>
 
-                        <Link to={`/community/${props.elm._id}`} className="btn btn-dark btn-block btn-sm">Details</Link><br></br>
+                                <Card.Text> {props.elm.brief} </Card.Text>
+                            </article>
+                        </Link>
                         <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleModal(true, props.elm)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Edit</Button>
                         <Button className="btn btn-dark btn-block btn-sm" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>
-                    </Card.Body>
-                </Card>
-            </Col>
+                </Col>
+                    </div>
+            </section>
         </>
     )
 

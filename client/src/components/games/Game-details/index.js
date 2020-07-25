@@ -52,6 +52,7 @@ class GameDetails extends Component {
 
                 <Container as="main">
                     <h1>{this.state.gameDetails.name}</h1>
+                            <Link className="btn btn-dark btn-md" to='/games'>Back</Link>
 
                     <Button onClick={this.handleFav}>Add to favourites</Button>
                     <Row className="game-detail">
@@ -65,9 +66,8 @@ class GameDetails extends Component {
                             <hr></hr>
                             <p><b>Release Date:</b> {this.state.gameDetails.released}</p>
                             <hr></hr>
-                            <Link className="btn btn-dark btn-md" to='/games'>Back</Link>
                         </Col>
-                        <Col md={{ span: 4, offset: 1 }}>
+                        <Col md={{ span: 5, offset: 1 }} className="image-detail">
                             <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
                             <img src={this.state.gameDetails.background_image_additional} alt={this.state.gameDetails.name} />
                         </Col>

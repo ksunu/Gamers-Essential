@@ -1,3 +1,16 @@
-.game-detail img {
+.game-detail {
+    margin: 20px;
+    border:1px solid rgb(88, 55, 55);
+    border-radius: 20px;
+    padding: 30px 0 0 0;
+}
+
+.game-detail p {
+    color: rgb(156, 148, 148);
+}
+
+.image-detail img {
     width:100%;
+    margin-top: 40px;
+    padding-right: 30px;
 }
