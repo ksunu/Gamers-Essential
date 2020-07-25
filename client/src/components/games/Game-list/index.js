@@ -34,7 +34,6 @@ class GameList extends Component {
       .catch((err) => console.log(err))
   }
 
-
   handleNextPage = () => {
 
     this.setState({ count: ++this.state.count })

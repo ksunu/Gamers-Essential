@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import ProfileService from '../../../service/ProfileService'
 import GamesService from '../../../service/GameService'
+import GameCard from './Game-card'
 
 // BOOTSTRAP COMPONENTS
 import CommunityCard from './Community-card'
 import EventCard from './Event-card'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-    
-    
+
+
 class Profile extends Component {
-    constructor (){
-        super ()
+    constructor() {
+        super()
         this.state = {
             allProfile: undefined,
             gameDetails: undefined
@@ -21,8 +22,8 @@ class Profile extends Component {
         this.gameService = new GamesService()
     }
 
-    componentDidMount = () => {
-        
+    componentDidMount() {
+
         this.updateCommunityList()
         this.updateFavGames()
 
@@ -37,47 +38,70 @@ class Profile extends Component {
     }
 
     updateFavGames = () => {
-       
-        this.gameService
+
+        let promise1 = this.gameService
             .getOneGame(this.props.loggedInUser.favGame[0])
-            //  .then(response => console.log(response.data))
-            .then(response => this.setState({ gameDetails: response }))
-            
-            .catch(err => console.log(err))
-   }
-  
-   
-   
-   render() {
-        
-      
-       
-       return (
-           <>
-                
-               
+
+
+        let promise2 = this.gameService
+            .getOneGame(this.props.loggedInUser.favGame[1])
+
+
+        let promise3 = this.gameService
+            .getOneGame(this.props.loggedInUser.favGame[2])
+
+        let promise4 = this.gameService
+            .getOneGame(this.props.loggedInUser.favGame[3])
+
+        let promise5 = this.gameService
+            .getOneGame(this.props.loggedInUser.favGame[4])
+
+        Promise.all([promise1, promise2, promise3, promise4, promise5]).then(response => this.setState({ gameDetails: response }, () => console.log(this.state.gameDetails)))
+    }
+
+
+
+    render() {
+
+
+
+        return (
+            <>
+
+
 
                 <Container>
-                <h1>Your profile</h1>
-            
-                 {/* {const Profile = props => props.loggedInUser && <h1>¡Hi, {props.loggedInUser.username}!</h1>} */}
+                    <section>
+                        <h1>Your profile</h1>
+                        {/* {const Profile = props => props.loggedInUser && <h1>¡Hi, {props.loggedInUser.username}!</h1>} */}
+                        <article>
 
-                    <h2>Favourite Community</h2>
-                    <Row>
-                    {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard {...elm} />)}
-                    </Row>
-                <hr></hr>
-                    <h2>Favourite Events</h2>
-                    <Row>
-                    {this.state.allProfile && this.state.allProfile.favEvent.map(elm => <EventCard {...elm} />)}
-                    </Row>
+                            <h2>Favourite Community</h2>
+                            <Row>
+                                {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard key={elm._id} {...elm} />)}
+                            </Row>
 
-                    <h2>Favourite Games</h2>
-                    <p>TO-DO</p>
+                        </article>
+
+
+                        <hr></hr>
+                        <article>
+                            <h2> Favourite Events</h2>
+                            <Row>
+                                {this.state.allProfile && this.state.allProfile.favEvent.map(elm => <EventCard key={elm._id} {...elm} />)}
+                            </Row>
+
+                        </article>
+                        <article>
+                            <h2>Favourite Games</h2>
+                            {this.state.gameDetails && this.state.gameDetails.map(elm => <GameCard key={elm.data.id} elm={elm} />)}
+                        </article>
+
+                    </section>
 
 
                 </Container>
-                    
+
             </>
         )
     }
