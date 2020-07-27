@@ -10,7 +10,6 @@ class AvatarForm extends Component {
         super(props)
         this.state = {
 
-            avatar: ""
 
         }
         this.profileService = new ProfileService()
@@ -25,7 +24,7 @@ class AvatarForm extends Component {
         this.filesService.handleUploadAvatar(uploadData)
             .then(response => {
                 console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.data.secure_url)
-                this.setState({ avatar: response.data.secure_url })
+                this.setState({ avatar: response.data.secure_url }, () => console.log(this.state.avatar))
             })
             .catch(err => console.log(err))
     }
@@ -33,14 +32,15 @@ class AvatarForm extends Component {
     handleUpdateSubmit = e => {
         e.preventDefault()
         this.profileService
-            .updateAvatar(this.props.loggedInUser._id, this.state.avatar)
-            .then(() => this.props.handleAvatarSubmit())
+            .updateAvatar(this.props.loggedInUser._id, this.state)
+            .then(this.props.handleAvatarSubmit())
+            .then(this.props.updateCommunityList())
             .catch(err => console.log(err))
     }
 
     render() {
 
-        console.log('avatar', this.state.avatar)
+
         return (
             <>
                 <h1>holaaaaa</h1>

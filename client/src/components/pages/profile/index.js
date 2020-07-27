@@ -60,7 +60,7 @@ class Profile extends Component {
         let promise5 = this.gameService
             .getOneGame(this.props.loggedInUser.favGame[4])
 
-        Promise.all([promise1, promise2, promise3, promise4, promise5]).then(response => this.setState({ gameDetails: response }, () => console.log(this.state.gameDetails)))
+        Promise.all([promise1, promise2, promise3, promise4, promise5]).then(response => this.setState({ gameDetails: response }))
     }
 
     handleModal = (status) => {
@@ -87,13 +87,13 @@ class Profile extends Component {
                     <section>
                         <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Upload new avatar</Button>
 
-                        <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                        <Modal size="md" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                             <Modal.Body>
-                                <AvatarForm handleAvatarSubmit={() => this.handleAvatarSubmit()} loggedInUser={this.props.loggedInUser} />
+                                <AvatarForm handleAvatarSubmit={() => this.handleAvatarSubmit()} loggedInUser={this.props.loggedInUser} updateCommunityList={() => this.updateCommunityList} />
                             </Modal.Body>
                         </Modal>
 
-                        <img src={this.props.loggedInUser.avatar} alt={this.props.loggedInUser.username} />
+                        <img src={this.state.allProfile && this.state.allProfile.avatar} alt={this.props.loggedInUser.username} />
 
 
 

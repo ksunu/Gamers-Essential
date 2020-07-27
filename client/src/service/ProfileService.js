@@ -21,5 +21,5 @@ export default class GameService {
 
     getAllProfile = id => this.service.get(`/getAllProfile/${id}`)
 
-    updateAvatar = (id, avatar) => this.service.put(`/editAvatar/${id}`, avatar)
+    updateAvatar = (id, avatar) => this.service.post(`/editAvatar/${id}`, avatar)
 }

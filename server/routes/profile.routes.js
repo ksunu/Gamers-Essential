@@ -76,11 +76,10 @@ router.get('/getAllProfile/:id', (req, res, next) => {
 
 
 // EDIT AVATAR
-router.put('/editAvatar/:user_id', (req, res, next) => {
+router.post('/editAvatar/:user_id', (req, res, next) => {
 
-    const { avatar } = req.body
 
-    User.findByIdAndUpdate(req.params.user_id, { avatar: avatar }, { new: true })
+    User.findByIdAndUpdate(req.params.user_id, { avatar: req.body.avatar })
         .then(response => res.json(response))
         .catch(err => next(err))
 })
