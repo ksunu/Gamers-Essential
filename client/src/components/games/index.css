@@ -1,10 +1,50 @@
 .game-main-btn {
     text-align: center;
+    align-items: center;
+    margin-top: 100px;
 }
 
+.game-main-btn .btn:hover {
+    opacity: 0.8;
+       color: rgb(172, 88, 88);
+           z-index: 6000;
+}
+
+/* ALL */
 .game-main-btn img {
-    width: 200px;
+    height: 200px;
+    width:300px;
     object-fit: cover;
     border-radius: 15px 15px 0 0;
+}
 
+
+/* BTN 1 */
+.game-main-btn .btn-1 {
+    width: 300px;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    background-color: rgb(156, 199, 2);
+    margin-bottom:20px;
+    font-size: 1.7em;
+}
+
+
+
+.game-main-btn .btn-2 {
+    width: 300px;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    background-color: rgb(0, 202, 185);
+    margin-bottom:20px;
+    font-size: 1.7em;
+}
+
+.game-main-btn .btn-3 {
+    width: 300px;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    background-color: rgb(209, 66, 0);
+    margin-bottom:20px;
+    font-size: 1.7em;
 }

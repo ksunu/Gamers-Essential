@@ -63,18 +63,22 @@ class GameDetails extends Component {
                     <Row className="game-detail">
                         <Col md={{ span: 5, offset: 1 }}>
 
-                            <p><b>Name:</b> {this.state.gameDetails.name_original}</p>
-                            <hr></hr>
-                            <p><b>Description:</b> {this.state.gameDetails.description_raw}</p>
-                            <hr></hr>
-                            <p><b>Metacritic Valoration:</b> {this.state.gameDetails.metacritic}</p>
-                            <hr></hr>
-                            <p><b>Release Date:</b> {this.state.gameDetails.released}</p>
-                            <hr></hr>
+                            <p>{this.state.gameDetails.name_original}</p>
+                            <hr />
+                            <p>{this.state.gameDetails.description_raw}</p>
+                            <hr />
+
+
+
+
                         </Col>
                         <Col md={{ span: 5, offset: 1 }} className="image-detail">
                             <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
                             <img src={this.state.gameDetails.background_image_additional} alt={this.state.gameDetails.name} />
+                            <p><b>Release Date:</b> {this.state.gameDetails.released}</p>
+                            <p><b>Rating:</b> {this.state.gameDetails.rating} </p>
+                            <p><b>Metascore:</b> {this.state.gameDetails.metacritic}</p>
+                            <p><b>Platforms:</b> {this.state.gameDetails.platform}</p>
                         </Col>
                     </Row>
 

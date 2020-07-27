@@ -60,8 +60,8 @@ class EventList extends Component {
                     { this.props.loggedInUser &&
                         <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new event</Button>
                     }
-                    <Row>
-                        {this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal} handleDelete={this.handleDelete} loggedInUser={this.props.loggedInUser} />)}
+                    <Row className="event-details">
+                        {this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal} handleDelete={this.handleDelete} loggedInUser={this.props.loggedInUser} className="event-details" />)}
                     </Row>
                 </Container>
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>

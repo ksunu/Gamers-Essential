@@ -70,56 +70,64 @@ class CommunityDetails extends Component {
             <>
                 <Container as="main">
 
-                    <h1>{this.state.communityDetails.title}</h1>
+                    <div className="community-details-page">
+                        <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
 
-                    <Row>
-                        <Col md={{ span: 5, offset: 1 }}>
+                        <Row>
+                            <Col>
+                                {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
 
-                            <p><b>Description:</b> {this.state.communityDetails.description}</p>
-                            <hr></hr>
-                            <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
-                            <hr></hr>
-                            <p><b>Usuario:</b> {this.state.communityDetails.owner}</p>
-                            <hr></hr>
-                            <table>
-                                <thead>
-                                    <th>
-                                        User
+                                {this.props.loggedInUser && <Button onClick={this.handleFav}>Add to Favourites</Button>}
+                                {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
+
+                            </Col>
+                        
+                            <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
+                            <Col md={{ span: 5, offset: 1 }}>
+                                <h1>{this.state.communityDetails.title}</h1>
+                                <p><b>User:</b> {this.state.communityDetails.owner}</p>
+
+                                <p><b>Description:</b> {this.state.communityDetails.description}</p>
+
+                                <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
+
+                                <hr></hr>
+
+                            </Col>
+            
+                        </Row>
+                        <Row>
+
+                            <Col md={{ span: 8, offset: 1 }}>
+
+
+                                <table className="comments-table">
+                                    <thead>
+                                        <th>
+                                            User
                                     </th>
-                                    <th>
-                                        Comments
+                                        <th>
+                                            Comments
                                     </th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            {this.state.communityDetails && this.state.communityDetails.commentsUser.map(elm => <p>{elm}:</p>)}
-                                        </td>
-                                        <td>
-                                            {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-
-                            {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
-
-                            {this.props.loggedInUser && <Button onClick={this.handleFav}>Add to Favourites</Button>}
-                            {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
-
-                            <hr></hr>
-                            <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
-                        </Col>
-                        <Col md={{ span: 4, offset: 1 }}>
-                            <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} />
-                        </Col>
-                    </Row>
-                    <hr></hr>
-                    <Row>
-                        <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} />
-                    </Row>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                {this.state.communityDetails && this.state.communityDetails.commentsUser.map(elm => <p>{elm}:</p>)}
+                                            </td>
+                                            <td>
+                                                {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </Col>
+                        </Row>
+                        <hr></hr>
+                        <Row>
+                            <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} />
+                        </Row>
+                    </div>
 
                 </Container>
             </>

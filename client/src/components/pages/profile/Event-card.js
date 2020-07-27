@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import ProfileService from '../../../service/ProfileService'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
 
 class EventCard extends Component {
     constructor(props) {
@@ -23,18 +25,29 @@ class EventCard extends Component {
     render() {
         return (
             <>
-                <Col md={4}>
-                    <p>{this.props.elm.brief}</p>
-                    <p>{this.props.elm.title}</p>
-                    <p>{this.props.elm.description}</p>
-                    <p>{this.props.elm.genre}</p>
-                    <img src={this.props.elm.imageEvent} alt={this.props.elm.title} />
-                    <p>{this.props.elm.comments}</p>
-                    <p>{this.props.elm.owner}</p>
-                    <p>{this.props.elm.eventDate}</p>
-                    <p>{this.props.elm.locationName}</p>
-                    <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
+                <Col className="event-detail-img" md={3}>
+                    <Link to={`/events/${this.props.elm._id}`}>
+                        <img src={this.props.elm.imageEvent} alt="" />
+                    </Link>
                 </Col>
+                <Col className="event-detail-content" md={2}>
+                    <Link to={`/events/${this.props.elm._id}`}>
+                        <h5>{this.props.elm.title}</h5>
+                        <p>{this.props.elm.genre}</p>
+                        <p>{this.props.elm.brief}</p>
+                        <p>{this.props.elm.description}</p>
+                        <p>{this.props.elm.comments}</p>
+                        <p>{this.props.elm.owner}</p>
+                        <p>{this.props.elm.eventDate}</p>
+                        <p>{this.props.elm.locationName}</p>
+                    </Link>
+                </Col>
+
+                <Col>
+                    <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
+
+                </Col>
+
             </>
         )
     }

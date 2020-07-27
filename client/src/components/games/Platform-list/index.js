@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import GameService from "../../../service/GameService"
 import PlatformCard from "./Platform-card"
 import PlatformBar from "./Platform-bar"
@@ -57,16 +58,13 @@ class PlatformList extends Component {
     render() {
         return (
             <>
+                <Container>
+                <h1>Platforms</h1>
+                <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
                 <PlatformBar handleButtonBar={platform => this.handleButtonBar(platform)} />
 
-                <hr></hr>
-                <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+                {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button> }
                 <Button onClick={this.handleNextPage} className="right">&#62;</Button>
-                <Container>
-
-
-                    <h1>Games by Platforms</h1>
-
                     <p>Page: {this.state.count} </p>
 
                     <Row>

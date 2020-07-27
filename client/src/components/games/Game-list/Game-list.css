@@ -21,6 +21,7 @@
 
 /* GAME-LIST*/
 .left {
+    height: 70px;
    width: 40px;
     position:fixed;
     left: 0;
@@ -28,14 +29,38 @@
     margin-right: 10px;
     z-index:999;
     top:50%;
+    border: none;
+    border-radius: 15px 0 0 15px;
+    background-color: rgb(70, 70, 70);
 } 
 .right {
+    height:70px;
     width: 40px;
     position:fixed;
     right: 0;
     margin-right: 10px;
      z-index:999;
     top:50%;
+    border: none;
+    border-radius: 0 15px 15px 0;
+        background-color: rgb(70, 70, 70);
+}
+
+.search-area {
+    background-color: rgb(26, 26, 26);
+    border-radius: 15px 15px 0 0;
+    padding:20px;
+}
+
+/* SEARCH-FORM */
+.search-form {
+    width: 70%;
+}
+
+.allGames-back span {
+    border: 1px solid #fff;
+    text-decoration: none;
+    background-color: rgb(70, 70, 70);
 }
 
 

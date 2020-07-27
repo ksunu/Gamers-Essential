@@ -8,6 +8,7 @@ import "./Game-list.css"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
+import Col from "react-bootstrap/Col"
 
 class GameList extends Component {
   constructor() {
@@ -52,22 +53,30 @@ class GameList extends Component {
     this.setState({ searchInput: input })
     this.state.searchInput && this.GameService.searchGames(this.state.searchInput)
       .then(response => this.setState({ searchResults: response.data.results }))
-    
+
   }
 
   render() {
     return (
       <>
-        <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+        {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
         <Button onClick={this.handleNextPage} className="right">&#62;</Button>
         <Container>
-          <h1>Games</h1>
+          <h1>All Games</h1>
+          <div className="search-area">
+            <Col md={6}>
 
-          {this.state.searchResults && this.state.searchResults.map((elm) => (
-            <GameCard key={elm.id} {...elm} />))}
+              <SearchForm handleForm={input => this.handleForm(input)} />
 
+            </Col>
+            <Col md={6}>
+              {this.state.searchResults && this.state.searchResults.map((elm) => (
+                <GameCard key={elm.id} {...elm} />))}
 
-          <SearchForm handleForm={input => this.handleForm(input)} />
+            </Col>
+
+          </div>
+
           <p className="page-count">Page: {this.state.count} </p>
           <Row>
             {this.state.games && this.state.games.map((elm) => (

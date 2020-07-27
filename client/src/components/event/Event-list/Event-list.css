@@ -1,3 +1,11 @@
-.event-card {
-    color:#000;
+/* EVENT LIST*/
+.event-details {
+    margin: 10px
 }
+
+
+/* EVENT CARD*/
+.event-detail-img img {
+ width: 250px;
+}
+

@@ -29,7 +29,8 @@ class Navigation extends Component {
         return (
             <Navbar expand="lg" sticky="top" className="navbar-main">
                 <Navbar.Brand>
-                    <Link to="/">GamersEssential</Link>
+                    <Link to="/" className="">
+                        <div className="nav-title">_GamersEssential</div></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggle" />
                 <Navbar.Collapse>
@@ -41,7 +42,7 @@ class Navigation extends Component {
                         </Nav.Link>
                         <Nav.Link as="span">
                             <div className="links">
-                                <NavLink to="/games" activeStyle={{ color: 'white' }}>Games</NavLink>
+                                <NavLink to="/games" activeStyle={{ color: 'white' }}><div>Games</div></NavLink>
                             </div>
                         </Nav.Link>
                         <Nav.Link as="span">

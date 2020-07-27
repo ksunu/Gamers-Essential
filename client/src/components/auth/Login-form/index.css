@@ -1,0 +1,16 @@
+.login {
+    margin-top: 40px;
+    color: rgb(73, 50, 31);
+padding: 100px;
+    background-color: rgb(254, 255, 255);
+}
+
+.login h3 {
+    margin: 20px 0;
+}
+
+.login img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}

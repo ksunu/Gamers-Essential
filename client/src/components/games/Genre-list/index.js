@@ -52,15 +52,15 @@ class GenreList extends Component {
     render() {
         return (
             <>
+            
                 <GenreBar handleButtonBar={genre => this.handleButtonBar(genre)} />
 
-                <hr></hr>
-                <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>
+                {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
                 <Button onClick={this.handleNextPage} className="right">&#62;</Button>
                 <Container>
 
                    
-                    <h1>Genres-{this.state.genreCategory}</h1>
+                    <h1>Genre: {this.state.genreCategory}</h1>
 
                     <p>Page: {this.state.count} </p>
 

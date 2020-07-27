@@ -1,3 +1,12 @@
+.nav-title {
+color: #fff;
+text-decoration: none;
+}
+
+.nav-title:hover {
+    opacity: 0.7;
+}
+
 .navbar-toggle {
     background-color: #fff;
 }
@@ -5,13 +14,15 @@
 .links {
     padding: 0 5px;
     border-top: 2px solid rgb(124, 36, 36);
-    text-decoration: none;
 }
 
+/* LOGOUT */
 .logout {
 color:rgb(255, 255, 255);
 }
-
+.logout img:hover {
+    opacity: 0.8;
+}
 .link-profile {
     font-family: 'Share Tech Mono', sans-serif;
     color: green;

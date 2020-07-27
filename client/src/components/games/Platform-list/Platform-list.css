@@ -1,0 +1,85 @@
+/* PLATFORM BAR*/
+.platform-bar {
+    margin-bottom:10px;
+}
+
+/* PC */
+.pc {
+    background-color: #fff;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    width: 120px;
+
+}
+
+
+/* PS4 */
+.ps4{
+    background-color: #fff;
+    height: 50px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    width: 120px;
+}
+
+
+/* PS5 */
+.ps5 {
+    background-color: #fff;
+    height: 50px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    width: 120px;
+
+}
+
+/* XBOX-ONE */
+.xbox-one {
+        background-color: #fff;
+    height: 50px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+    
+}
+
+
+/* XBOX-x */
+.xbox-x {
+        background-color: #fff;
+    height: 50px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+}
+
+
+
+/* SWITCH */
+.switch {
+        background-color: #fff;
+    height: 50px;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
+    border-radius: 15px 15px 0 0;
+}
+.platform-bar img{
+    height: 30px;
+   width:150px;
+   object-fit: cover;
+}

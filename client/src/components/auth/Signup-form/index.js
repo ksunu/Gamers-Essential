@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import AuthService from '../../../service/AuthService'
+import './index.css'
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -42,10 +43,9 @@ class SignupForm extends Component {
             <Container as="main">
 
                 <Row>
-                    <Col md={{ offset: 3, span: 6 }}>
-                        <h3>Registro de usuario</h3>
-
-                        <hr></hr>
+                    <Col md={{ offset: 3, span: 6 }} className="signup">
+                        <img src="https://image.flaticon.com/icons/svg/2878/2878741.svg" alt="" />
+                        <h3>Sign Up</h3>
 
                         <Form onSubmit={this.handleFormSubmit}>
 
@@ -57,10 +57,10 @@ class SignupForm extends Component {
                             <Form.Group>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control onChange={this.handleInputChange} value={this.state.password} name="password" type="password" />
-                                <Form.Text className="text-muted">Mínimo tres caracteres, mangurrián.</Form.Text>
+                                <Form.Text className="text-muted">Minimum 3 characters...</Form.Text>
                             </Form.Group>
 
-                            <Button variant="dark" type="submit">Registrarme</Button>
+                            <Button variant="dark" type="submit">Submit</Button>
                         </Form>
 
                     </Col>
