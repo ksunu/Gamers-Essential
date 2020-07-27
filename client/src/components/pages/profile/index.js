@@ -92,7 +92,7 @@ class Profile extends Component {
                         <article>
                             <h2>Favourite Games</h2>
                             <Row>
-                                {this.state.gameDetails && this.state.gameDetails.map(elm => <GameCard key={elm.data.id} elm={elm} loggedInUser={this.props.loggedInUser} />)}
+                                {this.state.gameDetails && this.state.gameDetails.map(elm => <GameCard key={elm.data.id} elm={elm} loggedInUser={this.props.loggedInUser} updateFavGames={() => this.updateFavGames} />)}
                             </Row>
                         </article>
 

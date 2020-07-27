@@ -19,7 +19,8 @@ class EventCard extends Component {
         this.profileService
             .deleteFavEvent(this.props.elm._id, this.props.loggedInUser)
             .then(response => console.log(response))
-        this.props.updateCommunityList()
+            .then(this.props.updateCommunityList())
+        .catch(err => console.log(err))
     }
 
     render() {
@@ -35,8 +36,8 @@ class EventCard extends Component {
                         <h5>{this.props.elm.title}</h5>
                         <p>{this.props.elm.genre}</p>
                         <p>{this.props.elm.brief}</p>
-                        <p>{this.props.elm.description}</p>
-                        <p>{this.props.elm.comments}</p>
+                        {/* <p>{this.props.elm.description}</p>
+                        <p>{this.props.elm.comments}</p> */}
                         <p>{this.props.elm.owner}</p>
                         <p>{this.props.elm.eventDate}</p>
                         <p>{this.props.elm.locationName}</p>

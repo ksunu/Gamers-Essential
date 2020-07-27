@@ -5,4 +5,5 @@ module.exports = app => {
     app.use('/api/event', require('./event.routes'))
     app.use('/api/profile', require('./profile.routes'))
     app.use('/api', require('./auth.routes'))
+    app.use('/api/files', require('./files.routes'))
 }

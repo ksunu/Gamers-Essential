@@ -21,9 +21,9 @@ class CommunityCard extends Component {
         this.profileService
             .deleteFavCommunity(this.props.elm._id, this.props.loggedInUser)
             .then(response => console.log(response))
-        this.props.updateCommunityList()
+            .then(this.props.updateCommunityList())
+            .catch(err => console.log(err))
     }
-
 
     render() {
         return (
@@ -36,7 +36,7 @@ class CommunityCard extends Component {
                                 <Card.Title>{this.props.elm.title}</Card.Title>
                                 <Card.Text>
                                     <p>brief: {this.props.elm.brief}</p>
-                                    <p>Description: {this.props.elm.description}</p>
+                                    {/* <p>Description: {this.props.elm.description}</p> */}
                                 </Card.Text>
                                 <ul className="community-card-text">
                                     <li>Genre: {this.props.elm.genre}</li>

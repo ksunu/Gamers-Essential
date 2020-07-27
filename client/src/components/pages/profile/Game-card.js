@@ -22,7 +22,8 @@ class GameCard extends Component {
         this.profileService
             .deleteFavGame(this.props.elm.data.id, this.props.loggedInUser)
             .then(response => console.log(response))
-
+            .then(this.props.updateFavGames())
+            .catch(err => console.log(err))
     }
 
 
