@@ -34,7 +34,7 @@ class CommunityForm extends Component {
         const uploadData = new FormData()
         uploadData.append("imageProd", e.target.files[0])
 
-        this.filesService.handleUpload(uploadData)
+        this.filesService.handleUploadCommunity(uploadData)
             .then(response => {
                 console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.data.secure_url)
                 this.setState({ imageProd: response.data.secure_url })
@@ -86,12 +86,6 @@ class CommunityForm extends Component {
                             <Form.Control onChange={this.handleInputChange} name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text" />
                         </Form.Group>
                         <br />
-                        {/* <Form.Group>
-                            <Form.Label>Image</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="imageProd" value={this.state.imageProd} size="sm" type="text" placeholder="imgURL" />
-                        </Form.Group> */}
-
-                        {/* // CLOUDINARYCONFIG   */}
                         <Form.Group>
                             <Form.Label>Image (jpg or png)</Form.Label>
                             <Form.Control name="imagProd" type="file" onChange={this.handleFileUpload} />

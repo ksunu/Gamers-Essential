@@ -10,5 +10,7 @@ export default class Services {
         })
     }
 
-    handleUpload = theFile => this.service.post('/uploadCommunity', theFile)
+    handleUploadCommunity = theFile => this.service.post('/uploadCommunity', theFile)
+    handleUploadEvent = theFile => this.service.post('/uploadEvent', theFile)
+    handleUploadAvatar = theFile => this.service.post('/uploadProfile', theFile)
 }

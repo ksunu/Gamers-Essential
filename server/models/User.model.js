@@ -6,7 +6,10 @@ const userSchema = new Schema({
     username: { type: String },
     password: { type: String },
     name: { type: String },
-    avatar: { type: String },
+    avatar: {
+        type: String,
+        default: "https://www.eleganciadospuntocero.com/wp-content/uploads/2013/03/Huevo-twitter-avatar.jpg"
+    },
     role: {
         type: String,
         enum: ['ADMIN', 'MEMBER'],

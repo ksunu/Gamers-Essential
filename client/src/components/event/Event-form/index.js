@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import EventService from '../../../service/EventService'
+import FilesService from '../../../service/FilesService'
 import '../../community/Community-form/Community-form.css'
 
 // BOOTSTRAP COMPONENTS
@@ -19,7 +20,22 @@ class EventForm extends Component {
             eventDate: this.props.id ? this.props.id.eventDate : ""
         }
         this.eventService = new EventService()
+        this.filesService = new FilesService()
     }
+
+    // CLOUDINARYCONFIG  
+    handleFileUpload = e => {
+        const uploadData = new FormData()
+        uploadData.append("imageEvent", e.target.files[0])
+
+        this.filesService.handleUploadEvent(uploadData)
+            .then(response => {
+                console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.data.secure_url)
+                this.setState({ imageEvent: response.data.secure_url })
+            })
+            .catch(err => console.log(err))
+    }
+
 
     handleInputChange = e => {
         const { name, value } = e.target
@@ -69,9 +85,14 @@ class EventForm extends Component {
                             <Form.Control onChange={this.handleInputChange} name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text" />
                         </Form.Group>
                         <br />
-                        <Form.Group>
+                        {/* <Form.Group>
                             <Form.Label>Image</Form.Label>
                             <Form.Control onChange={this.handleInputChange} name="imageEvent" value={this.state.imageEvent} size="sm" type="text" placeholder="imgURL" />
+                        </Form.Group> */}
+
+                        <Form.Group>
+                            <Form.Label>Image (jpg or png)</Form.Label>
+                            <Form.Control name="imageEvent" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
 
                         <Button variant="dark" type="submit">Submit</Button>

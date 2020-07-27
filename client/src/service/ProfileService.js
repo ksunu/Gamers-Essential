@@ -19,6 +19,7 @@ export default class GameService {
     addFavGame = (id, user) => this.service.post(`/addFavGame/${id}`, user)
     deleteFavGame = (id, user) => this.service.post(`/deleteFavGame/${id}`, user)
 
-    getAllProfile = id => this.service.get(`/getAllProfile/${id}`,)
+    getAllProfile = id => this.service.get(`/getAllProfile/${id}`)
 
+    updateAvatar = (id, avatar) => this.service.put(`/editAvatar/${id}`, avatar)
 }
