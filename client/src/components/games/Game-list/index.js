@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import GameService from "../../../service/GameService"
 import GameCard from "./Game-card"
 import SearchForm from "./Search-form"
@@ -59,11 +60,13 @@ class GameList extends Component {
   render() {
     return (
       <>
+        <Link to="/games" className="back-btn-games"><Button variant="dark" type="submit">Back</Button></Link>
         {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
         <Button onClick={this.handleNextPage} className="right">&#62;</Button>
         <Container>
           <h1>All Games</h1>
-          <div className="search-area">
+
+            <Row>
             <Col md={6}>
 
               <SearchForm handleForm={input => this.handleForm(input)} />
@@ -74,10 +77,14 @@ class GameList extends Component {
                 <GameCard key={elm.id} {...elm} />))}
 
             </Col>
+            
+          </Row>
 
+
+          <div className="page-count">
+          <p>Page: {this.state.count} </p>
           </div>
-
-          <p className="page-count">Page: {this.state.count} </p>
+            
           <Row>
             {this.state.games && this.state.games.map((elm) => (
               <GameCard key={elm.id} {...elm} />

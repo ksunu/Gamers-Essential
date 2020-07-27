@@ -1,6 +1,5 @@
 .nav-title {
 color: #fff;
-text-decoration: none;
 }
 
 .nav-title:hover {
@@ -13,7 +12,6 @@ text-decoration: none;
 
 .links {
     padding: 0 5px;
-    border-top: 2px solid rgb(124, 36, 36);
 }
 
 /* LOGOUT */

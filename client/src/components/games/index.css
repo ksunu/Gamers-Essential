@@ -13,7 +13,7 @@
 /* ALL */
 .game-main-btn img {
     height: 200px;
-    width:300px;
+    width:350px;
     object-fit: cover;
     border-radius: 15px 15px 0 0;
 }
@@ -21,7 +21,7 @@
 
 /* BTN 1 */
 .game-main-btn .btn-1 {
-    width: 300px;
+    width: 350px;
     border: none;
     border-radius: 0 0 15px 15px;
     background-color: rgb(156, 199, 2);
@@ -32,7 +32,7 @@
 
 
 .game-main-btn .btn-2 {
-    width: 300px;
+    width: 350px;
     border: none;
     border-radius: 0 0 15px 15px;
     background-color: rgb(0, 202, 185);
@@ -41,7 +41,7 @@
 }
 
 .game-main-btn .btn-3 {
-    width: 300px;
+    width: 350px;
     border: none;
     border-radius: 0 0 15px 15px;
     background-color: rgb(209, 66, 0);

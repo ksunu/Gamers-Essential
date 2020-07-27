@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
+import ReactPlayer from 'react-player'
 
 
 
@@ -51,35 +52,57 @@ class GameDetails extends Component {
 
     render() {
 
+        console.log(this.state.gameDetails.clip)
+
         return (
             <>
+                <Link className="btn btn-dark btn-md back-btn-games" to='/games'>Back</Link>
 
-                <Container as="main">
+                <Container as="main" className="detail-container">
                     <h1>{this.state.gameDetails.name}</h1>
-                    <Link className="btn btn-dark btn-md" to='/games'>Back</Link>
 
                     <Button onClick={this.handleFav}>Add to favourites</Button>
                     <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
-                    <Row className="game-detail">
-                        <Col md={{ span: 5, offset: 1 }}>
-
-                            <p>{this.state.gameDetails.name_original}</p>
-                            <hr />
-                            <p>{this.state.gameDetails.description_raw}</p>
-                            <hr />
-
-
-
-
+                    <Row className="image-detail">
+                        <Col>
+                        <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
+                            
                         </Col>
-                        <Col md={{ span: 5, offset: 1 }} className="image-detail">
-                            <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
+                        <Col>
                             <img src={this.state.gameDetails.background_image_additional} alt={this.state.gameDetails.name} />
-                            <p><b>Release Date:</b> {this.state.gameDetails.released}</p>
-                            <p><b>Rating:</b> {this.state.gameDetails.rating} </p>
-                            <p><b>Metascore:</b> {this.state.gameDetails.metacritic}</p>
-                            <p><b>Platforms:</b> {this.state.gameDetails.platform}</p>
+                            
                         </Col>
+
+                    </Row>
+                    <Row className="game-detail">
+
+                            <p>{this.state.gameDetails.description_raw}</p>
+                        </Row>
+                    <Row>
+                        <Col className="video-player" md={12}>
+                            <ReactPlayer url={this.state.gameDetails && this.state.gameDetails.clip.clips.full} playing={true} volume={0} loop={true} controls={true} />
+                        </Col>
+                        </Row>
+                    <Row>
+                        <Col className="game-info" md={6}>
+                            
+                           
+                            <p>Release Date:  {this.state.gameDetails.released}</p> 
+                      
+
+                            <p>Overall Rating Rawg:  {this.state.gameDetails.rating}</p> 
+                              
+
+                            <p> Metacritic Score:  {this.state.gameDetails.metacritic}</p>
+                              
+                           
+                            
+</Col>
+<Col className="game-info" md={6}>
+
+                        <p><b>Available Platforms:</b> {this.state.gameDetails && this.state.gameDetails.platforms.map(elm => <p>{elm.platform.name}</p>)}</p>
+         </Col>          
+
                     </Row>
 
                 </Container>

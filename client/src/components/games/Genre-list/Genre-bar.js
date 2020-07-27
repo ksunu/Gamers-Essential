@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+
 import './Genre-list.css'
 
 import Container from 'react-bootstrap/Container'
@@ -11,8 +11,6 @@ const GenreBar = props => {
 
     return (
         <>
-            <Container className="genre-search">
-                <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
                 <Row>
                     <Col md={12}>
                         <Button onClick={() => props.handleButtonBar('action')} className="genre-search-btn">Action</Button>
@@ -37,7 +35,6 @@ const GenreBar = props => {
                         <Button onClick={() => props.handleButtonBar('strategy')} className="genre-search-btn">Strategy</Button>
                     </Col>
                 </Row>
-            </Container>
         </>
 
     )

@@ -1,16 +1,28 @@
 .game-detail {
-    margin: 20px;
-    border:1px solid rgb(88, 55, 55);
-    border-radius: 20px;
-    padding: 30px 0 0 0;
-}
-
-.game-detail p {
-    color: rgb(156, 148, 148);
+margin: 10px;
 }
 
 .image-detail img {
     width:100%;
-    margin-top: 40px;
-    padding-right: 30px;
+    height: 100%;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.game-detail p {
+    margin-top: 25px;
+    color: rgb(156, 148, 148);
+}
+
+.game-info {
+    margin-top: 20px;
+        display: block;
+    justify-content: center;
+}
+
+
+.video-player {
+    display: flex;
+    justify-content: center;
+
 }

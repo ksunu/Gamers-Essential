@@ -1,10 +1,8 @@
 h1 {
-  font-family: 'Share Tech Mono', sans-serif;
   font-size: 3em;
-  margin-top: 20px;
 }
 
 body {
-  background-color:black;
+  font-family: 'Share Tech Mono', sans-serif;
   color: #fff;
 }

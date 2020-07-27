@@ -7,6 +7,7 @@ import './Game-list.css'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 class SearchForm extends Component {
     constructor() {
@@ -36,19 +37,15 @@ class SearchForm extends Component {
 
         return (
             <>
-                <Form ref="btn" onSubmit={this.handleFormSubmit}>
+                <Form ref="btn" onSubmit={this.handleFormSubmit} className="search-area">
                     <Form.Group>
-                        <Col>
-
-                            <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
-                        </Col>
-                        <Col>
-                            <Form.Label>Search your favourite game</Form.Label>
+                        <Form.Label>Search your favourite game</Form.Label>
+                        <Row>
                             <Form.Control onChange={this.handleInputChange} name="search" value={this.state.search} type="text" placeholder="Type here..." className="search-form" />
 
                             <Button variant="dark" type="submit">Submit</Button>
 
-                        </Col>
+                        </Row>
                     </Form.Group>
                 </Form>
             </>

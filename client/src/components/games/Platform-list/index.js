@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import GameService from "../../../service/GameService"
-import PlatformCard from "./Platform-card"
+import PlatformCard from "./../Game-list/Game-card"
 import PlatformBar from "./Platform-bar"
 
 // BOOTSTRAP COMPONENTS

@@ -27,9 +27,9 @@ class Navigation extends Component {
 
     render() {
         return (
-            <Navbar expand="lg" sticky="top" className="navbar-main">
+            <Navbar expand="lg" sticky="top" className="navbar-main" >
                 <Navbar.Brand>
-                    <Link to="/" className="">
+                    <Link to="/" style={{ textDecoration: 'none' }}>
                         <div className="nav-title">_GamersEssential</div></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="navbar-toggle" />
@@ -37,28 +37,28 @@ class Navigation extends Component {
                     <Nav className="ml-auto">
                         <Nav.Link as="span">
                             <div className="links">
-                                <NavLink to="/" exact activeStyle={{ color: 'white' }}>/</NavLink>
+                                <NavLink to="/" style={{ textDecoration: 'none' }} exact activeStyle={{ color: 'white' }}>/</NavLink>
                             </div>
                         </Nav.Link>
                         <Nav.Link as="span">
                             <div className="links">
-                                <NavLink to="/games" activeStyle={{ color: 'white' }}><div>Games</div></NavLink>
+                                <NavLink to="/games" style={{ textDecoration: 'none' }} activeStyle={{ color: 'white' }}><div>Games</div></NavLink>
                             </div>
                         </Nav.Link>
                         <Nav.Link as="span">
                             <div className="links">
-                                <NavLink to="/community" activeStyle={{ color: 'white' }}>Community</NavLink>
+                                <NavLink to="/community" style={{ textDecoration: 'none' }} activeStyle={{ color: 'white' }}>Community</NavLink>
                             </div>
                         </Nav.Link>
                         <Nav.Link as="span">
                             <div className="links">
-                                <NavLink to="/events" activeStyle={{ color: 'white' }}>Events</NavLink>
+                                <NavLink to="/events" style={{ textDecoration: 'none' }} activeStyle={{ color: 'white' }}>Events</NavLink>
                             </div>
                         </Nav.Link>
 
                         {this.props.loggedInUser ?
                             (
-                                <Nav.Link as="span">
+                                <Nav.Link as="span" style={{ textDecoration: 'none' }}>
                                     <div className="links">
                                         <span onClick={this.logout} className="logout">
                                             <div>
@@ -71,19 +71,19 @@ class Navigation extends Component {
                                 <>
                                     <Nav.Link as="span">
                                         <div className="links">
-                                            <NavLink to="/signup" activeStyle={{ color: 'white' }}>Signup</NavLink>
+                                            <NavLink to="/signup" style={{ textDecoration: 'none' }} activeStyle={{ color: 'white' }}>Signup</NavLink>
                                         </div>
                                     </Nav.Link>
                                     <Nav.Link as="span">
                                         <div className="links">
-                                            <NavLink to="/login" activeStyle={{ color: 'white' }}>Login</NavLink>
+                                            <NavLink to="/login" style={{ textDecoration: 'none' }} activeStyle={{ color: 'white' }}>Login</NavLink>
                                         </div>
                                     </Nav.Link>
                                 </>
                             )
                         }
                         <Nav.Link as="span">
-                            <NavLink to="/profile" activeStyle={{ color: 'white' }} className="link-profile">Hi, {this.props.loggedInUser ? this.props.loggedInUser.username : 'guest'}</NavLink>
+                            <NavLink to="/profile" style={{ textDecoration: 'none' }} activeStyle={{ color: 'white' }} className="link-profile">Hi, {this.props.loggedInUser ? this.props.loggedInUser.username : 'guest'}</NavLink>
                         </Nav.Link>
                     </Nav>
 
