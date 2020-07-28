@@ -1,3 +1,4 @@
+
 /* PLATFORM BAR*/
 .platform-bar {
     margin-bottom:10px;
@@ -12,19 +13,24 @@
 
 /* PC */
 .pc {
-    background-color: #fff;
+    background-color: rgb(173, 165, 165);
     border-left: 1px solid #000;
     border-top: 1px solid #000;
     border-right: 1px solid #000;
     border-bottom: none;
     border-radius: 15px 15px 0 0;
     width: 120px;
+    opacity: 0.7;
+}
 
+.pc:hover {
+    opacity: 1;
+    background-color: #fff;
 }
 
 /* PS4 */
 .ps4{
-    background-color: #fff;
+    background-color: rgb(173, 165, 165);
     height: 50px;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
@@ -32,12 +38,18 @@
     border-bottom: none;
     border-radius: 15px 15px 0 0;
     width: 120px;
+    opacity: 0.7;
+}
+
+.ps4:hover {
+    opacity: 1;
+    background-color: #fff;
 }
 
 
 /* PS5 */
 .ps5 {
-    background-color: #fff;
+    background-color: rgb(173, 165, 165);
     height: 50px;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
@@ -45,6 +57,12 @@
     border-bottom: none;
     border-radius: 15px 15px 0 0;
     width: 120px;
+    opacity: 0.7;
+}
+
+.ps5:hover {
+    opacity: 1;
+    background-color: #fff;
 }
 
 .ps5 img {
@@ -53,38 +71,59 @@
 
 /* XBOX-ONE */
 .xbox-one {
-        background-color: #fff;
+        background-color: rgb(173, 165, 165);
     height: 50px;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
     border-right: 1px solid #000;
     border-bottom: none;
     border-radius: 15px 15px 0 0;
-    
+     opacity: 0.7;
+}
+
+.xbox-one:hover {
+    opacity: 1;
+    background-color: #fff;
 }
 
 
 /* XBOX-x */
 .xbox-x {
-        background-color: #fff;
+        background-color: rgb(173, 165, 165);
     height: 50px;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
     border-right: 1px solid #000;
     border-bottom: none;
     border-radius: 15px 15px 0 0;
+    opacity: 0.7;
+}
+
+.xbox-x:hover {
+    opacity: 1;
+    background-color: #fff;
 }
 
 
 
 /* SWITCH */
 .switch {
-    background-color: #fff;
+    background-color: rgb(173, 165, 165);
     height: 50px;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
     border-right: 1px solid #000;
     border-bottom: none;
     border-radius: 15px 15px 0 0;
+    opacity: 0.7;
 }
 
+.switch:hover {
+    opacity: 1;
+    background-color: #fff;
+}
+
+.page-count p {
+    text-align: right;
+    margin: 10px;
+}

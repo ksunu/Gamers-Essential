@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import GameService from '../../../service/GameService'
 import './Game-list.css'
 
 // BOOTSTRAP COMPONENTS
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 
 class SearchForm extends Component {

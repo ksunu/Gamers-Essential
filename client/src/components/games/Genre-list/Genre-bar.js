@@ -2,7 +2,6 @@ import React from 'react'
 
 import './Genre-list.css'
 
-import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -13,7 +12,7 @@ const GenreBar = props => {
         <>
                 <Row>
                     <Col md={12}>
-                        <Button onClick={() => props.handleButtonBar('action')} className="genre-search-btn">Action</Button>
+                    <Button onClick={() => props.handleButtonBar('action')} className="genre-search-btn">Action</Button>
                         <Button onClick={() => props.handleButtonBar('adventure')} className="genre-search-btn">Adventure</Button>
                         <Button onClick={() => props.handleButtonBar('arcade')} className="genre-search-btn">Arcade</Button>
                         <Button onClick={() => props.handleButtonBar('board-games')} className="genre-search-btn">Board Games</Button>

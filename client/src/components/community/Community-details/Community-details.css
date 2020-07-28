@@ -4,7 +4,8 @@
     padding: 50px;
 }
 .community-details-page img {
-width: 250px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .comments-table {

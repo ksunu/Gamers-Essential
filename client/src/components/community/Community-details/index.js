@@ -68,47 +68,42 @@ class CommunityDetails extends Component {
 
         return (
             <>
-                <Container as="main">
+                <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
+                <Container as="span">
 
                     <div className="community-details-page">
-                        <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
 
                         <Row>
-                            <Col>
+                            <Col md={2}>
                                 {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
 
                                 {this.props.loggedInUser && <Button onClick={this.handleFav}>Add to Favourites</Button>}
                                 {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
 
                             </Col>
-                        
-                            <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
-                            <Col md={{ span: 5, offset: 1 }}>
+                            <Col md={5}>
+                                <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
+                            </Col>
+                            <Col md={5}>
                                 <h1>{this.state.communityDetails.title}</h1>
                                 <p><b>User:</b> {this.state.communityDetails.owner}</p>
 
                                 <p><b>Description:</b> {this.state.communityDetails.description}</p>
 
                                 <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
-
-                                <hr></hr>
-
                             </Col>
-            
+
                         </Row>
+                        <hr></hr>
                         <Row>
-
+                            <Col>
+                                <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} />
+                            </Col>
                             <Col md={{ span: 8, offset: 1 }}>
-
-
                                 <table className="comments-table">
                                     <thead>
-                                        <th>
-                                            User
-                                    </th>
-                                        <th>
-                                            Comments
-                                    </th>
+                                        <th>User</th>
+                                        <th>Comments</th>
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -122,10 +117,7 @@ class CommunityDetails extends Component {
                                     </tbody>
                                 </table>
                             </Col>
-                        </Row>
-                        <hr></hr>
-                        <Row>
-                            <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} />
+
                         </Row>
                     </div>
 

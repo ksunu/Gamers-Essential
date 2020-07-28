@@ -4,10 +4,15 @@
     margin-top: 100px;
 }
 
+.game-main-btn .btn {
+    opacity: 0.6;
+}
+
 .game-main-btn .btn:hover {
-    opacity: 0.8;
-       color: rgb(172, 88, 88);
-           z-index: 6000;
+    transform: scale(1.2);
+    z-index: 9999;
+    border-radius: 15px 15px 15px 15px;
+    opacity:1;
 }
 
 /* ALL */

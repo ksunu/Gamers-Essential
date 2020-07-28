@@ -100,10 +100,13 @@ class GameDetails extends Component {
 </Col>
 <Col className="game-info" md={6}>
 
-                        <p><b>Available Platforms:</b> {this.state.gameDetails && this.state.gameDetails.platforms.map(elm => <p>{elm.platform.name}</p>)}</p>
+                        <p><b>Available Platforms:</b> {this.state.gameDetails && this.state.gameDetails.platforms.map(elm => <span>{elm.platform.name}, </span>)}</p>
          </Col>          
 
                     </Row>
+
+
+                    
 
                 </Container>
             </>

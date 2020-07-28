@@ -1,8 +1,9 @@
 import React, { Component } from "react"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import GameService from "../../../service/GameService"
 import GenreCard from "./../Game-list/Game-card"
 import GenreBar from "./Genre-bar"
+import './Genre-list.css'
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
@@ -54,17 +55,18 @@ class GenreList extends Component {
         return (
             <>
                 <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
-            
+
 
                 {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
                 <Button onClick={this.handleNextPage} className="right">&#62;</Button>
                 <Container>
                     <GenreBar handleButtonBar={genre => this.handleButtonBar(genre)} />
 
-                   
-                    <h1>Genre: {this.state.genreCategory}</h1>
 
-                    <p>Page: {this.state.count} </p>
+                    <h1>Genre: {this.state.genreCategory}</h1>
+                    <div className="page-count">
+                        <p>Page: {this.state.count} </p>
+                    </div>
 
                     <Row>
                         {this.state.genreGames && this.state.genreGames.results.map((elm) =>

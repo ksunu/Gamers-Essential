@@ -7,3 +7,8 @@
     background-color: rgb(59, 32, 32);
     border: none;
 }
+
+.page-count p {
+    text-align: right;
+    margin: 10px;
+}

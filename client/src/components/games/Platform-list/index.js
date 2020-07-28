@@ -58,14 +58,17 @@ class PlatformList extends Component {
     render() {
         return (
             <>
-                <Container>
-                <h1>Platforms</h1>
                 <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
-                <PlatformBar handleButtonBar={platform => this.handleButtonBar(platform)} />
+                <Container>
+                    <h1>Platforms</h1>
 
-                {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button> }
-                <Button onClick={this.handleNextPage} className="right">&#62;</Button>
-                    <p>Page: {this.state.count} </p>
+                    <PlatformBar handleButtonBar={platform => this.handleButtonBar(platform)} />
+
+                    {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
+                    <Button onClick={this.handleNextPage} className="right">&#62;</Button>
+                    <div className="page-count">
+                        <p>Page: {this.state.count} </p>
+                    </div>
 
                     <Row>
                         {this.state.gamesByPlatform && this.state.gamesByPlatform.results.map((elm) =>
