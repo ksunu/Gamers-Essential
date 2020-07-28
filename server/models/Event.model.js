@@ -8,7 +8,7 @@ const eventSchema = new Schema({
 
     genre: {
         type: String,
-        enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR']
+        enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR', 'ADVENTURE', 'STRATEGY', 'FIGHTING', 'SPORTS']
     },
 
     brief: { type: String },

@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import CommunityService from '../../../service/CommunityService'
 import ProfileService from '../../../service/ProfileService'
 import CommentForm from './Comment-form'
-import './Community-details.css'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import Table from 'react-bootstrap/Table'
+import './Community-details.css'
 
 
 class CommunityDetails extends Component {
@@ -17,6 +19,7 @@ class CommunityDetails extends Component {
         super(props)
         this.state = {
             communityDetails: "",
+            showModal: false
         }
         this.communityService = new CommunityService()
         this.profileService = new ProfileService()
@@ -62,6 +65,13 @@ class CommunityDetails extends Component {
         this.updateCommunityList()
     }
 
+    handleModal = (status) => {
+
+        this.setState({ showModal: status })
+
+    }
+
+
 
 
     render() {
@@ -74,33 +84,33 @@ class CommunityDetails extends Component {
                     <div className="community-details-page">
 
                         <Row>
-                            <Col md={2}>
-                                {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
 
-                                {this.props.loggedInUser && <Button onClick={this.handleFav}>Add to Favourites</Button>}
-                                {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
-
-                            </Col>
-                            <Col md={5}>
-                                <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
-                            </Col>
-                            <Col md={5}>
-                                <h1>{this.state.communityDetails.title}</h1>
-                                <p><b>User:</b> {this.state.communityDetails.owner}</p>
-
-                                <p><b>Description:</b> {this.state.communityDetails.description}</p>
-
-                                <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
-                            </Col>
+                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleFav}>Add to Favourites</Button>}
+                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
 
                         </Row>
+
+                        <Row className="justify-content-center">
+                            <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
+
+                        </Row>
+
+                        <h1>{this.state.communityDetails.title}</h1>
+
+                        <p><b>Description:</b> {this.state.communityDetails.description}</p>
+
+                        <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
+
+
+
                         <hr></hr>
                         <Row>
-                            <Col>
-                                <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} />
+                            <Col md={5}>
+                                <Button className="btn btn-dark btn-md" onClick={() => this.handleModal(true)}>Insert Comment</Button>
+                                {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteComment}>Delete comment</Button>}
                             </Col>
-                            <Col>
-                                <table className="comments-table">
+                            <Col md={6}>
+                                <Table striped bordered variant="dark" className="comments-table">
                                     <thead>
                                         <th>User</th>
                                         <th>Comments</th>
@@ -115,11 +125,16 @@ class CommunityDetails extends Component {
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </Table>
                             </Col>
 
                         </Row>
                     </div>
+                    <Modal dialogClassName="modal-window" size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                        <Modal.Body className="modal-page">
+                            <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} handleModal={() => this.handleModal()} />
+                        </Modal.Body>
+                    </Modal>
 
                 </Container>
             </>

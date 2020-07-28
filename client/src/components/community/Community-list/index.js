@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import CommunityService from '../../../service/CommunityService'
-import './Community-list.css'
 import CommunityCard from './Community-card'
 import CommunityForm from '../Community-form'
 
+
+import './Community-list.css'
 // BOOTSTRAP COMPONENTS
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'

@@ -3,13 +3,14 @@ import { Link } from "react-router-dom"
 import GameService from "../../../service/GameService"
 import GameCard from "./Game-card"
 import SearchForm from "./Search-form"
-import "./Game-list.css"
+import Spinner from '../../ui/Spinner'
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Button from "react-bootstrap/Button"
 import Col from "react-bootstrap/Col"
+import "./Game-list.css"
 
 class GameList extends Component {
   constructor() {
@@ -43,7 +44,7 @@ class GameList extends Component {
   }
 
   handlePreviousPage = () => {
-    // TO-DO count <= 0 and page.length
+
     this.setState({ count: --this.state.count })
     this.updateGameList()
   }
@@ -59,14 +60,19 @@ class GameList extends Component {
 
   render() {
     return (
+
+
       <>
+        {!this.state.games && <Spinner />}
+
+
         <Link to="/games" className="back-btn-games"><Button variant="dark" type="submit">Back</Button></Link>
         {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
         <Button onClick={this.handleNextPage} className="right">&#62;</Button>
         <Container>
           <h1>All Games</h1>
 
-            <Row>
+          <Row>
             <Col md={6}>
 
               <SearchForm handleForm={input => this.handleForm(input)} />
@@ -77,14 +83,14 @@ class GameList extends Component {
                 <GameCard key={elm.id} {...elm} />))}
 
             </Col>
-            
+
           </Row>
 
 
           <div className="page-count">
-          <p>Page: {this.state.count} </p>
+            <p>Page: {this.state.count} </p>
           </div>
-            
+
           <Row>
             {this.state.games && this.state.games.map((elm) => (
               <GameCard key={elm.id} {...elm} />

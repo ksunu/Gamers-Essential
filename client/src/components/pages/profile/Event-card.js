@@ -20,35 +20,36 @@ class EventCard extends Component {
             .deleteFavEvent(this.props.elm._id, this.props.loggedInUser)
             .then(response => console.log(response))
             .then(this.props.updateCommunityList())
-        .catch(err => console.log(err))
+            .catch(err => console.log(err))
     }
 
     render() {
         return (
             <>
-                <Col className="event-detail-img" md={3}>
-                    <Link to={`/events/${this.props.elm._id}`}>
-                        <img src={this.props.elm.imageEvent} alt="" />
-                    </Link>
-                </Col>
-                <Col className="event-detail-content" md={2}>
-                    <Link to={`/events/${this.props.elm._id}`}>
-                        <h5>{this.props.elm.title}</h5>
-                        <p>{this.props.elm.genre}</p>
-                        <p>{this.props.elm.brief}</p>
-                        {/* <p>{this.props.elm.description}</p>
-                        <p>{this.props.elm.comments}</p> */}
-                        <p>{this.props.elm.owner}</p>
-                        <p>{this.props.elm.eventDate}</p>
-                        <p>{this.props.elm.locationName}</p>
-                    </Link>
-                </Col>
+                <Row className="event-detail-card text-center">
+                    <Col className="event-detail-img" lg={3}>
+                        <Link to={`/events/${this.props.elm._id}`}>
+                            <img src={this.props.elm.imageEvent} alt={this.props.elm._id} />
+                        </Link>
+                    </Col>
 
-                <Col>
-                    <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
+                    <Col lg={5}>
+                        <Link to={`/events/${this.props.elm._id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                            <h5>{this.props.elm.title}</h5>
+                            <p>{this.props.elm.brief}</p>
+                        </Link>
+                    </Col>
 
-                </Col>
-
+                    <Col clasName="text-center" lg={4}>
+                        <Link to={`/events/${this.props.elm._id}`} style={{ textDecoration: 'none', color: 'white' }}>
+                            <p>Owner:{this.props.elm.owner.username}</p>
+                            <p>Genre:{this.props.elm.genre}</p>
+                            <p>Location:{this.props.elm.locationName}</p>
+                            <p>Event Date:{new Date(this.props.elm.eventDate).toLocaleDateString()}</p>
+                        </Link>
+                    </Col>
+                </Row>
+                <Button onClick={() => this.handleDeleteFav()}>Remove</Button>
             </>
         )
     }

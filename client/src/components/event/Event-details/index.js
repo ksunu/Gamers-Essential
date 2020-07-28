@@ -9,12 +9,18 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import Table from 'react-bootstrap/Table'
+
+import './Event-details.css'
+
 
 class EventDetails extends Component {
     constructor() {
         super()
         this.state = {
-            eventDetails: ""
+            eventDetails: "",
+            showModal: false
         }
         this.eventService = new EventService()
         this.profileService = new ProfileService()
@@ -56,33 +62,52 @@ class EventDetails extends Component {
     }
 
 
+    handleModal = (status) => {
+
+        this.setState({ showModal: status })
+
+    }
+
+
+
+
     render() {
 
         return (
             <>
-                <Container as="main">
+                <Link className="btn btn-dark btn-md" to='/events'>Back</Link>
+                <Container className="event-detail-page">
+                    {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleFav}>Join Event</Button>}
+                    {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteFav}>Unjoin Event</Button>}
+                    <Row className="event-title">
+                        <h1>{this.state.eventDetails.title}</h1>
 
-                    <h1>{this.state.eventDetails.title}</h1>
-                    <h5>Created: {this.state.eventDetails.creationDate}</h5>
-
-                    {this.props.loggedInUser && <Button onClick={this.handleFav}>Join Event</Button>}
-                    {this.props.loggedInUser && <Button onClick={this.handleDeleteFav}>Unjoin Event</Button>}
+                    </Row>
                     <Row>
-                        <Col md={{ span: 5, offset: 1 }}>
+                        <Col md={6}>
+                            <img src={this.state.eventDetails.imageEvent} alt={this.state.eventDetails.title} />
+                        </Col>
+                        <Col md={6}>
+                            <p><b>Genre: </b>{this.state.eventDetails.genre}</p>
+                            <p><b>Location: </b>{this.state.eventDetails.locationName}</p>
+                            <p>Event Date: {new Date(this.state.eventDetails.eventDate).toLocaleDateString()}</p>
 
-                            <p><b>Description:</b> {this.state.eventDetails.description}</p>
-                            <p><b>Location:</b> {this.state.eventDetails.locationName}</p>
-                            <hr></hr>
-                            <p><b>Genre:</b> {this.state.eventDetails.genre}</p>
-                            <hr></hr>
-                            <table>
+                        </Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col className="event-description">
+                            <p>{this.state.eventDetails.description}</p>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+
+                            <Table striped bordered variant="dark" className="comments-table">
                                 <thead>
-                                    <th>
-                                        User
-                                    </th>
-                                    <th>
-                                        Comments
-                                    </th>
+                                    <th>User</th>
+                                    <th>Comments</th>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -94,19 +119,21 @@ class EventDetails extends Component {
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
-                            {this.props.loggedInUser && <Button onClick={this.handleDeleteComment}>Delete comment</Button>}
-                            <Link className="btn btn-dark btn-md" to='/events'>Back</Link>
+                            </Table>
+                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteComment}>Delete comment</Button>}
+                            <Button className="btn btn-dark btn-md" onClick={() => this.handleModal(true)}>Insert Comment</Button>
                         </Col>
-                        <Col md={{ span: 4, offset: 1 }}>
-                            <img src={this.state.eventDetails.imageEvent} alt={this.state.eventDetails.title} />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <CommentForm id={this.props.match.params.id} handleEventSubmit={this.handleEventSubmit} />
+
                     </Row>
 
-                </Container>
+
+                    <Modal dialogClassName="modal-window" size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                        <Modal.Body className="modal-page">
+                            <CommentForm id={this.props.match.params.id} handleEventSubmit={this.handleEventSubmit} handleModal={() => this.handleModal()} />
+                        </Modal.Body>
+                    </Modal>
+
+                </Container >
             </>
         )
     }

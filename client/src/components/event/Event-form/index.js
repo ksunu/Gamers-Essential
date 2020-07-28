@@ -6,6 +6,7 @@ import '../../community/Community-form/Community-form.css'
 // BOOTSTRAP COMPONENTS
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import './index.css'
 
 class EventForm extends Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class EventForm extends Component {
 
         return (
             <>
-                <div className="form">
+                <div className="event-form">
                     <h3>{this.props.id ? 'Modify event' : 'Create new event'}</h3>
                     <Form onSubmit={this.props.id ? this.handleUpdateSubmit : this.handleFormSubmit}>
                         <Form.Group>
@@ -71,24 +72,40 @@ class EventForm extends Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Brief Description</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="brief" value={this.state.brief} size="lg" type="text" placeholder="Brief description of your event" />
+                            <Form.Control onChange={this.handleInputChange} as="textarea" name="brief" value={this.state.brief} size="lg" type="text" placeholder="Brief description of your event" />
                         </Form.Group>
                         <br />
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
+                            <Form.Control style={{ height: 150 }} onChange={this.handleInputChange} as="textarea" name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
                         </Form.Group>
                         <br />
-                        {/* TO-DO checkbox Genre */}
+                        <Form.Group>
+                            <Form.Label>Location</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} name="locationName" value={this.state.locationName} type="text" placeholder="Lorem ipsum dolor sit amet...." />
+                        </Form.Group>
+                        <br />
+                        <Form.Group>
+                            <Form.Label>Location</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} name="eventDate" value={this.state.eventDate} type="date" placeholder="Lorem ipsum dolor sit amet...." />
+                        </Form.Group>
+                        <br />
                         <Form.Group>
                             <Form.Label>Genre</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text" />
+                            <Form.Control onChange={this.handleInputChange} as="select" name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text">
+                                <option value="ACTION">Action</option>
+                                <option value="SHOOTER">Shooter</option>
+                                <option value="RPG">Rpg</option>
+                                <option value="PLATFORMS">Platforms</option>
+                                <option value="HORROR">Horror</option>
+                                <option value="ADVENTURE">Adventure</option>
+                                <option value="STRATEGY">Strategy</option>
+                                <option value="FIGHTING">Fighting</option>
+                                <option value="SPORTS">Sports</option>
+
+                            </Form.Control>
+
                         </Form.Group>
-                        <br />
-                        {/* <Form.Group>
-                            <Form.Label>Image</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="imageEvent" value={this.state.imageEvent} size="sm" type="text" placeholder="imgURL" />
-                        </Form.Group> */}
 
                         <Form.Group>
                             <Form.Label>Image (jpg or png)</Form.Label>

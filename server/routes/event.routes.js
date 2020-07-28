@@ -15,7 +15,7 @@ const checkRole = rolesToCheck => (req, res, next) => req.isAuthenticated() && r
 router.get('/getAllEvent', (req, res, next) => {
 
     Event.find()
-        // .populate('owner')
+        .populate('owner')
         .then(response => res.json(response))
         .catch(err => next(err))
 })

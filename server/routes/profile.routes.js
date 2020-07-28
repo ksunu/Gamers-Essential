@@ -73,8 +73,6 @@ router.get('/getAllProfile/:id', (req, res, next) => {
 })
 
 
-
-
 // EDIT AVATAR
 router.post('/editAvatar/:user_id', (req, res, next) => {
 

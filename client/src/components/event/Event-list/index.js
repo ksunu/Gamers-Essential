@@ -14,7 +14,7 @@ class EventList extends Component {
     constructor() {
         super()
         this.state = {
-            events: [],
+            events: undefined,
             showModal: false,
             id: ""
         }
@@ -57,15 +57,14 @@ class EventList extends Component {
             <>
                 <Container>
                     <h1>Event List</h1>
-                    { this.props.loggedInUser &&
+                    {this.props.loggedInUser &&
                         <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new event</Button>
                     }
-                    <Row className="event-details">
-                        {this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal} handleDelete={this.handleDelete} loggedInUser={this.props.loggedInUser} className="event-details" />)}
-                    </Row>
+                    
+                        {this.state.events && this.state.events.map(elm => <EventCard key={elm._id} elm={elm} handleModal={this.handleModal} handleDelete={this.handleDelete} loggedInUser={this.props.loggedInUser} className="event-detail-card" />)}
                 </Container>
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
-                    <Modal.Body>
+                    <Modal.Body className="modal-page-event">
                         {!this.state.id ? <EventForm handleEventSubmit={this.handleEventSubmit} /> : <EventForm handleEventSubmit={this.handleEventSubmit} id={this.state.id} />}
                     </Modal.Body>
                 </Modal>

@@ -25,6 +25,7 @@ class CommentForm extends Component {
         this.eventService
             .createComment(this.props.id, this.state)
             .then(response => console.log(response))
+            .then(this.props.handleModal(false))
             .then(() => this.props.handleEventSubmit())
             .catch(err => console.log(err))
     }

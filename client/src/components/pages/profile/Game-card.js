@@ -30,16 +30,17 @@ class GameCard extends Component {
     render() {
         return (
             <>
-                <Col md={2} sm={3} xs={4}>
-                    <Card className="game-card">
-                        <Link to={`/games/${this.props.elm.data.id}`}>
+                <Col md={3} sm={4} xs={5}>
+                    <div className="game-card">
+                        <Link to={`/games/${this.props.elm.data.id}`} style={{ textDecoration: 'none' }}>
                             <img src={this.props.elm.data.background_image} alt={this.props.elm.data.name} />
 
                             <p>{this.props.elm.data.name}</p>
                         </Link>
-                        <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
-                    </Card>
+                    </div>
                 </Col>
+                <Button onClick={() => this.handleDeleteFav()}>Remove</Button>
+
             </>
         )
     }

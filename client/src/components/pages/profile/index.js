@@ -76,9 +76,6 @@ class Profile extends Component {
         this.updateCommunityList()
     }
 
-
-
-
     render() {
 
 
@@ -110,7 +107,7 @@ class Profile extends Component {
 
                             <h2>Favourite Community</h2>
                             <Row>
-                                {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard key={elm._id} elm={elm} loggedInUser={this.props.loggedInUser.avatar} updateCommunityList={() => this.updateCommunityList} />)}
+                                {this.state.allProfile && this.state.allProfile.favCommunity.map(elm => <CommunityCard key={elm._id} elm={elm} loggedInUser={this.props.loggedInUser} updateCommunityList={() => this.updateCommunityList} />)}
                             </Row>
 
                         </article>
@@ -128,7 +125,7 @@ class Profile extends Component {
                         <article>
                             <h2>Favourite Games</h2>
                             <Row>
-                                {/* {this.state.gameDetails && this.state.gameDetails.map(elm => <GameCard key={elm.data.id} elm={elm} loggedInUser={this.props.loggedInUser} updateFavGames={() => this.updateFavGames} />)} */}
+
 
                                 {this.state.gameDetails && this.state.gameDetails.map(elm =>
 

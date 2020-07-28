@@ -48,7 +48,7 @@ class PlatformList extends Component {
     }
 
     handlePreviousPage = () => {
-        // TO-DO count <= 0 and page.length
+
         this.setState({ count: --this.state.count })
         this.updateGameList()
     }

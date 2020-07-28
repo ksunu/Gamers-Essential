@@ -1,0 +1,9 @@
+.textarea {
+    height: 200px;
+}
+
+.event-form {
+    color: rgb(195, 233, 125);
+    font-size: 1.3em;
+    padding: 30px;
+}

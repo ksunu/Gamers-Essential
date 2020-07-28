@@ -2,12 +2,17 @@
 .community-details-page {
     margin: 70px;
     padding: 50px;
+    font-size: 1.3em;
 }
 .community-details-page img {
-    width: 100%;
+    width: 50%;
     object-fit: cover;
 }
 
 .comments-table {
 width: 100%;
+}
+
+.comments-table td {
+vertical-align: text-top;
 }

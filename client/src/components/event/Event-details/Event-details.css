@@ -1,0 +1,25 @@
+/* COMMUNITY DETAILS*/
+
+.event-detail-page img {
+    width: 100%;
+}
+
+.event-detail-page p {
+    font-size: 1.3em;
+}
+
+.event-title {
+margin:20px;
+}
+
+.event-description {
+    margin:20px;
+}
+
+.comments-table {
+width: 100%;
+}
+
+.comments-table td {
+vertical-align: text-top;
+}
