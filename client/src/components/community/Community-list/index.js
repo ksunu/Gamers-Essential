@@ -59,7 +59,7 @@ class CommunityList extends Component {
         return (
             <>
                 <Container as="main" className="community-page">
-                <h1>Community</h1>
+                    <h1>Community</h1>
                     {this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" size="sm" style={{ marginBottom: '20px' }}>Create new</Button>}
                     <Row classname="community-card-body">
                         {this.state.community.map(elm => <CommunityCard elm={elm} key={elm._id} handleModal={this.handleModal} handleDelete={this.handleDelete} loggedInUser={this.props.loggedInUser} />)}
@@ -67,8 +67,8 @@ class CommunityList extends Component {
 
                 </Container>
 
-                <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
-                    <Modal.Body>
+                <Modal dialogClassName="modal-window" size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
+                    <Modal.Body className="modal-page">
                         {!this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} handleToast={this.props.handelToast} /> : null}
                         {this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} handleToast={this.props.handleToast} id={this.state.id} /> : null}
                     </Modal.Body>

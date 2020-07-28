@@ -6,6 +6,8 @@ import './Community-form.css'
 // BOOTSTRAP COMPONENTS
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class CommunityForm extends Component {
     constructor(props) {
@@ -69,7 +71,7 @@ class CommunityForm extends Component {
                     <Form onSubmit={this.props.id ? this.handleUpdateSubmit : this.handleFormSubmit}>
                         <Form.Group>
                             <Form.Label>Title</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="title" value={this.state.title} size="lg" type="text" placeholder="Your game title" />
+                            <Form.Control className="form-control" onChange={this.handleInputChange} name="title" value={this.state.title} size="lg" type="text" placeholder="Your game title" />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Brief Description</Form.Label>
@@ -78,33 +80,39 @@ class CommunityForm extends Component {
                         <br />
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} as="textarea" name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
+                            <Form.Control style={{ height: 150 }} onChange={this.handleInputChange} as="textarea" name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
                         </Form.Group>
                         <br />
-                        
-                        <Form.Group>
-                            <Form.Label>Genre</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} as="select" name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text">
-                                <option value="ACTION">Action</option>
-                                <option value="SHOOTER">Shooter</option>  
-                                <option value="RPG">Rpg</option>
-                                <option value="PLATFORMS">Platforms</option> 
-                                <option value="HORROR">Horror</option> 
-                                <option value="ADVENTURE">Adventure</option> 
-                                <option value="STRATEGY">Strategy</option> 
-                                <option value="FIGHTING">Fighting</option> 
-                                <option value="SPORTS">Sports</option> 
+                        <Row>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Image: jpg or png *ONLY*</Form.Label>
+                                    <Form.Control name="imagProd" type="file" onChange={this.handleFileUpload} />
+                                </Form.Group>
 
-                            </Form.Control>
+                            </Col>
+                            <Col>
+                                <Form.Group>
+                                    <Form.Label>Genre</Form.Label>
+                                    <Form.Control onChange={this.handleInputChange} as="select" name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text">
+                                        <option value="ACTION">Action</option>
+                                        <option value="SHOOTER">Shooter</option>
+                                        <option value="RPG">Rpg</option>
+                                        <option value="PLATFORMS">Platforms</option>
+                                        <option value="HORROR">Horror</option>
+                                        <option value="ADVENTURE">Adventure</option>
+                                        <option value="STRATEGY">Strategy</option>
+                                        <option value="FIGHTING">Fighting</option>
+                                        <option value="SPORTS">Sports</option>
 
-                        </Form.Group>
-                        <br />
-                        <Form.Group>
-                            <Form.Label>Image (jpg or png)</Form.Label>
-                            <Form.Control name="imagProd" type="file" onChange={this.handleFileUpload} />
-                        </Form.Group>
+                                    </Form.Control>
 
-                    <Button variant="dark" type="submit">Submit</Button>
+                                </Form.Group>
+
+                            </Col>
+                        </Row>
+
+                        <Button variant="dark" type="submit">Submit</Button>
                     </Form>
                 </div>
             </>

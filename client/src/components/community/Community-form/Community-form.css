@@ -2,3 +2,7 @@
     color: #000;
     margin:20px;
 }
+
+.form-control {
+    opacity: 0.6;
+}
