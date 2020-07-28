@@ -43,9 +43,9 @@ router.post('/newEvent', checkAuthenticated, (req, res, next) => {
 // EDIT EVENT
 router.put('/editEvent/:event_id', checkAuthenticated, (req, res, next) => {
 
-    const { title, description, brief, genre, imageEvent, eventDate, comments, locationName } = req.body
+    const { title, description, brief, genre, imageEvent, eventDate, locationName } = req.body
 
-    Event.findByIdAndUpdate(req.params.event_id, { title, description, genre, imageEvent, eventDate, comments, locationName }, { new: true })
+    Event.findByIdAndUpdate(req.params.event_id, { title, brief, description, genre, imageEvent, eventDate, locationName }, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
 })

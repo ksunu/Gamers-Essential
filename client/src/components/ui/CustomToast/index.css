@@ -1,0 +1,10 @@
+.header-toast {
+    background-color: #000;
+    border: none;
+}
+
+.body-toast {
+    background-color: rgb(49, 68, 6);
+    border: none;
+    z-index: 9999;
+}

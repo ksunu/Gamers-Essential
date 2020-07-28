@@ -38,13 +38,14 @@ class CommunityForm extends Component {
             .then(response => {
                 console.log('Subida de archivo finalizada! La URL de Cloudinray es: ', response.data.secure_url)
                 this.setState({ imageProd: response.data.secure_url })
+                this.props.handleToast(true, 'Uploaded done')
             })
             .catch(err => console.log(err))
     }
 
     handleFormSubmit = e => {
         e.preventDefault()
-        this.communityService
+        this.state.imageProd && this.communityService
             .createCommunity(this.state)
             .then(() => this.props.handleCommunitySubmit())
             .catch(err => console.log(err))
@@ -52,7 +53,7 @@ class CommunityForm extends Component {
 
     handleUpdateSubmit = e => {
         e.preventDefault()
-        this.communityService
+        this.state.imageProd && this.communityService
             .editCommunity(this.props.id._id, this.state)
             .then(() => this.props.handleCommunitySubmit())
             .catch(err => console.log(err))
@@ -72,18 +73,30 @@ class CommunityForm extends Component {
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Brief Description</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="brief" value={this.state.brief} size="lg" type="text" placeholder="Brief description of your game" />
+                            <Form.Control onChange={this.handleInputChange} as="textarea" name="brief" value={this.state.brief} size="lg" type="text" placeholder="Brief description of your game" />
                         </Form.Group>
                         <br />
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
+                            <Form.Control onChange={this.handleInputChange} as="textarea" name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
                         </Form.Group>
                         <br />
-                        {/* TO-DO checkbox Genre */}
+                        
                         <Form.Group>
                             <Form.Label>Genre</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text" />
+                            <Form.Control onChange={this.handleInputChange} as="select" name="genre" value={this.state.genre} size="sm" type="text" placeholder="Small text">
+                                <option value="ACTION">Action</option>
+                                <option value="SHOOTER">Shooter</option>  
+                                <option value="RPG">Rpg</option>
+                                <option value="PLATFORMS">Platforms</option> 
+                                <option value="HORROR">Horror</option> 
+                                <option value="ADVENTURE">Adventure</option> 
+                                <option value="STRATEGY">Strategy</option> 
+                                <option value="FIGHTING">Fighting</option> 
+                                <option value="SPORTS">Sports</option> 
+
+                            </Form.Control>
+
                         </Form.Group>
                         <br />
                         <Form.Group>
@@ -91,7 +104,7 @@ class CommunityForm extends Component {
                             <Form.Control name="imagProd" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
 
-                        <Button variant="dark" type="submit">Submit</Button>
+                    <Button variant="dark" type="submit">Submit</Button>
                     </Form>
                 </div>
             </>

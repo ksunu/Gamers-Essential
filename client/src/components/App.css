@@ -3,6 +3,9 @@ h1 {
 }
 
 body {
+  background: url("./bkg.jpg");
+  background-size: cover;
+    background-repeat: no-repeat;
   font-family: 'Share Tech Mono', sans-serif;
   color: #fff;
 }

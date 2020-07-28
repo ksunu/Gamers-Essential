@@ -99,7 +99,7 @@ class CommunityDetails extends Component {
                             <Col>
                                 <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} />
                             </Col>
-                            <Col md={{ span: 8, offset: 1 }}>
+                            <Col>
                                 <table className="comments-table">
                                     <thead>
                                         <th>User</th>

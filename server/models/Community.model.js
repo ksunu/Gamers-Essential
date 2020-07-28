@@ -12,7 +12,7 @@ const communitySchema = new Schema({
 
     genre: {
         type: String,
-        enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR']
+        enum: ['ACTION', 'SHOOTER', 'RPG', 'PLATFORMS', 'HORROR', 'ADVENTURE', 'STRATEGY', 'FIGHTING', 'SPORTS']
     },
 
     owner: { type: Schema.Types.ObjectId, ref: "User" },

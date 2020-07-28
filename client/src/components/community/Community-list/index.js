@@ -12,8 +12,8 @@ import Modal from 'react-bootstrap/Modal'
 
 
 class CommunityList extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             community: [],
             id: ""
@@ -69,8 +69,8 @@ class CommunityList extends Component {
 
                 <Modal size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                     <Modal.Body>
-                        {!this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} /> : null}
-                        {this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} id={this.state.id} /> : null}
+                        {!this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} handleToast={this.props.handelToast} /> : null}
+                        {this.state.id ? <CommunityForm handleCommunitySubmit={this.handleCommunitySubmit} handleToast={this.props.handleToast} id={this.state.id} /> : null}
                     </Modal.Body>
                 </Modal>
             </>

@@ -43,9 +43,9 @@ router.post('/newCommunity', checkAuthenticated, (req, res, next) => {
 // EDIT COMMUNITY
 router.put('/editCommunity/:community_id', checkAuthenticated, (req, res, next) => {
 
-    const { title, description, genre, imageProd, comments } = req.body
+    const { title, description, genre, imageProd} = req.body
 
-    Community.findByIdAndUpdate(req.params.community_id, { title, description, genre, imageProd, comments }, { new: true })
+    Community.findByIdAndUpdate(req.params.community_id, { title, description, genre, imageProd}, { new: true })
         .then(response => res.json(response))
         .catch(err => next(err))
 })

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import './App.css'
+import './bkg.jpg'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import Games from './games'
@@ -29,7 +31,8 @@ class App extends Component {
     super()
     this.state = {
 
-      loggedInUser: null
+      loggedInUser: null,
+      toast: false
     }
 
     this.AuthService = new AuthService()
@@ -69,7 +72,7 @@ class App extends Component {
             this.state.loggedInUser ? <ProfilePage loggedInUser={this.state.loggedInUser} /> : <Redirect to='/signup' />}
           />
 
-          <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} />} />
+          <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} handleToast={this.handleToast}/>} />
           <Route path="/community/:id" render={props => <CommunityDetail loggedInUser={this.state.loggedInUser} {...props} />} />
           {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
 

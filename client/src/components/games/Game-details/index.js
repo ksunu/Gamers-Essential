@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import ReactPlayer from 'react-player'
+import { Carousel } from 'react-responsive-carousel'
 
 import GameService from '../../../service/GameService'
 import ProfileService from '../../../service/ProfileService'
@@ -8,16 +11,14 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom'
-import ReactPlayer from 'react-player'
-
 
 
 class GameDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            gameDetails: ""
+            gameDetails: "",
+            screenShots: ""
         }
         this.gameService = new GameService()
         this.profileService = new ProfileService()
@@ -31,7 +32,12 @@ class GameDetails extends Component {
             .getOneGame(id)
             .then(response => this.setState({ gameDetails: response.data }))
             .catch(err => console.log(err))
-
+        this.gameService
+            .getOneGameScreensShots(id)
+            .then(response => this.setState({ screenShots: response.data }))
+        
+               
+        
     }
 
     handleFav = () => {
@@ -64,15 +70,14 @@ class GameDetails extends Component {
                     <Button onClick={this.handleFav}>Add to favourites</Button>
                     <Button onClick={this.handleDeleteFav}>Remove from favourites</Button>
                     <Row className="image-detail">
+                       
                         <Col>
-                        <img src={this.state.gameDetails.background_image} alt={this.state.gameDetails.name} />
-                            
+                            <Carousel showArrows={true} >
+                        {this.state.screenShots && this.state.screenShots.results.map(elm => <div><img src={elm.image} alt={elm.id} /></div>)}
+                            </Carousel>
+                     
                         </Col>
-                        <Col>
-                            <img src={this.state.gameDetails.background_image_additional} alt={this.state.gameDetails.name} />
-                            
-                        </Col>
-
+                      
                     </Row>
                     <Row className="game-detail">
 
