@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import GoogleMapReact from 'google-map-react'
 import Marker from '../Marker/Marker'
-import mapStyles from '../GmapsStyles'
+
 
 
 export default class GmapMap extends Component {
