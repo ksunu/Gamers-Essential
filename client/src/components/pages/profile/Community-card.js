@@ -4,9 +4,8 @@ import ProfileService from '../../../service/ProfileService'
 import './Profile.css'
 
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
+
 
 class CommunityCard extends Component {
     constructor(props) {

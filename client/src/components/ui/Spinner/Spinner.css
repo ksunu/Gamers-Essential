@@ -4,9 +4,10 @@
     border-left: 3px solid black;
     border-right: 3px solid black;
     border-bottom: 3px solid rgb(201, 201, 201);
-    border-left: 3px solid rgb(201, 201, 201);
+    border-top: 3px solid rgb(201, 201, 201);
     border-radius: 50%;
-    animation: rotate-me 1s linear infinite
+    animation: rotate-me 1s linear infinite;
+    align-items: center;
 }
 
 @keyframes rotate-me {

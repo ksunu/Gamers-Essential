@@ -17,8 +17,8 @@
     transform: scale(1.2);
 }
 
-.event-detail-img img {
- width: 250px;
+.event-detail-img {
+ width: 100%;
 }
 
 .btn-card-2 {

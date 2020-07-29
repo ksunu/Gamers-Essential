@@ -66,7 +66,7 @@ class App extends Component {
 
 
         <Switch>
-          <Route exact path="/" render={() => <IndexPage />} />
+          <Route exact path="/" render={() => <IndexPage loggedInUser={this.state.loggedInUser} />} />
 
           <Route path="/profile" render={() =>
             this.state.loggedInUser ? <ProfilePage loggedInUser={this.state.loggedInUser} /> : <Redirect to='/signup' />}
