@@ -40,12 +40,14 @@ class GameList extends Component {
   handleNextPage = () => {
 
     this.setState({ count: ++this.state.count })
+    this.setState({games: undefined})
     this.updateGameList()
   }
 
   handlePreviousPage = () => {
 
     this.setState({ count: --this.state.count })
+    this.setState({ games: undefined })
     this.updateGameList()
   }
 
@@ -64,6 +66,7 @@ class GameList extends Component {
 
       <>
         {!this.state.games && <Spinner />}
+        
 
 
         <Link to="/games" className="back-btn-games"><Button variant="dark" type="submit">Back</Button></Link>

@@ -4,6 +4,7 @@ import GameService from "../../../service/GameService"
 import GenreCard from "./../Game-list/Game-card"
 import GenreBar from "./Genre-bar"
 import './Genre-list.css'
+import Spinner from '../../ui/Spinner'
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
@@ -42,18 +43,22 @@ class GenreList extends Component {
     handleNextPage = () => {
 
         this.setState({ count: ++this.state.count })
+        this.setState({ genreGames: undefined})
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
-        // TO-DO count <= 0 and page.length
         this.setState({ count: --this.state.count })
+        this.setState({ genreGames: undefined })
         this.updateGameList()
     }
 
     render() {
         return (
             <>
+                
+                {!this.state.genreGames && <Spinner />}
+
                 <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
 
 

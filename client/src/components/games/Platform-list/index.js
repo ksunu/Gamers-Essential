@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import GameService from "../../../service/GameService"
 import PlatformCard from "./../Game-list/Game-card"
 import PlatformBar from "./Platform-bar"
+import Spinner from '../../ui/Spinner'
 
 // BOOTSTRAP COMPONENTS
 import Container from "react-bootstrap/Container"
@@ -36,6 +37,7 @@ class PlatformList extends Component {
     handleButtonBar = platform => {
 
         this.setState({ platformCategory: platform })
+        this.setState({ gamesByPlatform: undefined })
         this.updateGameList()
 
 
@@ -44,12 +46,14 @@ class PlatformList extends Component {
     handleNextPage = () => {
 
         this.setState({ count: ++this.state.count })
+        this.setState({ gamesByPlatform: undefined})
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
 
         this.setState({ count: --this.state.count })
+        this.setState({ gamesByPlatform: undefined })
         this.updateGameList()
     }
 
@@ -58,6 +62,9 @@ class PlatformList extends Component {
     render() {
         return (
             <>
+                
+                {!this.state.gamesByPlatform && <Spinner />}
+
                 <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
                 <Container>
                     <h1>Platforms</h1>
