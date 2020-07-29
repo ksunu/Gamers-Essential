@@ -18,13 +18,14 @@
     margin-top: 30px;
 }
 
-.community-section h2 {
-    text-align: right;
-}
-
 .fav-community img {
     width: 100%;
     height: 100px;
+}
+
+/* GAME-CARD*/
+.profGame {
+    margin-bottom: 150px;
 }
 
 

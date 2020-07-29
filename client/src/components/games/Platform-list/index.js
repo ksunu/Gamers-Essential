@@ -36,24 +36,21 @@ class PlatformList extends Component {
 
     handleButtonBar = platform => {
 
-        this.setState({ platformCategory: platform })
-        this.setState({ gamesByPlatform: undefined })
-        this.updateGameList()
 
+        this.setState({ platformCategory: platform, count: 1, gamesByPlatform: undefined })
+        this.updateGameList()
 
     }
 
     handleNextPage = () => {
 
-        this.setState({ count: ++this.state.count })
-        this.setState({ gamesByPlatform: undefined})
+        this.setState({ count: ++this.state.count, gamesByPlatform: undefined })
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
 
-        this.setState({ count: --this.state.count })
-        this.setState({ gamesByPlatform: undefined })
+        this.setState({ count: --this.state.count, gamesByPlatform: undefined })
         this.updateGameList()
     }
 
@@ -62,10 +59,10 @@ class PlatformList extends Component {
     render() {
         return (
             <>
-                
-                {!this.state.gamesByPlatform && <Spinner />}
 
-                <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
+                {!this.state.gamesByPlatform && <Spinner />}
+                {!this.state.platformCategory && <Spinner />}
+                <Link to="/games"><Button variant="dark" type="submit" className="btn-default">&#10229;</Button></Link>
                 <Container>
                     <h1>Platforms</h1>
 

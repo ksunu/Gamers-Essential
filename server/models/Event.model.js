@@ -23,7 +23,13 @@ const eventSchema = new Schema({
 
     locationName: { type: String },
 
-    coordinates: { type: [Number], required: true },
+    loc: {
+        city: {
+            type: String,
+            default: 'Madrid'
+        },
+        coordinates: [Number]
+    },
 
     comments: { type: [String] },
 
@@ -35,3 +41,5 @@ const eventSchema = new Schema({
 
 const Event = mongoose.model("Event", eventSchema)
 module.exports = Event
+
+

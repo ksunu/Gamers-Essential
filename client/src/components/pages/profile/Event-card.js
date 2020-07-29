@@ -40,7 +40,7 @@ class EventCard extends Component {
                         </Link>
                     </Col>
 
-                    <Col clasName="text-center" lg={4}>
+                    <Col clasName="text-center" lg={3}>
                         <Link to={`/events/${this.props.elm._id}`} style={{ textDecoration: 'none', color: 'white' }}>
                             <p>Owner:{this.props.elm.owner.username}</p>
                             <p>Genre:{this.props.elm.genre}</p>
@@ -48,8 +48,10 @@ class EventCard extends Component {
                             <p>Event Date:{new Date(this.props.elm.eventDate).toLocaleDateString()}</p>
                         </Link>
                     </Col>
-                </Row>
+                    <Col lg={1}>
                 <Button onClick={() => this.handleDeleteFav()}>Remove</Button>
+</Col>
+                </Row>
             </>
         )
     }

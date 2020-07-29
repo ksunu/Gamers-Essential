@@ -91,16 +91,18 @@ class GameDetails extends Component {
                             </Col>
 
                         </Row>
-                        <Row className="game-detail">
+                        <Row className="game-detail mb-5">
 
                             <p>{this.state.gameDetails.description_raw}</p>
                         </Row>
-                        <Row>
+                        <Row className=" mb-5">
                             <Col className="video-player" md={12}>
-                                <ReactPlayer url={this.state.gameDetails && this.state.gameDetails.clip.clips.full} playing={true} volume={0} loop={true} controls={true} />
+
+                            {this.state.gameDetails && this.state.gameDetails.clip ? <ReactPlayer url={this.state.gameDetails && this.state.gameDetails.clip.clips.full} playing={true} volume={0} loop={true} controls={true} /> : <h1>No video available</h1>}
+                                
                             </Col>
                         </Row>
-                        <Row>
+                        <Row className=" mb-5">
                             <Col className="game-info" md={6}>
 
 

@@ -78,7 +78,7 @@ class CommunityDetails extends Component {
 
         return (
             <>
-                <Link className="btn btn-dark btn-md" to='/community'>Back</Link>
+                <Link style={{ textDecoration: 'none' }} to='/community'><Button className="btn-default">&#10229;</Button></Link>
                 <Container as="span">
 
                     <div className="community-details-page">

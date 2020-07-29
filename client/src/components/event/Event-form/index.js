@@ -3,6 +3,9 @@ import EventService from '../../../service/EventService'
 import FilesService from '../../../service/FilesService'
 import '../../community/Community-form/Community-form.css'
 
+import GmapsPlaces from './../../maps/GmapsPlaces/GmapsPlaces'
+
+
 // BOOTSTRAP COMPONENTS
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -18,7 +21,11 @@ class EventForm extends Component {
             genre: this.props.id ? this.props.id.genre : "",
             imageEvent: this.props.id ? this.props.id.imageEvent : "",
             locationName: this.props.id ? this.props.id.locationName : "",
-            eventDate: this.props.id ? this.props.id.eventDate : ""
+            eventDate: this.props.id ? this.props.id.eventDate : "",
+            loc: {
+                city: '',
+                coordinates: []
+            }
         }
         this.eventService = new EventService()
         this.filesService = new FilesService()
@@ -59,6 +66,14 @@ class EventForm extends Component {
             .catch(err => console.log(err))
     }
 
+    getData = (data) => {
+        this.setState({
+            ...this.state,
+            loc: { city: data.city, coordinates: [data.coordinates.lat, data.coordinates.lng] }
+        })
+    }
+
+
     render() {
 
         return (
@@ -86,7 +101,7 @@ class EventForm extends Component {
                         </Form.Group>
                         <br />
                         <Form.Group>
-                            <Form.Label>Location</Form.Label>
+                            <Form.Label>Event Date</Form.Label>
                             <Form.Control onChange={this.handleInputChange} name="eventDate" value={this.state.eventDate} type="date" placeholder="Lorem ipsum dolor sit amet...." />
                         </Form.Group>
                         <br />
@@ -111,6 +126,13 @@ class EventForm extends Component {
                             <Form.Label>Image (jpg or png)</Form.Label>
                             <Form.Control name="imageEvent" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
+
+                        {/* <Form.Group controlId="loc">
+                            <Form.Label>Address</Form.Label>
+                            <GmapsPlaces getData={(data => this.getData(data))}></GmapsPlaces>
+                        </Form.Group> */}
+
+
 
                         <Button variant="dark" type="submit">Submit</Button>
                     </Form>

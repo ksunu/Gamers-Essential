@@ -1,5 +1,6 @@
 .game-detail {
 margin: 10px;
+
 }
 
 .image-detail img {
@@ -11,7 +12,7 @@ margin: 10px;
 
 .game-detail p {
     margin-top: 25px;
-    color: rgb(156, 148, 148);
+  color: rgb(150, 194, 69);
 }
 
 .game-info {

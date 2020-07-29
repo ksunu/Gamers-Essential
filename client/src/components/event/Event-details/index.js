@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import EventService from '../../../service/EventService'
 import ProfileService from '../../../service/ProfileService'
 import CommentForm from './Comment-form'
+import GmapMap from '../../maps/gMapsMap/map'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -20,7 +21,9 @@ class EventDetails extends Component {
         super()
         this.state = {
             eventDetails: "",
-            showModal: false
+            showModal: false,
+
+
         }
         this.eventService = new EventService()
         this.profileService = new ProfileService()
@@ -75,7 +78,7 @@ class EventDetails extends Component {
 
         return (
             <>
-                <Link className="btn btn-dark btn-md" to='/events'>Back</Link>
+                <Link style={{ textDecoration: 'none' }} to='/events'><Button className="btn-default">&#10229;</Button></Link>
                 <Container className="event-detail-page">
                     {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleFav}>Join Event</Button>}
                     {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteFav}>Unjoin Event</Button>}
@@ -132,8 +135,10 @@ class EventDetails extends Component {
                             <CommentForm id={this.props.match.params.id} handleEventSubmit={this.handleEventSubmit} handleModal={() => this.handleModal()} />
                         </Modal.Body>
                     </Modal>
+                    {/* 
+                    <GmapMap pos={this.state.project.loc.coordinates} marker={true} /> */}
 
-                </Container >
+                </Container>
             </>
         )
     }

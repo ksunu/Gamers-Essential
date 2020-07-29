@@ -8,6 +8,9 @@
     border-radius: 50%;
     animation: rotate-me 1s linear infinite;
     align-items: center;
+    position: relative;
+    top: 50%; 
+    left: 50%;
 }
 
 @keyframes rotate-me {

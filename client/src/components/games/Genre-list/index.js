@@ -42,14 +42,12 @@ class GenreList extends Component {
 
     handleNextPage = () => {
 
-        this.setState({ count: ++this.state.count })
-        this.setState({ genreGames: undefined})
+        this.setState({ count: ++this.state.count, genreGames: undefined })
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
-        this.setState({ count: --this.state.count })
-        this.setState({ genreGames: undefined })
+        this.setState({ count: --this.state.count, genreGames: undefined  })
         this.updateGameList()
     }
 
@@ -59,7 +57,8 @@ class GenreList extends Component {
                 
                 {!this.state.genreGames && <Spinner />}
 
-                <Link to="/games"><Button variant="dark" type="submit">Back</Button></Link>
+                <Link to="/games"><Button className="btn-default" variant="dark" type="submit">	
+                    &#10229;</Button></Link>
 
 
                 {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}
