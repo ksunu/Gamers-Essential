@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import './App.css'
 import './bkg.jpg'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
@@ -20,9 +19,9 @@ import SignupForm from './auth/Signup-form'
 import LoginForm from './auth/Login-form'
 import ProfilePage from './pages/profile'
 
-// BOOTSTRAP Component
 import Navigation from './ui/Navbar'
 import Message from './ui/CustomToast'
+import './App.scss'
 
 
 

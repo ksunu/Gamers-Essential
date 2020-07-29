@@ -22,8 +22,6 @@ export default class GmapMap extends Component {
         },
         zoom: 17,
 
-        // Maps.defaultProps = googleMapStyles
-        // mapStyle: mapStyles
 
     }
 
