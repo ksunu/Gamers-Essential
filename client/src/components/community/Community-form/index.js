@@ -76,6 +76,7 @@ class CommunityForm extends Component {
                         <Form.Group>
                             <Form.Label>Brief Description</Form.Label>
                             <Form.Control onChange={this.handleInputChange} as="textarea" name="brief" value={this.state.brief} size="lg" type="text" placeholder="Brief description of your game" />
+                            <p style={{ color: 'lightgrey', fontSize: 16 }}>Max. 140 characters</p>
                         </Form.Group>
                         <br />
                         <Form.Group>

@@ -76,6 +76,8 @@ class EventDetails extends Component {
 
     render() {
 
+
+
         return (
             <>
                 <Link style={{ textDecoration: 'none' }} to='/events'><Button className="btn-default">&#10229;</Button></Link>
@@ -105,7 +107,13 @@ class EventDetails extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col>
+                        <Col md={5}>
+                            {this.props.loggedInUser &&
+                                <Button className="btn btn-dark btn-md" onClick={() => this.handleModal(true)}>Insert Comment</Button>}
+                            {this.props.loggedInUser &&
+                                <Button className="btn btn-dark btn-md" onClick={this.handleDeleteComment}>Delete comment</Button>}
+                        </Col>
+                        <Col md={6}>
 
                             <Table striped bordered variant="dark" className="comments-table">
                                 <thead>
@@ -123,8 +131,6 @@ class EventDetails extends Component {
                                     </tr>
                                 </tbody>
                             </Table>
-                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteComment}>Delete comment</Button>}
-                            <Button className="btn btn-dark btn-md" onClick={() => this.handleModal(true)}>Insert Comment</Button>
                         </Col>
 
                     </Row>
@@ -135,8 +141,8 @@ class EventDetails extends Component {
                             <CommentForm id={this.props.match.params.id} handleEventSubmit={this.handleEventSubmit} handleModal={() => this.handleModal()} />
                         </Modal.Body>
                     </Modal>
-                    {/* 
-                    <GmapMap pos={this.state.project.loc.coordinates} marker={true} /> */}
+
+                    {this.state.eventDetails && <GmapMap pos={ this.state.eventDetails.loc.coordinates} marker={true} />}
 
                 </Container>
             </>

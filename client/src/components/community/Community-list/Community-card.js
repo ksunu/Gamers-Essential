@@ -35,11 +35,11 @@ const CommunityCard = props => {
                 </Row>
                 <Row className="text-center">
                     <Col>
-                        {props.loggedInUser._id == props.elm.owner._id && <Button variant="dark" size="sm" className="community-edit" onClick={() => props.handleModal(true, props.elm)}>Edit</Button>}
+                        {props.loggedInUser._id == props.elm.owner._id && <Button variant="dark" size="sm" className="btn-default-general" onClick={() => props.handleModal(true, props.elm)}>Edit</Button>}
 
                     </Col>
                     <Col>
-                        {props.loggedInUser._id == props.elm.owner._id && <Button variant="dark" size="sm" className="community-delete" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>}
+                        {props.loggedInUser._id == props.elm.owner._id && <Button variant="dark" size="sm" className="btn-default-general" onClick={() => props.handleDelete(props.elm._id)}>Delete</Button>}
 
                     </Col>
 

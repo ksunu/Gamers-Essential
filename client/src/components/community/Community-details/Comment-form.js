@@ -37,11 +37,12 @@ class CommentForm extends Component {
 
                 <Form onSubmit={this.handleFormSubmit}>
                     <Form.Group>
-                        <Form.Label>User</Form.Label>
+                        <Form.Label style={{ fontSize: 30 }}>User</Form.Label>
                         <Form.Control onChange={this.handleInputChange} name="commentsUser" value={this.state.commentsUser} size="lg" type="text" />
 
-                        <Form.Label>Post your comment</Form.Label>
-                        <Form.Control onChange={this.handleInputChange} name="comments" value={this.state.comments} size="lg" type="text" />
+                        <Form.Label style={{ fontSize: 30 }}>Post your comment</Form.Label>
+                        <Form.Control style={{height: 200}} onChange = { this.handleInputChange } as="textarea" name="comments" value={this.state.comments} size="lg" type="text" />
+                        <p style={{ color: 'lightgrey', fontSize: 16 }}>Max. 140 characters</p>
                         <Button variant="dark" type="submit">Submit </Button>
                     </Form.Group>
                 </Form>

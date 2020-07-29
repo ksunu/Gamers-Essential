@@ -83,7 +83,7 @@ class Profile extends Component {
         return (
             <>
                 <Container>
-                    <h1>Your profile</h1>
+            
                     <section>
 
                         <Modal size="md" show={this.state.showModal} onHide={() => this.handleModal(false)}>
@@ -98,7 +98,7 @@ class Profile extends Component {
                                     <Button onClick={() => this.handleModal(true)} variant="dark" size="xs" style={{ width: 150 }}>Upload new avatar</Button>
                                 </Col>
                                 <Col md={8}>
-                                    <h3>¡Hi, {this.props.loggedInUser.username}!</h3>
+                                    <h3>¡Hi {this.props.loggedInUser.username}, nice to see you again!</h3>
                                 </Col>
                             </Row>
                         </article>

@@ -3,8 +3,7 @@ import EventService from '../../../service/EventService'
 import FilesService from '../../../service/FilesService'
 import '../../community/Community-form/Community-form.css'
 
-import GmapsPlaces from './../../maps/GmapsPlaces/GmapsPlaces'
-
+import GmapsPlaces from '../../maps/GmapsPlaces/GmapsPlaces.jsx'
 
 // BOOTSTRAP COMPONENTS
 import Form from 'react-bootstrap/Form'
@@ -88,6 +87,7 @@ class EventForm extends Component {
                         <Form.Group>
                             <Form.Label>Brief Description</Form.Label>
                             <Form.Control onChange={this.handleInputChange} as="textarea" name="brief" value={this.state.brief} size="lg" type="text" placeholder="Brief description of your event" />
+                            <p style={{ color: 'lightgrey', fontSize: 16 }}>Max. 140 characters</p>
                         </Form.Group>
                         <br />
                         <Form.Group>
@@ -95,11 +95,7 @@ class EventForm extends Component {
                             <Form.Control style={{ height: 150 }} onChange={this.handleInputChange} as="textarea" name="description" value={this.state.description} type="text" placeholder="Lorem ipsum dolor sit amet...." />
                         </Form.Group>
                         <br />
-                        <Form.Group>
-                            <Form.Label>Location</Form.Label>
-                            <Form.Control onChange={this.handleInputChange} name="locationName" value={this.state.locationName} type="text" placeholder="Lorem ipsum dolor sit amet...." />
-                        </Form.Group>
-                        <br />
+                       
                         <Form.Group>
                             <Form.Label>Event Date</Form.Label>
                             <Form.Control onChange={this.handleInputChange} name="eventDate" value={this.state.eventDate} type="date" placeholder="Lorem ipsum dolor sit amet...." />
@@ -119,7 +115,11 @@ class EventForm extends Component {
                                 <option value="SPORTS">Sports</option>
 
                             </Form.Control>
-
+                        </Form.Group>
+                        
+                        <Form.Group>
+                            <Form.Label>Location</Form.Label>
+                            <GmapsPlaces getData={(data => this.getData(data))}></GmapsPlaces>
                         </Form.Group>
 
                         <Form.Group>
@@ -127,10 +127,6 @@ class EventForm extends Component {
                             <Form.Control name="imageEvent" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
 
-                        {/* <Form.Group controlId="loc">
-                            <Form.Label>Address</Form.Label>
-                            <GmapsPlaces getData={(data => this.getData(data))}></GmapsPlaces>
-                        </Form.Group> */}
 
 
 

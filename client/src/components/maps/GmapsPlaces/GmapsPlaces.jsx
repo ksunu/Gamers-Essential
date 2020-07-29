@@ -4,6 +4,7 @@ import PlacesAutocomplete, {
     getLatLng
 } from 'react-places-autocomplete'
 
+
 export default class GmapsPlaces extends React.Component {
     constructor(props) {
         super(props);
