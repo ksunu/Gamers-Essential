@@ -7,7 +7,9 @@ import Marker from '../Marker/Marker'
 export default class GmapMap extends Component {
     constructor(props) {
         super(props)
+        this.state = {
 
+        }
     }
 
     state = {

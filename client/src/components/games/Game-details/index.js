@@ -66,7 +66,7 @@ class GameDetails extends Component {
 
         return (
             <>
-                <Link className="btn-default" to='/games'>&#10229;</Link>
+                <Link className="btn-default" to='/games' style={{textDecoration: 'none'}}>&#10229;</Link>
 
                 {!this.state.gameDetails && this.state.screenShots ? <Spinner /> :
 

@@ -9,7 +9,6 @@ import './Community-list.css'
 // BOOTSTRAP COMPONENTS
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 
