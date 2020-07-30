@@ -1,18 +1,15 @@
 /* COMMUNITY DETAILS*/
 .community-details-page {
-    margin: 70px;
-    padding: 50px;
     font-size: 1.3em;
+    
 }
 .community-details-page img {
-    width: 50%;
+    width: 100%;
+    height: 250px;
     object-fit: cover;
 }
 
-.comments-table {
-width: 100%;
-}
 
-.comments-table td {
-vertical-align: text-top;
-}
+
+
+

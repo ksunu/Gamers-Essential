@@ -10,7 +10,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import Table from 'react-bootstrap/Table'
 import './Community-details.css'
 
 
@@ -45,6 +44,7 @@ class CommunityDetails extends Component {
         this.profileService
             .addFavCommunity(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
+            .then(this.props.handleToast(true, 'Added to favourites'))
             .catch(err => console.log(err))
     }
 
@@ -53,6 +53,7 @@ class CommunityDetails extends Component {
         this.profileService
             .deleteFavCommunity(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
+            .then(this.props.handleToast(true, 'Removed from favourites'))
             .catch(err => console.log(err))
     }
 
@@ -78,64 +79,64 @@ class CommunityDetails extends Component {
 
         return (
             <>
-                <Link style={{ textDecoration: 'none' }} to='/community'><Button className="btn-default">&#10229;</Button></Link>
                 <Container as="span">
+                    <Link style={{ textDecoration: 'none' }} to='/community'><Button variant="dark" className="btn-default">&#10229;</Button></Link>
+                      
+                    <Row className="justify-content-end" style={{paddingRight: 50}}>
+                            {this.props.loggedInUser && <Button variant="dark" className="fav-btn-add" onClick={this.handleFav}>Add to Favourites</Button>}
+                            {this.props.loggedInUser && <Button variant="dark" className="fav-btn-remove" onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
+                    </Row>
 
-                    <div className="community-details-page">
+                    <div className="">
+                        <div className="text-center">
+                            <h1 style={{ marginTop: 20 }}>{this.state.communityDetails.title}</h1>
+                        </div>
 
-                        <Row>
+                        <Row style={{marginTop: 40, marginBottom:0}} className="justify-content-center">
+                            <Col md={4}>
+                                <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
 
-                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleFav}>Add to Favourites</Button>}
-                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteFav}>Delete from Favourites</Button>}
+                            </Col>
+                            <Col className="my-auto" md={6}>
+                                <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
+                                <p><b>Description:</b> {this.state.communityDetails.description}</p>
+                            </Col>
 
                         </Row>
-
-                        <Row className="justify-content-center">
-                            <img src={this.state.communityDetails.imageProd} alt={this.state.communityDetails.title} className="community-img" />
-
-                        </Row>
-
-                        <h1>{this.state.communityDetails.title}</h1>
-
-                        <p><b>Description:</b> {this.state.communityDetails.description}</p>
-
-                        <p><b>Genre:</b> {this.state.communityDetails.genre}</p>
-
-
 
                         <hr></hr>
-                        <Row>
-                            <Col md={5}>
-                                <Button className="btn btn-dark btn-md" onClick={() => this.handleModal(true)}>Insert Comment</Button>
-                                {this.props.loggedInUser && <Button className="btn btn-dark btn-md" onClick={this.handleDeleteComment}>Delete comment</Button>}
-                            </Col>
-                            <Col md={6}>
-                                <Table striped bordered variant="dark" className="comments-table">
-                                    <thead>
-                                        <th>User</th>
-                                        <th>Comments</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                {this.state.communityDetails && this.state.communityDetails.commentsUser.map(elm => <p>{elm}:</p>)}
-                                            </td>
-                                            <td>
-                                                {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
+                        <Row className="box-row">
+
+                            <Col md={12}>
+                                <div className="box box1">
+                                    <Link style={{ textDecoration: 'none', color: 'white', fontSize: 30, marginTop: 30 }} onClick={() => this.handleModal(true)}> <b className="oddboxinner">Insert comments</b></Link>
+                                    {this.props.loggedInUser && <Link style={{ textDecoration: 'none', color: 'white', fontSize: 30, marginTop: 30 }} onClick={this.handleDeleteComment}> <b className="oddboxinner2">Delete comment</b></Link>}
+                                    <table className="table-comments">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    {this.state.communityDetails && this.state.communityDetails.commentsUser.map(elm => <p>{elm}:</p>)}
+                                                </td>
+                                                <td>
+                                                    {this.state.communityDetails && this.state.communityDetails.comments.map(elm => <p>{elm}</p>)}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
                             </Col>
 
                         </Row>
+                     <br></br>
                     </div>
                     <Modal dialogClassName="modal-window" size="lg" show={this.state.showModal} onHide={() => this.handleModal(false)}>
                         <Modal.Body className="modal-page">
                             <CommentForm id={this.props.match.params.id} handleCommunitySubmit={this.handleCommunitySubmit} handleModal={() => this.handleModal()} />
                         </Modal.Body>
                     </Modal>
-
                 </Container>
             </>
         )

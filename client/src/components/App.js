@@ -45,7 +45,7 @@ class App extends Component {
     this.AuthService
       .isLoggedIn()
       .then(response => this.state.loggedInUser === null && this.setState({ loggedInUser: response.data }))
-    // .catch(err => console.log({ err }))
+      .catch(err => console.log({ err }))
   }
 
   handleToast = (visible, text = '') => {
@@ -72,18 +72,18 @@ class App extends Component {
           />
 
           <Route exact path="/community" render={() => <CommunityList loggedInUser={this.state.loggedInUser} handleToast={this.handleToast}/>} />
-          <Route path="/community/:id" render={props => <CommunityDetail loggedInUser={this.state.loggedInUser} {...props} />} />
-          {/* <Route exact path="/community/comment/:id" render={props => <CommentForm {...props} />} /> */}
+          <Route path="/community/:id" render={props => <CommunityDetail loggedInUser={this.state.loggedInUser} handleToast={this.handleToast} {...props} />}  />
+
 
 
           <Route exact path="/games" render={() => <Games loggedInUser={this.state.loggedInUser} />} />
           <Route exact path="/games/allGames" render={() => <GameList />} />
           <Route exact path="/games/genres" render={() => <GenreList />} />
           <Route exact path="/games/platforms" render={() => <PlatformList />} />
-          <Route exact path="/games/:id" render={props => <GameDetail loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route exact path="/games/:id" render={props => <GameDetail loggedInUser={this.state.loggedInUser} {...props} handleToast={this.handleToast}/>} />
 
           <Route exact path="/events" render={() => <EventList loggedInUser={this.state.loggedInUser} />} />
-          <Route path="/events/:id" render={props => <EventDetail loggedInUser={this.state.loggedInUser} {...props} />} />
+          <Route path="/events/:id" render={props => <EventDetail loggedInUser={this.state.loggedInUser} {...props} handleToast={this.handleToast} />} />
 
           <Route path="/signup" render={props => <SignupForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />
           <Route path="/login" render={props => <LoginForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />

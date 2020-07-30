@@ -6,7 +6,7 @@
 
 .platform-bar img{
     height: 35px;
-   width:100%px;
+   width:100px;
    object-fit: cover;
 }
 
@@ -26,6 +26,11 @@
 .pc:hover {
     opacity: 1;
     background-color: #fff;
+}
+
+.pc img {
+    width: 40px;
+    object-fit: cover;
 }
 
 /* PS4 */
@@ -81,6 +86,11 @@
      opacity: 0.7;
 }
 
+.xbox-one img {
+    height: 15px;
+    object-fit: cover;
+}
+
 .xbox-one:hover {
     opacity: 1;
     background-color: #fff;
@@ -104,6 +114,10 @@
     background-color: #fff;
 }
 
+.xbox-x img {
+    width: 38px;
+    object-fit: cover;
+}
 
 
 /* SWITCH */

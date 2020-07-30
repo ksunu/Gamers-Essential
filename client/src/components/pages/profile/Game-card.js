@@ -6,6 +6,7 @@ import ProfileService from '../../../service/ProfileService'
 // BOOTSTRAP COMPONENTS
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
 import './Profile.css'
 
 class GameCard extends Component {
@@ -20,7 +21,7 @@ class GameCard extends Component {
     handleDeleteFav = () => {
 
         this.profileService
-            .deleteFavGame(this.props.elm.data.id, this.props.loggedInUser)
+            .deleteFavGame(this.props.elm.id, this.props.loggedInUser)
             .then(response => console.log(response))
             .then(this.props.updateFavGames())
             .catch(err => console.log(err))
@@ -32,12 +33,12 @@ class GameCard extends Component {
             <>
                 <Col md={3} sm={4} xs={5}>
                     <div className="game-card profGame">
-                        <Link to={`/games/${this.props.elm.data.id}`} style={{ textDecoration: 'none' }}>
-                            <img src={this.props.elm.data.background_image} alt={this.props.elm.data.name} />
+                        <Link to={`/games/${this.props.elm.id}`} style={{ textDecoration: 'none' }}>
+                            <img src={this.props.elm.background_image} alt={this.props.elm.name} />
 
-                            <p>{this.props.elm.data.name}</p>
+                            <p>{this.props.elm.name}</p>
                         </Link>
-                        <Button onClick={() => this.handleDeleteFav()}>Remove</Button>
+                        <Button className="fav-btn-remove" variant="dark" onClick={() => this.handleDeleteFav()}>Remove</Button>
                     </div>
                 </Col>
 

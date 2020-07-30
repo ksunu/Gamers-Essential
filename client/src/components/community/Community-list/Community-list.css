@@ -1,7 +1,6 @@
 .community-card {
     margin:40px;
     width: 250px;
-    border: inherit solid #000;
     box-shadow: 5px 5px 5px rgba(94, 78, 78, 0.555);
     background-color: inherit;
     border-radius: 15px;
@@ -11,14 +10,19 @@
 }
 
 .community-card-body {
-    color: rgb(150, 194, 69);
-padding: 5px;
+    color: #fff;
+    margin-left:15px;
+    width: 240;
+    padding: 5px;
+
 
 
 }
 
 .community-card img {
-    width: 265px;
+    margin-left: 15px;
+    width: 250px;
+    height:150px;
     object-fit: cover;
     border-radius: 15px 15px 0 0
 }
