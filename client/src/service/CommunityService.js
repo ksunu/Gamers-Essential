@@ -5,7 +5,7 @@ export default class CommunityService {
 
         this.service = axios.create({
 
-            baseURL: 'http://localhost:5000/api/community',
+            baseURL: `${process.env.REACT_APP_API_URL}/community`,
             withCredentials: true
 
         })

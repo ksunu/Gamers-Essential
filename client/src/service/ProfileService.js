@@ -5,7 +5,7 @@ export default class GameService {
 
         this.service = axios.create({
 
-            baseURL: 'http://localhost:5000/api/profile'
+            baseURL: `${process.env.REACT_APP_API_URL}/profile`
 
         })
     }
