@@ -41,8 +41,8 @@ client Folder
 
 ## Owners
 
-* **SoonWoo Kwon Kim** - *Full work* - [ksunu](https://github.com/ksunu)
 * **Cristian Viñuales** - *Full work* - [cristianvl8](https://github.com/cristianvl8)
+* **SoonWoo Kwon Kim** - *Full work* - [ksunu](https://github.com/ksunu)
 
 
 ## Gratitudes 🎁
