@@ -31,7 +31,7 @@ client Folder
 * If you wish to deploy, you can use your desired platform and install necessary production build.
 
 
-## Developed with 🛠️
+## Developed 🛠️
 
 * [React] create-react-app
 * [React-Bootstrap] bootstrap, react-bootstrap
