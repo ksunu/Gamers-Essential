@@ -20,8 +20,9 @@ class Profile extends Component {
         super()
         this.state = {
             allProfile: undefined,
-            gameDetails: undefined,
+            gameDetails: [],
             showModal: false
+
 
 
         }
@@ -47,22 +48,21 @@ class Profile extends Component {
 
     updateFavGames = () => {
 
-        let promise1 = this.gameService
-            .getOneGame(this.props.loggedInUser.favGame[0])
+        this.props.loggedInUser.favGame.map(elm => {
 
-        let promise2 = this.gameService
-            .getOneGame(this.props.loggedInUser.favGame[1])
+            this.gameService.getOneGame(elm)
+                .then(response => {
 
-        let promise3 = this.gameService
-            .getOneGame(this.props.loggedInUser.favGame[2])
+                    let joined = this.state.gameDetails.concat(response.data)
+                    this.setState({ gameDetails: joined })
+                })
 
-        let promise4 = this.gameService
-            .getOneGame(this.props.loggedInUser.favGame[3])
+                // this.state.gameDetails.push(response.data))
+                .catch(err => console.log(err, 'ha fallado'))
 
-        let promise5 = this.gameService
-            .getOneGame(this.props.loggedInUser.favGame[4])
+        })
 
-        Promise.all([promise1, promise2, promise3, promise4, promise5]).then(response => this.setState({ gameDetails: response }))
+
     }
 
     handleModal = (status) => {
@@ -77,13 +77,13 @@ class Profile extends Component {
     }
 
     render() {
-
+        console.log(this.state.gameDetails && this.state.gameDetails)
 
 
         return (
             <>
                 <Container>
-            
+
                     <section>
 
                         <Modal size="md" show={this.state.showModal} onHide={() => this.handleModal(false)}>
@@ -129,7 +129,7 @@ class Profile extends Component {
 
                                 {this.state.gameDetails && this.state.gameDetails.map(elm =>
 
-                                    <GameCard key={elm.data.id} elm={elm} loggedInUser={this.props.loggedInUser} updateFavGames={() => this.updateFavGames} />
+                                    <GameCard key={elm.id} elm={elm} loggedInUser={this.props.loggedInUser} updateFavGames={() => this.updateFavGames} />
                                 )}
 
                             </Row>

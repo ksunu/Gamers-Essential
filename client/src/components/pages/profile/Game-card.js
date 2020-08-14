@@ -20,7 +20,7 @@ class GameCard extends Component {
     handleDeleteFav = () => {
 
         this.profileService
-            .deleteFavGame(this.props.elm.data.id, this.props.loggedInUser)
+            .deleteFavGame(this.props.elm.id, this.props.loggedInUser)
             .then(response => console.log(response))
             .then(this.props.updateFavGames())
             .catch(err => console.log(err))
@@ -32,10 +32,10 @@ class GameCard extends Component {
             <>
                 <Col md={3} sm={4} xs={5}>
                     <div className="game-card profGame">
-                        <Link to={`/games/${this.props.elm.data.id}`} style={{ textDecoration: 'none' }}>
-                            <img src={this.props.elm.data.background_image} alt={this.props.elm.data.name} />
+                        <Link to={`/games/${this.props.elm.id}`} style={{ textDecoration: 'none' }}>
+                            <img src={this.props.elm.background_image} alt={this.props.elm.name} />
 
-                            <p>{this.props.elm.data.name}</p>
+                            <p>{this.props.elm.name}</p>
                         </Link>
                         <Button onClick={() => this.handleDeleteFav()}>Remove</Button>
                     </div>

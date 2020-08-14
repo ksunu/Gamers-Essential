@@ -7,6 +7,7 @@ import GameService from '../../../service/GameService'
 import ProfileService from '../../../service/ProfileService'
 import Spinner from '../../ui/Spinner'
 import './Game-details.css'
+import Profile from '../../pages/profile/index'
 
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -19,7 +20,8 @@ class GameDetails extends Component {
         super(props)
         this.state = {
             gameDetails: "",
-            screenShots: ""
+            screenShots: "",
+            gameDetails2: [] 
         }
         this.gameService = new GameService()
         this.profileService = new ProfileService()
@@ -46,6 +48,9 @@ class GameDetails extends Component {
         this.profileService
             .addFavGame(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
+            .then(this.cleanGameDetails)
+            .then(this.updateFavGames)
+            
     }
 
     handleDeleteFav = () => {
@@ -54,7 +59,32 @@ class GameDetails extends Component {
             .deleteFavGame(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
 
+        
+    
     }
+
+    updateFavGames = () => {
+
+        this.props.loggedInUser.favGame.map(elm => {
+
+            this.gameService.getOneGame(elm)
+                .then(response => {
+
+                    let joined = this.state.gameDetails2.concat(response.data)
+                    this.setState({ gameDetails2: joined })
+                })
+
+                // this.state.gameDetails.push(response.data))
+                .catch(err => console.log(err, 'ha fallado'))
+
+        })
+
+
+    }
+ 
+    cleanGameDetails = () => this.setState({gameDetails2: []})
+
+
 
 
     render() {
@@ -78,6 +108,7 @@ class GameDetails extends Component {
                             <Button className="btn btn-dark btn-md back-btn-games" onClick={this.handleFav}>Add to favourites</Button>
                             <span className="btn-fav-2">
                                 <Button className="btn btn-dark btn-md back-btn-games" onClick={this.handleDeleteFav}>Remove from favourites</Button>
+
                             </span>
                         </div>
 
