@@ -41,7 +41,7 @@ class SearchForm extends Component {
                         <Row>
                             <Form.Control onChange={this.handleInputChange} name="search" value={this.state.search} type="text" placeholder="Type here..." className="search-form" />
 
-                            <Button variant="dark" type="submit">Submit</Button>
+                            <Button variant="dark" type="submit">Search</Button>
 
                         </Row>
                     </Form.Group>

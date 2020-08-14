@@ -48,9 +48,8 @@ class GameDetails extends Component {
         this.profileService
             .addFavGame(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
-            .then(this.cleanGameDetails)
-            .then(this.updateFavGames)
-            
+            .then(this.props.handleToast(true, 'Game Added to Favourites'))
+        
     }
 
     handleDeleteFav = () => {
@@ -58,6 +57,7 @@ class GameDetails extends Component {
         this.profileService
             .deleteFavGame(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
+            .then(this.props.handleToast(true, 'Game Deleted from Favourites'))
 
         
     
@@ -96,7 +96,8 @@ class GameDetails extends Component {
 
         return (
             <>
-                <Link className="btn-default" to='/games' style={{textDecoration: 'none'}}>&#10229;</Link>
+    
+                <Link to="/games"><Button variant="dark" type="submit" className="btn-default">&#10229;</Button></Link>
 
                 {!this.state.gameDetails && this.state.screenShots ? <Spinner /> :
 
@@ -104,14 +105,10 @@ class GameDetails extends Component {
 
                     <Container as="main" className="detail-container">
                         <h1>{this.state.gameDetails.name}</h1>
-                        <div className="fav-btns">
-                            <Button className="btn btn-dark btn-md back-btn-games" onClick={this.handleFav}>Add to favourites</Button>
-                            <span className="btn-fav-2">
-                                <Button className="btn btn-dark btn-md back-btn-games" onClick={this.handleDeleteFav}>Remove from favourites</Button>
 
-                            </span>
-                        </div>
+                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md back-btn-games fav-btn-add" onClick={this.handleFav}>Add to favourites</Button>}   
 
+                                {this.props.loggedInUser && <Button className="btn btn-dark btn-md back-btn-games fav-btn-remove" onClick={this.handleDeleteFav}>Remove from favourites</Button>}   
                         <Row className="image-detail">
 
                             <Col>

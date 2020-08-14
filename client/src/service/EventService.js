@@ -5,7 +5,7 @@ export default class EventService {
 
         this.service = axios.create({
 
-            baseURL: 'http://localhost:5000/api/event',
+            baseURL: `${process.env.REACT_APP_API_URL}/event`,
             withCredentials: true
 
         })

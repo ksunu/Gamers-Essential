@@ -14,27 +14,9 @@ body {
 .btn-default {
   margin-left: 30px;
   margin-top: 20px;
-	box-shadow: 3px 4px 0px 0px #8a2a21;
-	background:linear-gradient(to bottom, #4a3e3d 5%, #f24437 100%);
-	background-color:#4a3e3d;
-	border-radius:18px;
-	border:1px solid #d02718;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:17px;
-	padding:7px 25px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #810e05;
-    :hover {
-        background:linear-gradient(to bottom, #f24437 5%, #4a3e3d 100%);
-        background-color:#f24437;
-    }
-    :active {
-        position:relative;
-        top:1px;
-    }
+  margin-bottom: 20px;
+  border-radius: 15px;
+	
 }
 
 .btn-default-create {
@@ -51,3 +33,123 @@ body {
      padding:10px;
  }
 
+/* FAV BUTTON */
+
+.fav-btn-add {
+
+  color: rgb(59, 179, 59);
+  border-radius: 30px;
+
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.fav-btn-add:hover {
+
+color: rgb(47, 223, 120);
+  
+}
+
+.fav-btn-remove {
+
+  color: rgb(161, 49, 41);
+  border-radius: 30px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px
+}
+
+.fav-btn-remove:hover {
+  color: rgb(250, 112, 112)
+}
+
+/* CREATE BUTTON */
+.create-btn {
+  background-color:#fff;
+  color: blue;
+  margin-top: 20px;
+}
+
+.create-btn:hover {
+
+background-color: rgb(46, 42, 42);
+
+}
+
+/* EDIT BUTTON */
+
+.edit-btn {
+
+background-color:rgb(35, 134, 173);
+  color: white;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 8px 12px;
+  border: none;
+}
+
+.edit-btn:hover {
+
+  background-color: rgb(36, 98, 192) ;
+
+
+}
+/* DELETE BUTTON */
+
+.delete-btn {
+
+  background-color:rgb(163, 49, 20);
+  color: white;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 8px 12px;
+  border:none;
+}
+
+.delete-btn:hover {
+
+  background-color: rgb(199, 78, 78) ;
+
+}
+
+
+/* INSERT COMMENTS*/
+
+
+.box{
+  font-size: 25px;
+  margin:25px;
+  width:95%;
+  height:100%;
+  border: solid black;
+  border-color: black;
+  float:left; 
+}
+
+
+.box1{
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+}
+
+.oddboxinner{
+  padding: 30px;
+  color: rgb(219, 241, 255);
+}
+.oddboxinner:hover {
+  color: rgb(61, 61, 175);
+}
+
+.oddboxinner2{
+  padding: 30px;
+  color: rgb(197, 159, 159);
+}
+
+.oddboxinner2:hover {
+  color: rgb(243, 80, 21);
+}
+
+.table-comments {
+  margin: 10px 30px;
+}

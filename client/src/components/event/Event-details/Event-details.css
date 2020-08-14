@@ -2,18 +2,16 @@
 
 .event-detail-page img {
     width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 
 .event-detail-page p {
     font-size: 1.3em;
 }
 
-.event-title {
-margin:20px;
-}
-
-.event-description {
-    margin:20px;
+.event-description{
+    margin:40px;
 }
 
 .comments-table {

@@ -25,8 +25,11 @@ class CommunityCard extends Component {
     }
 
     render() {
+
+        console.log(this.props.elm)
         return (
             <>
+                
                 <div className="community-card">
                     <Row>
                         <Link to={`/community/${this.props.elm._id}`}>
@@ -40,14 +43,11 @@ class CommunityCard extends Component {
 
                                 <p>{this.props.elm.brief}</p>
 
-                                <ul className="community-card-text">
-                                    <li>Genre: {this.props.elm.genre}</li>
-                                    <li>Owner: {this.props.elm.owner.username}</li>
-                                </ul>
+                                    <p>Genre: {this.props.elm.genre}</p>
                             </div>
                         </Link>
                     </Row>
-                    <Button onClick={() => this.handleDeleteFav()}>Remove</Button>
+                    <Button className="fav-btn-remove"  variant="dark" onClick={() => this.handleDeleteFav()}>Remove</Button>
                 </div>
 
             </>

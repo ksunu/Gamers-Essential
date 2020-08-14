@@ -22,7 +22,7 @@ const GenreBar = props => {
                         <Button onClick={() => props.handleButtonBar('indie')} className="genre-search-btn">Indie</Button>
                     </Col>
                 </Row>
-                <Row>
+                <Row className="genre-bar">
                     <Col md={12} sm={6}>
                         <Button onClick={() => props.handleButtonBar('massively-multiplayer')} className="genre-search-btn">Multi-Player</Button>
                         <Button onClick={() => props.handleButtonBar('platformer')} className="genre-search-btn">Platformer</Button>
