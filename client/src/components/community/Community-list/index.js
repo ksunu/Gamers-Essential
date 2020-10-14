@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import CommunityService from '../../../service/CommunityService'
 import CommunityCard from './Community-card'
 import CommunityForm from '../Community-form'
@@ -62,8 +61,8 @@ class CommunityList extends Component {
             <>
                 <Container as="main" className="community-page">
                     <h1>Community</h1>
-                    {this.props.loggedInUser && <Link style={{ textDecoration: 'none' }}><Button variant="dark" onClick={() => this.handleModal(true)} className="create-btn">Create new</Button></Link>}
-                    <Row classname="community-card-body">
+                    {this.props.loggedInUser && <Button variant="dark" onClick={() => this.handleModal(true)} className="create-btn">Create new</Button>}
+                    <Row className="community-card-body">
                         {this.state.community.map(elm => <CommunityCard elm={elm} key={elm._id} handleModal={this.handleModal} handleDelete={this.handleDelete} loggedInUser={this.props.loggedInUser} />)}
                     </Row>
 

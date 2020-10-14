@@ -14,7 +14,6 @@ const GameCard = ({ id, name, background_image, rating }) => {
 
     return (
         <>
-
             <Col md={3} sm={4} xs={5}>
                 <div className="game-card">
                     <Link to={`/games/${id}`} style={{ textDecoration: 'none' }}>
@@ -25,8 +24,6 @@ const GameCard = ({ id, name, background_image, rating }) => {
                 </div>
                 </Col>
         </>
-
-
 
     )
 

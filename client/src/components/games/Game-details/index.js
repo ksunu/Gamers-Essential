@@ -7,7 +7,6 @@ import GameService from '../../../service/GameService'
 import ProfileService from '../../../service/ProfileService'
 import Spinner from '../../ui/Spinner'
 import './Game-details.css'
-import Profile from '../../pages/profile/index'
 
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -21,7 +20,7 @@ class GameDetails extends Component {
         this.state = {
             gameDetails: "",
             screenShots: "",
-            gameDetails2: [] 
+            gameDetails2: []
         }
         this.gameService = new GameService()
         this.profileService = new ProfileService()
@@ -49,7 +48,7 @@ class GameDetails extends Component {
             .addFavGame(this.props.match.params.id, this.props.loggedInUser)
             .then(response => console.log(response))
             .then(this.props.handleToast(true, 'Game Added to Favourites'))
-        
+
     }
 
     handleDeleteFav = () => {
@@ -59,30 +58,26 @@ class GameDetails extends Component {
             .then(response => console.log(response))
             .then(this.props.handleToast(true, 'Game Deleted from Favourites'))
 
-        
-    
+
+
     }
 
     updateFavGames = () => {
 
         this.props.loggedInUser.favGame.map(elm => {
-
-            this.gameService.getOneGame(elm)
-                .then(response => {
-
-                    let joined = this.state.gameDetails2.concat(response.data)
-                    this.setState({ gameDetails2: joined })
-                })
-
-                // this.state.gameDetails.push(response.data))
-                .catch(err => console.log(err, 'ha fallado'))
-
+            return (
+                this.gameService.getOneGame(elm)
+                    .then(response => {
+                        let joined = this.state.gameDetails2.concat(response.data)
+                        this.setState({ gameDetails2: joined })
+                    })
+                    // this.state.gameDetails.push(response.data))
+                    .catch(err => console.log(err, 'ha fallado'))
+            )
         })
-
-
     }
- 
-    cleanGameDetails = () => this.setState({gameDetails2: []})
+
+    cleanGameDetails = () => this.setState({ gameDetails2: [] })
 
 
 
@@ -96,7 +91,7 @@ class GameDetails extends Component {
 
         return (
             <>
-    
+
                 <Link to="/games"><Button variant="dark" type="submit" className="btn-default">&#10229;</Button></Link>
 
                 {!this.state.gameDetails && this.state.screenShots ? <Spinner /> :
@@ -106,9 +101,9 @@ class GameDetails extends Component {
                     <Container as="main" className="detail-container">
                         <h1>{this.state.gameDetails.name}</h1>
 
-                            {this.props.loggedInUser && <Button className="btn btn-dark btn-md back-btn-games fav-btn-add" onClick={this.handleFav}>Add to favourites</Button>}   
+                        {this.props.loggedInUser && <Button className="btn btn-dark btn-md back-btn-games fav-btn-add" onClick={this.handleFav}>Add to favourites</Button>}
 
-                                {this.props.loggedInUser && <Button className="btn btn-dark btn-md back-btn-games fav-btn-remove" onClick={this.handleDeleteFav}>Remove from favourites</Button>}   
+                        {this.props.loggedInUser && <Button className="btn btn-dark btn-md back-btn-games fav-btn-remove" onClick={this.handleDeleteFav}>Remove from favourites</Button>}
                         <Row className="image-detail">
 
                             <Col>
@@ -126,8 +121,8 @@ class GameDetails extends Component {
                         <Row className=" mb-5">
                             <Col className="video-player" md={12}>
 
-                            {this.state.gameDetails && this.state.gameDetails.clip ? <ReactPlayer url={this.state.gameDetails && this.state.gameDetails.clip.clips.full} playing={true} volume={0} loop={true} controls={true} /> : <h1>No video available</h1>}
-                                
+                                {this.state.gameDetails && this.state.gameDetails.clip ? <ReactPlayer url={this.state.gameDetails && this.state.gameDetails.clip.clips.full} playing={true} volume={0} loop={true} controls={true} /> : <h1>No video available</h1>}
+
                             </Col>
                         </Row>
                         <Row className=" mb-5">

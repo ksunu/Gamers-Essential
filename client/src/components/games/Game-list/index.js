@@ -38,14 +38,16 @@ class GameList extends Component {
   }
 
   handleNextPage = () => {
-
-    this.setState({ count: ++this.state.count, games: undefined })
+    const oldCount = this.state.count
+    const updatedCount = oldCount + 1
+    this.setState({ count: updatedCount, games: undefined })
     this.updateGameList()
   }
 
   handlePreviousPage = () => {
-
-    this.setState({ count: --this.state.count, games: undefined })
+    const oldCount = this.state.count
+    const updatedCount = oldCount - 1
+    this.setState({ count: updatedCount, games: undefined })
     this.updateGameList()
   }
 
@@ -67,7 +69,7 @@ class GameList extends Component {
 
 
 
-        <Link to="/games"><Button variant="dark" type="submit" className="btn-default">	
+        <Link to="/games"><Button variant="dark" type="submit" className="btn-default">
           &#10229;</Button></Link>
 
         {this.state.count > 1 && <Button onClick={this.handlePreviousPage} className="left">&lt;</Button>}

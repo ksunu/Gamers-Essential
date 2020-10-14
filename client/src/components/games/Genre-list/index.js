@@ -41,23 +41,26 @@ class GenreList extends Component {
     }
 
     handleNextPage = () => {
-
-        this.setState({ count: ++this.state.count, genreGames: undefined })
+        const oldCount = this.state.count
+        const newCount = oldCount + 1
+        this.setState({ count: newCount, genreGames: undefined })
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
-        this.setState({ count: --this.state.count, genreGames: undefined  })
+        const oldCount = this.state.count
+        const newCount = oldCount - 1
+        this.setState({ count: newCount, genreGames: undefined })
         this.updateGameList()
     }
 
     render() {
         return (
             <>
-                
+
                 {!this.state.genreGames && <Spinner />}
 
-                <Link to="/games"><Button className="btn-default" variant="dark" type="submit">	
+                <Link to="/games"><Button className="btn-default" variant="dark" type="submit">
                     &#10229;</Button></Link>
 
 

@@ -19,7 +19,6 @@
     border-right: 1px solid #000;
     border-bottom: none;
     border-radius: 15px 15px 0 0;
-    width: 120px;
     opacity: 0.7;
 }
 
@@ -29,7 +28,8 @@
 }
 
 .pc img {
-    width: 40px;
+    height: 30px;
+    width: 30px;
     object-fit: cover;
 }
 

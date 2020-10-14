@@ -6,7 +6,6 @@ import ProfileService from '../../../service/ProfileService'
 // BOOTSTRAP COMPONENTS
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
 import './Profile.css'
 
 class GameCard extends Component {

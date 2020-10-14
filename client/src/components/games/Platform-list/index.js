@@ -35,22 +35,22 @@ class PlatformList extends Component {
 
 
     handleButtonBar = platform => {
-
-
         this.setState({ platformCategory: platform, count: 1, gamesByPlatform: undefined })
         this.updateGameList()
 
     }
 
     handleNextPage = () => {
-
-        this.setState({ count: ++this.state.count, gamesByPlatform: undefined })
+        const oldCount = this.state.count
+        const newCount = oldCount + 1
+        this.setState({ count: newCount, gamesByPlatform: undefined })
         this.updateGameList()
     }
 
     handlePreviousPage = () => {
-
-        this.setState({ count: --this.state.count, gamesByPlatform: undefined })
+        const oldCount = this.state.count
+        const newCount = oldCount - 1
+        this.setState({ count: newCount, gamesByPlatform: undefined })
         this.updateGameList()
     }
 

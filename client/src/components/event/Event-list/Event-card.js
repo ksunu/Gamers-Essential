@@ -24,8 +24,8 @@ const EventCard = props => {
                         <h5>{props.elm.title}</h5>
                         <p>{props.elm.brief}</p>
                     </Link>
-                {props.loggedInUser && props.loggedInUser._id == props.elm.owner._id && <Button className="edit-btn" onClick={() => props.handleModal(true, props.elm)} variant="dark" size="sm">Edit</Button>}
-                {props.loggedInUser && props.loggedInUser._id == props.elm.owner._id && <Button className="delete-btn" onClick={() => props.handleDelete(props.elm._id)} variant="dark" size="sm" style={{ marginLeft: '30px' }}>Delete</Button>}
+                {props.loggedInUser && props.loggedInUser._id === props.elm.owner._id && <Button className="edit-btn" onClick={() => props.handleModal(true, props.elm)} variant="dark" size="sm">Edit</Button>}
+                {props.loggedInUser && props.loggedInUser._id === props.elm.owner._id && <Button className="delete-btn" onClick={() => props.handleDelete(props.elm._id)} variant="dark" size="sm" style={{ marginLeft: '30px' }}>Delete</Button>}
                 </Col>
 
                 <Col clasName="text-center" lg={4}>

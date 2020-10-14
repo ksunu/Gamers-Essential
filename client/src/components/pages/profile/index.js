@@ -51,16 +51,18 @@ class Profile extends Component {
     updateFavGames = () => {
 
         this.props.loggedInUser.favGame.map(elm => {
+            return (
+                this.gameService.getOneGame(elm)
+                    .then(response => {
 
-            this.gameService.getOneGame(elm)
-                .then(response => {
+                        let joined = this.state.gameDetails.concat(response.data)
+                        this.setState({ gameDetails: joined })
 
-                    let joined = this.state.gameDetails.concat(response.data)
-                    this.setState({ gameDetails: joined })
-                })
+                    })
 
-                // this.state.gameDetails.push(response.data))
-                .catch(err => console.log(err, 'ha fallado'))
+                    // this.state.gameDetails.push(response.data))
+                    .catch(err => console.log(err, 'ha fallado'))
+            )
 
         })
 
@@ -94,7 +96,7 @@ class Profile extends Component {
                             </Modal.Body>
                         </Modal>
                         <article className="profile-section">
-                            <Row style={{marginBottom: 70}}>
+                            <Row style={{ marginBottom: 70 }}>
                                 <Col className="profile-pic" md={3}>
                                     <img src={this.state.allProfile && this.state.allProfile.avatar} alt={this.props.loggedInUser.username} /> <br />
                                     <Button onClick={() => this.handleModal(true)} variant="dark" size="xs" style={{ width: 150 }}>Upload new avatar</Button>
